@@ -53,7 +53,7 @@ int main() {
 	}
 
 	glfwWindowHint(GLFW_FLOATING, GL_TRUE); 
-	glfwWindowHint(GLFW_DECORATED, GL_FALSE);
+	//glfwWindowHint(GLFW_DECORATED, GL_FALSE);
 	WindowBase* window02 = new WindowBase(640, 480, "Noon's Engine02", NULL, NULL);
 	window02->SetDrawFunc(draw02);
 	if (!window02->GetWindow()) {

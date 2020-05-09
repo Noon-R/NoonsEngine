@@ -10,7 +10,10 @@ int WindowBase::SetDrawFunc(int(*func) (void)) {
 }
 
 int WindowBase::DrawUpdate() {
-	
+	if (glfwWindowShouldClose(m_window) == GL_TRUE) {
+		return -1;
+	}
+
 	glfwMakeContextCurrent(m_window);
 	
 
