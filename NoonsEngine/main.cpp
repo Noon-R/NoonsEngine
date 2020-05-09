@@ -39,23 +39,29 @@ int main() {
 		return -1;
 	}
 
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 2);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
+
 	WindowBase* window = new WindowBase(640, 480, "Noon's Engine", NULL, NULL);
-	WindowBase* window02 = new WindowBase(640, 480, "Noon's Engine02", NULL, NULL);
+	
 	window->SetDrawFunc(draw);
-	window02->SetDrawFunc(draw02);
+	
 
 	if (!window->GetWindow()) {
 		glfwTerminate();
 		return -1;
 	}
 
+	glfwWindowHint(GLFW_FLOATING, GL_TRUE); 
+	glfwWindowHint(GLFW_DECORATED, GL_FALSE);
+	WindowBase* window02 = new WindowBase(640, 480, "Noon's Engine02", NULL, NULL);
+	window02->SetDrawFunc(draw02);
 	if (!window02->GetWindow()) {
 		glfwTerminate();
 		return -1;
 	}
 
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 2);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
+
 	glfwSwapInterval(1);
 
 	while (glfwWindowShouldClose(window->GetWindow()) == GL_FALSE) {
