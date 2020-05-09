@@ -12,7 +12,7 @@ int WindowBase::SetDrawFunc(int(*func) (void)) {
 int WindowBase::DrawUpdate() {
 	
 	glfwMakeContextCurrent(m_window);
-	glfwSwapInterval(1);
+	
 
 	if (draw != NULL) {
 		draw();

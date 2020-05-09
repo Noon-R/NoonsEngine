@@ -18,6 +18,21 @@ int draw() {
 	return 0;
 }
 
+int draw02() {
+	glClearColor(0.2f, 0.5f, 0.2f, 0.0f);
+	glClear(GL_COLOR_BUFFER_BIT);
+
+
+	glBegin(GL_TRIANGLES); {
+		glVertex2f(0, -0.5);
+		glVertex2f(-0.5, 0.5);
+		glVertex2f(0.5, 0.5);
+	}
+	glEnd();
+
+	return 0;
+}
+
 int main() {
 
 	if (glfwInit() == GL_FALSE) {
@@ -25,22 +40,29 @@ int main() {
 	}
 
 	WindowBase* window = new WindowBase(640, 480, "Noon's Engine", NULL, NULL);
+	WindowBase* window02 = new WindowBase(640, 480, "Noon's Engine02", NULL, NULL);
 	window->SetDrawFunc(draw);
-
+	window02->SetDrawFunc(draw02);
 
 	if (!window->GetWindow()) {
 		glfwTerminate();
 		return -1;
 	}
 
+	if (!window02->GetWindow()) {
+		glfwTerminate();
+		return -1;
+	}
+
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 2);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
+	glfwSwapInterval(1);
 
 	while (glfwWindowShouldClose(window->GetWindow()) == GL_FALSE) {
 
 		
 		window->DrawUpdate();
-
+		window02->DrawUpdate();
 		glfwPollEvents();
 
 	}
