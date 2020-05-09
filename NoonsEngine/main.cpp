@@ -7,7 +7,7 @@ int main() {
 		return -1;
 	}
 
-	GLFWwindow* window = glfwCreateWindow(640,480, "OpenGL SImple", NULL, NULL);
+	GLFWwindow* window = glfwCreateWindow(640,480, "Noon's Engine", NULL, NULL);
 
 	if (!window) {
 		glfwTerminate();
@@ -24,6 +24,14 @@ int main() {
 
 		glClearColor(0.2f, 0.2f, 0.2f, 0.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
+
+
+		glBegin(GL_TRIANGLES); {
+			glVertex2f(0, 0.5);
+			glVertex2f(-0.5, -0.5);
+			glVertex2f(0.5, -0.5);
+		}
+		glEnd();
 
 		glfwSwapBuffers(window);
 		glfwPollEvents();
