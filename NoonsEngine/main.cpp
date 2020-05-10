@@ -3,6 +3,8 @@
 
 #include"WindowBase.h"
 
+GLFWwindow* win = NULL;
+
 int draw() {
 	glClearColor(0.2f, 0.2f, 0.2f, 0.0f);
 	glClear(GL_COLOR_BUFFER_BIT);
@@ -19,11 +21,24 @@ int draw() {
 }
 
 int draw02() {
+
+	
+	
+	int state = GLFW_RELEASE;
+	if (win != NULL) {
+		state = glfwGetMouseButton(win, GLFW_MOUSE_BUTTON_LEFT);
+	}
+	if (state == GLFW_PRESS)
+	{
+		
+	}
+
 	glClearColor(0.2f, 0.5f, 0.2f, 0.0f);
 	glClear(GL_COLOR_BUFFER_BIT);
 
 
 	glBegin(GL_TRIANGLES); {
+		if (state == GLFW_PRESS)glColor3f(1.0,0.0,0.0);
 		glVertex2f(0, -0.5);
 		glVertex2f(-0.5, 0.5);
 		glVertex2f(0.5, 0.5);
@@ -60,7 +75,7 @@ int main() {
 		glfwTerminate();
 		return -1;
 	}
-
+	win = window02->GetWindow();
 
 	glfwSwapInterval(1);
 
