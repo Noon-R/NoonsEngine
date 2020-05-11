@@ -1,5 +1,6 @@
-#include<GL/glew.h>
+#include<cstdlib>
 #include<iostream>
+#include<GL/glew.h>
 
 #include"WindowBase.h"
 
@@ -53,6 +54,8 @@ int main() {
 	if (glfwInit() == GL_FALSE) {
 		return -1;
 	}
+	atexit(glfwTerminate);
+
 
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 2);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
@@ -63,16 +66,17 @@ int main() {
 	
 
 	if (!window->GetWindow()) {
-		glfwTerminate();
 		return -1;
 	}
 
 	glfwWindowHint(GLFW_FLOATING, GL_TRUE); 
 	//glfwWindowHint(GLFW_DECORATED, GL_FALSE);
+
+	
+
 	WindowBase* window02 = new WindowBase(640, 480, "Noon's Engine02", NULL, NULL);
 	window02->SetDrawFunc(draw02);
 	if (!window02->GetWindow()) {
-		glfwTerminate();
 		return -1;
 	}
 	win = window02->GetWindow();
@@ -88,7 +92,6 @@ int main() {
 
 	}
 
-	glfwTerminate(); 
 
 	/*GLFWwindow* window = glfwCreateWindow(640,480, "Noon's Engine", NULL, NULL);
 
