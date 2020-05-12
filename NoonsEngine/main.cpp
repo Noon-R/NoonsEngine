@@ -1,6 +1,5 @@
 #include<cstdlib>
 #include<iostream>
-#include<GL/glew.h>
 
 #include"WindowBase.h"
 
@@ -56,6 +55,7 @@ int main() {
 	}
 	atexit(glfwTerminate);
 
+	
 
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 2);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);

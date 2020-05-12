@@ -1,5 +1,6 @@
 #pragma once
 #include<vector>
+#include<GL/glew.h>
 #include<GLFW/glfw3.h>
 
 class WindowBase {
@@ -12,5 +13,7 @@ public:
 private:
 	GLFWwindow* m_window;
 	int (*draw) () = NULL;
+	GLuint m_program;
 
 };
+
