@@ -42,7 +42,7 @@ public:
 
 	}
 
-	void bind() const {
+	void Bind() const {
 		glBindVertexArray(vao);
 	}
 };

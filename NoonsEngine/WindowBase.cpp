@@ -95,7 +95,7 @@ WindowBase::WindowBase(int width, int height, const char* title, GLFWmonitor* mo
 			"#version 150 core\n"
 			"in vec4 position; \n"
 			"void main(){\n"
-			"  gl_position = position;\n"
+			"  gl_Position = position;\n"
 			"}\n"
 		}, {
 			"#version 150 core\n"

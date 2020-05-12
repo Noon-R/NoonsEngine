@@ -54,7 +54,7 @@ int main() {
 			glClearColor(1.0,1.0,1.0,1.0);
 			glClear(GL_COLOR_BUFFER_BIT);
 			window->UseShader();
-			shape->draw();
+			shape->Draw();
 		}
 		window->SwapBuffers();
 

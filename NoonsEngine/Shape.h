@@ -20,12 +20,12 @@ public:
 	}
 
 
-	void draw() const {
-		object->bind();
-		execute();
+	void Draw() const {
+		object->Bind();
+		Execute();
 	}
 
-	virtual void execute() const {
+	virtual void Execute() const {
 		glDrawArrays(GL_LINE_LOOP, 0, vertexcount);
 	}
 
