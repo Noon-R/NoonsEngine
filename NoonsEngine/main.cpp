@@ -21,8 +21,7 @@ int main() {
 	if (glfwInit() == GL_FALSE) {
 		return -1;
 	}
-	int a = atexit(glfwTerminate);
-	std::cout << a << std:: endl;
+	atexit(glfwTerminate);
 	
 
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
