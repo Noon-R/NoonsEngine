@@ -9,9 +9,9 @@ private:
 	Object(const Object& o);
 	Object& operator=(const Object& o);
 
-	GLuint vao;
+	GLuint m_vao;
 
-	GLuint vbo;
+	GLuint m_vbo;
 
 public:
 
@@ -21,11 +21,11 @@ public:
 
 	Object(GLint size, GLsizei vertexcount, const Vertex* vertex) {
 
-		glGenVertexArrays(1, &vao);
-		glBindVertexArray(vao);
+		glGenVertexArrays(1, &m_vao);
+		glBindVertexArray(m_vao);
 
-		glGenBuffers(1, &vbo);
-		glBindBuffer(GL_ARRAY_BUFFER, vbo);
+		glGenBuffers(1, &m_vbo);
+		glBindBuffer(GL_ARRAY_BUFFER, m_vbo);
 		glBufferData(GL_ARRAY_BUFFER,
 			vertexcount * sizeof(Vertex), vertex, GL_STATIC_DRAW
 			);
@@ -36,14 +36,14 @@ public:
 	}
 	virtual ~Object() {
 
-		glDeleteVertexArrays(1, &vao);
+		glDeleteVertexArrays(1, &m_vao);
 
-		glDeleteBuffers(1, &vbo);
+		glDeleteBuffers(1, &m_vbo);
 
 	}
 
 	void Bind() const {
-		glBindVertexArray(vao);
+		glBindVertexArray(m_vao);
 	}
 };
 
