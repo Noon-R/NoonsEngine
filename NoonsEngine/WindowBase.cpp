@@ -41,7 +41,8 @@ WindowBase::WindowBase(int width, int height, const char* title, GLFWmonitor* mo
 	glewExperimental = GL_TRUE;
 
 	if (glewInit() != GLEW_OK) {
-		std::cout << "Hello" << std::endl;
+		std::cout << "You could not Init GLEW" << std::endl;
+		exit(1);
 	}
 
 	m_program = createProgram(
@@ -53,43 +54,40 @@ WindowBase::WindowBase(int width, int height, const char* title, GLFWmonitor* mo
 			"}\n"
 		}, {
 			"#version 150 core\n"
-			"out vec4 fragment; \n"
+			"out vec4 gl_FragColor; \n"
 			"void main(){\n"
-			"  fragment = vec4(1.0, 0.0, 0.0, 1.0);\n"
+			"  gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);\n"
 			"}\n"
 
 		}
 		);
-
+	glfwSwapInterval(1);
 }
 
-int WindowBase::SetDrawFunc(int(*func) (void)) {
-
-	draw = func;
-	return 0;
+WindowBase::~WindowBase() {
+	glfwDestroyWindow(m_window);
 }
 
-int WindowBase::DrawUpdate() {
-	if (glfwWindowShouldClose(m_window) == GL_TRUE) {
-		return -1;
-	}
 
+void WindowBase::SetWindowContext() const {
 	glfwMakeContextCurrent(m_window);
-	glClear(GL_COLOR_BUFFER_BIT);
+}
+
+void WindowBase::UseShader() const
+{
 	glUseProgram(m_program);
+}
 
-	if (draw != NULL) {
-		draw();
-	} else {
-		return -1;
-	}
-
+void WindowBase::SwapBuffers() const{
 	glfwSwapBuffers(m_window);
-	glfwPollEvents();
-	return 0;
 }
 
 GLFWwindow* WindowBase::GetWindow() {
 	return m_window;
 }
 
+WindowBase::operator bool() const
+{
+	return !(glfwWindowShouldClose(m_window) == GL_TRUE);
+
+}

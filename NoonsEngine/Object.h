@@ -3,6 +3,16 @@
 
 class Object
 {
+
+private:
+
+	Object(const Object& o);
+	Object& operator=(const Object& o);
+
+	GLuint vao;
+
+	GLuint vbo;
+
 public:
 
 	struct Vertex {
@@ -35,20 +45,5 @@ public:
 	void bind() const {
 		glBindVertexArray(vao);
 	}
-
-
-
-private:
-
-	Object(const Object &o);
-	Object &operator=(const Object &o);
-
-	GLuint vao;
-
-	GLuint vbo;
 };
 
-
-Object::~Object()
-{
-}

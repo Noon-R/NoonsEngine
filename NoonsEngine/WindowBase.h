@@ -7,12 +7,14 @@ class WindowBase {
 public:
 
 	WindowBase(int width, int height, const char* title, GLFWmonitor* monitor, GLFWwindow* share);
-	int SetDrawFunc(int(*func) (void));
-	int DrawUpdate();
+	~WindowBase();
+	void SetWindowContext() const;
+	void UseShader() const;
+	void SwapBuffers() const;
 	GLFWwindow* GetWindow();
+	explicit operator bool() const;
 private:
-	GLFWwindow* m_window;
-	int (*draw) () = NULL;
+	GLFWwindow *const m_window;
 	GLuint m_program;
 
 };
