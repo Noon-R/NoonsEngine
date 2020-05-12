@@ -1,70 +1,34 @@
-#include<cstdlib>
-#include<iostream>
+#include <cstdlib>
+#include <iostream>
+#include <vector>
+#include <memory>
 
 #include"WindowBase.h"
-
-GLFWwindow* win = NULL;
-
-int draw() {
-	glClearColor(0.2f, 0.2f, 0.2f, 0.0f);
-	glClear(GL_COLOR_BUFFER_BIT);
+#include"Shape.h"
 
 
-	glBegin(GL_TRIANGLES); {
-		glVertex2f(0, 0.5);
-		glVertex2f(-0.5, -0.5);
-		glVertex2f(0.5, -0.5);
-	}
-	glEnd();
-
-	return 0;
-}
-
-int draw02() {
-
-	
-	
-	int state = GLFW_RELEASE;
-	if (win != NULL) {
-		state = glfwGetMouseButton(win, GLFW_MOUSE_BUTTON_LEFT);
-	}
-	if (state == GLFW_PRESS)
-	{
-		
-	}
-
-	glClearColor(0.2f, 0.5f, 0.2f, 0.0f);
-	glClear(GL_COLOR_BUFFER_BIT);
+constexpr Object::Vertex rectangleVertex[] = {
+	{ -0.5f, -0.5f},
+	{  0.5f, -0.5f},
+	{  0.5f,  0.5f},
+	{ -0.5f,  0.5f}
+};
 
 
-	glBegin(GL_TRIANGLES); {
-		if (state == GLFW_PRESS)glColor3f(1.0,0.0,0.0);
-		glVertex2f(0, -0.5);
-		glVertex2f(-0.5, 0.5);
-		glVertex2f(0.5, 0.5);
-	}
-	glEnd();
-
-	return 0;
-}
 
 int main() {
 
 	if (glfwInit() == GL_FALSE) {
 		return -1;
 	}
-	atexit(glfwTerminate);
-
+	int a = atexit(glfwTerminate);
+	std::cout << a << std:: endl;
 	
 
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 2);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
 
 	WindowBase* window = new WindowBase(640, 480, "Noon's Engine", NULL, NULL);
-	
-	window->SetDrawFunc(draw);
-	
-
 	if (!window->GetWindow()) {
 		return -1;
 	}
@@ -75,21 +39,34 @@ int main() {
 	
 
 	WindowBase* window02 = new WindowBase(640, 480, "Noon's Engine02", NULL, NULL);
-	window02->SetDrawFunc(draw02);
+
 	if (!window02->GetWindow()) {
 		return -1;
 	}
-	win = window02->GetWindow();
 
-	glfwSwapInterval(1);
 
-	while (glfwWindowShouldClose(window->GetWindow()) == GL_FALSE) {
+	std::unique_ptr<Shape> shape(new Shape(2, 4, rectangleVertex));
 
+
+	while (*window) {
 		
-		window->DrawUpdate();
-		window02->DrawUpdate();
-		glfwPollEvents();
+		window->SetWindowContext(); {
+			glClearColor(1.0,1.0,1.0,1.0);
+			glClear(GL_COLOR_BUFFER_BIT);
+			window->UseShader();
+			shape->draw();
+		}
+		window->SwapBuffers();
 
+		window02->SetWindowContext(); {
+			glClearColor(0.2f, 0.5f, 0.2f, 0.0f);
+			glClear(GL_COLOR_BUFFER_BIT);
+			window02->UseShader();
+		}
+		window02->SwapBuffers();
+		
+		
+		glfwPollEvents();
 	}
 
 
@@ -125,7 +102,7 @@ int main() {
 	}
 
 	glfwTerminate();*/
-
+	glfwTerminate();
 	return 0;
 
 }
