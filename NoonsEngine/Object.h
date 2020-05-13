@@ -24,6 +24,7 @@ public:
 		glGenVertexArrays(1, &m_vao);
 		glBindVertexArray(m_vao);
 
+		
 		glGenBuffers(1, &m_vbo);
 		glBindBuffer(GL_ARRAY_BUFFER, m_vbo);
 		glBufferData(GL_ARRAY_BUFFER,
@@ -32,6 +33,7 @@ public:
 
 		glVertexAttribPointer(0, size, GL_FLOAT, GL_FALSE, 0, 0);
 		glEnableVertexAttribArray(0);
+		glBindVertexArray(0);
 
 	}
 	virtual ~Object() {
@@ -44,6 +46,10 @@ public:
 
 	void Bind() const {
 		glBindVertexArray(m_vao);
+	}
+
+	void Release() const {
+		glBindVertexArray(0);
 	}
 };
 

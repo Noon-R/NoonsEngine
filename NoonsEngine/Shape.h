@@ -23,6 +23,7 @@ public:
 	void Draw() const {
 		m_object->Bind();
 		Execute();
+		m_object->Release();
 	}
 
 	virtual void Execute() const {
