@@ -1,5 +1,39 @@
 #include"WindowBase.h"
 #include<iostream>
+#include<vector>
+#include <fstream>
+
+
+bool readShaderSource(const char* name, std::vector<GLchar> &buffer) {
+
+	if (name == NULL) return false;
+
+	std::ifstream file(name, std::ios::binary);
+	if (file.fail()) {
+		std::cerr << "Error: Cant't open source file: " << name << std::endl;
+		return false;
+	}
+
+	file.seekg(0L, std::ios::end);
+	GLsizei length = static_cast<GLsizei>(file.tellg());
+
+	buffer.resize(length + 1);
+
+	file.seekg(0L, std::ios::beg);
+	file.read(buffer.data(), length);
+	buffer[length] = '\0';
+
+	if (file.fail()) {
+		std::cerr << "Error: Coud not read source file: " << name << std::endl;
+		file.close();
+		return false;
+	}
+
+	file.close();
+	return true;
+
+}
+
 
 GLboolean printShaderInfoLog(GLuint shader, const char* str) {
 	GLint status;
@@ -78,6 +112,18 @@ GLuint createProgram(const char* vsrc, const char* fsrc) {
 	return 0;
 }
 
+GLuint loadProgram(const char *vert, const char *frag) {
+
+	std::vector<GLchar> vsrc;
+	const bool vstat(readShaderSource(vert, vsrc));
+
+	std::vector<GLchar> fsrc;
+	const bool fstat(readShaderSource(frag, fsrc));
+
+
+	return vstat && fstat ? createProgram(vsrc.data(), fsrc.data()) : 0;
+}
+
 WindowBase::WindowBase(int width, int height, const char* title, GLFWmonitor* monitor, GLFWwindow* share) 
 	: m_window(glfwCreateWindow(width, height, title, monitor, share))
 {
@@ -90,22 +136,7 @@ WindowBase::WindowBase(int width, int height, const char* title, GLFWmonitor* mo
 		exit(1);
 	}
 
-	m_program = createProgram(
-		{
-			"#version 150 core\n"
-			"in vec4 position; \n"
-			"void main(){\n"
-			"  gl_Position = position;\n"
-			"}\n"
-		}, {
-			"#version 150 core\n"
-			"out vec4 fragment; \n"
-			"void main(){\n"
-			"  fragment = vec4(1.0, 0.0, 0.0, 1.0);\n"
-			"}\n"
-
-		}
-		);
+	m_program = loadProgram("point.vert","point.frag");
 	glfwSwapInterval(1);
 }
 
@@ -133,6 +164,6 @@ GLFWwindow* WindowBase::GetWindow() {
 
 WindowBase::operator bool() const
 {
-	return !(glfwWindowShouldClose(m_window) == GL_TRUE);
+	return !(glfwWindowShouldClose(m_window));
 
 }

@@ -152,6 +152,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="point.frag" />
+    <None Include="point.vert" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Object.h" />
