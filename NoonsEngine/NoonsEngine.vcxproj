@@ -147,6 +147,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="glShader.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="WindowBase.cpp" />
   </ItemGroup>
@@ -156,6 +157,7 @@
     <None Include="point.vert" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="glShader.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="Shape.h" />
     <ClInclude Include="WindowBase.h" />

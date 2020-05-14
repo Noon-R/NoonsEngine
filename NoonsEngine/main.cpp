@@ -32,10 +32,12 @@ int main() {
 		return -1;
 	}
 
-	glfwWindowHint(GLFW_FLOATING, GL_TRUE); 
+	//glfwWindowHint(GLFW_FLOATING, GL_TRUE); 
 	//glfwWindowHint(GLFW_DECORATED, GL_FALSE);
 
+
 	
+
 
 	WindowBase* window02 = new WindowBase(640, 480, "Noon's Engine02", NULL, NULL);
 
@@ -43,19 +45,11 @@ int main() {
 		return -1;
 	}
 
-
+	window->SetWindowContext();
 	std::unique_ptr<Shape> shape(new Shape(2, 4, rectangleVertex));
-
-
 	while (*window) {
 		
-		window->SetWindowContext(); {
-			glClearColor(1.0,1.0,1.0,1.0);
-			glClear(GL_COLOR_BUFFER_BIT);
-			window->UseShader();
-			shape->Draw();
-		}
-		window->SwapBuffers();
+		
 
 		window02->SetWindowContext(); {
 			glClearColor(0.2f, 0.5f, 0.2f, 0.0f);
@@ -65,6 +59,13 @@ int main() {
 		}
 		window02->SwapBuffers();
 		
+		window->SetWindowContext(); {
+			glClearColor(0.2f, 0.5f, 0.2f, 0.0f);
+			glClear(GL_COLOR_BUFFER_BIT);
+			window->UseShader();
+			shape->Draw();
+		}
+		window->SwapBuffers();
 		
 		glfwPollEvents();
 	}
