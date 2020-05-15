@@ -1,5 +1,6 @@
 #pragma once
 #include<GL/glew.h>
+#include "WindowBase.h"
 
 class Object
 {
@@ -19,7 +20,9 @@ public:
 		GLfloat position[2];
 	};
 
-	Object(GLint size, GLsizei vertexcount, const Vertex* vertex) {
+	Object(GLint size, GLsizei vertexcount, const Vertex* vertex, WindowBase *window) {
+
+		window->SetWindowContext();
 
 		glGenVertexArrays(1, &m_vao);
 		glBindVertexArray(m_vao);
