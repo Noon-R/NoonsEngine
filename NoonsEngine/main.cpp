@@ -27,7 +27,7 @@ int main() {
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
 
-	WindowBase* window = new WindowBase(640, 480, "Noon's Engine", NULL, NULL);
+	WindowBase* window = new WindowBase(1920, 1080, "Noon's Engine", NULL, NULL);
 	if (!window->GetWindow()) {
 		return -1;
 	}
@@ -45,22 +45,21 @@ int main() {
 		return -1;
 	}
 
-	window->SetWindowContext();
-	std::unique_ptr<Shape> shape(new Shape(2, 4, rectangleVertex));
+	std::unique_ptr<Shape> shape(new Shape(2, 4, rectangleVertex,window));
+
+
 	while (*window) {
 		
-		
-
 		window02->SetWindowContext(); {
 			glClearColor(0.2f, 0.5f, 0.2f, 0.0f);
 			glClear(GL_COLOR_BUFFER_BIT);
 			window02->UseShader();
-			shape->Draw();
 		}
 		window02->SwapBuffers();
 		
 		window->SetWindowContext(); {
-			glClearColor(0.2f, 0.5f, 0.2f, 0.0f);
+			
+			glClearColor(0.2f, 0.3f, 0.2f, 1.0f);
 			glClear(GL_COLOR_BUFFER_BIT);
 			window->UseShader();
 			shape->Draw();

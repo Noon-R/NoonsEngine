@@ -13,11 +13,15 @@ public:
 	void SetWindowContext() const;
 	void UseShader() const;
 	void SwapBuffers() const;
+	void SetAspect(GLfloat aspect);
 	GLFWwindow* GetWindow();
+	GLfloat GetAspect();
 	explicit operator bool() const;
 private:
 	GLFWwindow *const m_window;
 	GLuint m_program;
-
+	GLfloat m_aspect;
+	GLint m_aspectLoc;
+	static void Resize(GLFWwindow* const window, int width, int height);
 };
 
