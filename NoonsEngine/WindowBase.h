@@ -11,17 +11,25 @@ public:
 	WindowBase(int width, int height, const char* title, GLFWmonitor* monitor, GLFWwindow* share);
 	~WindowBase();
 	void SetWindowContext() const;
+	//UseShader And Set some UniformParams
 	void UseShader() const;
 	void SwapBuffers() const;
-	void SetAspect(GLfloat aspect);
-	GLFWwindow* GetWindow();
-	GLfloat GetAspect();
+	void SetSize(GLfloat width, GLfloat height);
+	const GLFWwindow* GetWindow();
+	GLfloat GetAspect() const;
+	const GLfloat* GetSize() const;
+	GLfloat GetScale() const;
 	explicit operator bool() const;
 private:
 	GLFWwindow *const m_window;
 	GLuint m_program;
-	GLfloat m_aspect;
-	GLint m_aspectLoc;
+
+	GLint m_sizeLoc;
+	GLint m_scaleLoc;
+
+	//0: width, 1: height
+	GLfloat m_size[2]; 
+	GLfloat m_scale;
 	static void Resize(GLFWwindow* const window, int width, int height);
 };
 

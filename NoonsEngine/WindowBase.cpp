@@ -5,7 +5,7 @@
 
 WindowBase::WindowBase(int width, int height, const char* title, GLFWmonitor* monitor, GLFWwindow* share) 
 	: m_window(glfwCreateWindow(width, height, title, monitor, share)),
-	  m_aspect(static_cast<GLfloat>(width) / static_cast<GLfloat>(height))
+	  m_scale(100)
 {
 	glfwMakeContextCurrent(m_window);
 	
@@ -17,8 +17,9 @@ WindowBase::WindowBase(int width, int height, const char* title, GLFWmonitor* mo
 	}
 
 	m_program = loadProgram("point.vert","point.frag");
-	m_aspectLoc = glGetUniformLocation(m_program, "aspect");
-
+	m_sizeLoc = glGetUniformLocation(m_program, "size");
+	m_scaleLoc = glGetUniformLocation(m_program, "scale");
+	
 	glfwSwapInterval(1);
 
 	glfwSetWindowUserPointer(m_window, this);
@@ -36,30 +37,42 @@ void WindowBase::SetWindowContext() const {
 }
 
 
-//UseShader And Set some UniformParams
+
 void WindowBase::UseShader() const
 {
 	glUseProgram(m_program);
-	glUniform1f(m_aspectLoc, m_aspect);
+	glUniform2fv(m_sizeLoc, 1, m_size);
+	glUniform1f(m_scaleLoc, m_scale);
 }
 
 void WindowBase::SwapBuffers() const{
 	glfwSwapBuffers(m_window);
 }
 
-void WindowBase::SetAspect(GLfloat aspect) {
-	
-	m_aspect = aspect;
+void WindowBase::SetSize(GLfloat width, GLfloat height)
+{
+	m_size[0] = width;
+	m_size[1] = height;
 }
 
 
-GLFWwindow* WindowBase::GetWindow() {
+const GLFWwindow* WindowBase::GetWindow() {
 	return m_window;
 }
 
-GLfloat WindowBase::GetAspect()
+GLfloat WindowBase::GetAspect() const
 {
-	return m_aspect;
+	return m_size[0] / m_size[1];
+}
+
+const GLfloat *WindowBase::GetSize() const
+{
+	return m_size;
+}
+
+GLfloat WindowBase::GetScale() const
+{
+	return m_scale;
 }
 
 WindowBase::operator bool() const
@@ -77,9 +90,7 @@ void WindowBase::Resize(GLFWwindow* const window, int width, int height) {
 	WindowBase* const instance(static_cast<WindowBase*>(glfwGetWindowUserPointer(window)));
 
 	if (instance != NULL) {
-		instance->SetAspect(
-			static_cast<GLfloat>(width) / static_cast<GLfloat>(height)
-		);
+		instance->SetSize(static_cast<GLfloat>(width), static_cast<GLfloat>(height));
 	}
 	glViewport(0, 0, fw, fh);
 
