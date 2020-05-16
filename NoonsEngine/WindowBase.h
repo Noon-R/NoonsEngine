@@ -16,8 +16,8 @@ public:
 	void SwapBuffers() const;
 	void SetSize(GLfloat width, GLfloat height);
 	const GLFWwindow* GetWindow();
-	GLfloat GetAspect() const;
 	const GLfloat* GetSize() const;
+	GLfloat GetAspect() const;
 	GLfloat GetScale() const;
 	explicit operator bool() const;
 private:

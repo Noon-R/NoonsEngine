@@ -8,10 +8,10 @@
 
 
 constexpr Object::Vertex rectangleVertex[] = {
-	{ -0.5f, -0.5f},
-	{  0.5f, -0.5f},
-	{  0.5f,  0.5f},
-	{ -0.5f,  0.5f}
+	{ -0.5f, -0.5f,0},
+	{  0.5f, -0.5f,0},
+	{  0.5f,  0.5f,0},
+	{ -0.5f,  0.5f,0}
 };
 
 
@@ -45,7 +45,7 @@ int main() {
 		return -1;
 	}
 
-	std::unique_ptr<Shape> shape(new Shape(2, 4, rectangleVertex,window));
+	std::unique_ptr<Shape> shape(new Shape(3, 4, rectangleVertex,window));
 
 
 	while (*window) {
