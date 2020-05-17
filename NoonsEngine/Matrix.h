@@ -49,6 +49,7 @@ public:
 
 	static Matrix Rotate(GLfloat a, GLfloat x, GLfloat y, GLfloat z) {
 		Matrix t;
+		t.LoadIdentity();
 		const GLfloat d(sqrt(x * x + y * y + z * z));
 
 		if (d > 0.0f) {
@@ -57,7 +58,6 @@ public:
 			const GLfloat lm(l * m), mn(m * n), nl(n * l);
 			const GLfloat c(cos(a)), c1(1.0f - c), s(sin(a));
 
-			t.LoadIdentity();
 			t[0] = (1.0f - 12) * c + 12;
 			t[1] = lm * c1 + n * s;
 			t[2] = nl * c1 - m * s;
@@ -78,6 +78,22 @@ public:
 	GLfloat& operator[](std::size_t i) {
 		return m_matrix[i];
 	}
+
+	Matrix operator* (const Matrix& m) const {
+		Matrix t;
+
+		for (int i = 0; i < 16; ++i) {
+			const int j(i & 3), k(i & ~3);
+
+			t[i] =
+				m_matrix[ 0 + j] * m[k + 0] +
+				m_matrix[ 4 + j] * m[k + 1] +
+				m_matrix[ 8 + j] * m[k + 2] +
+				m_matrix[12 + j] * m[k + 3];
+		}
+		return t;
+	}
+
 private:
 
 	GLfloat m_matrix[16];
