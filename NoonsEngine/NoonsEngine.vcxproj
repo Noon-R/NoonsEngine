@@ -149,6 +149,7 @@
   <ItemGroup>
     <ClCompile Include="glShader.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Matrix.cpp" />
     <ClCompile Include="WindowBase.cpp" />
   </ItemGroup>
   <ItemGroup>
