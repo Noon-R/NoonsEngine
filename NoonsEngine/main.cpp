@@ -39,7 +39,7 @@ int main() {
 
 
 	GLuint m_program(loadProgram("point.vert", "point.frag"));
-	GLuint modelLoc(glGetUniformLocation(m_program, "model"));
+	GLuint modelviewLoc(glGetUniformLocation(m_program, "modelview"));
 
 	WindowBase* window02 = new WindowBase(640, 480, "Noon's Engine02", NULL, NULL);
 
@@ -69,11 +69,19 @@ int main() {
 			const GLfloat scale(window->GetScale() * 2.0f);
 			const Matrix scaling(Matrix::Scale(scale / size[0], scale / size[1], 1.0f));
 
-			const Matrix translation(Matrix::Translate(0.5,0,0));
+			const Matrix translation(Matrix::Translate(0,0,0));
 
 			const Matrix model(translation * scaling);
 
-			glUniformMatrix4fv(modelLoc, 1, GL_FALSE, model.data());
+			const Matrix view(Matrix::LookAt(
+				 0.0f,  0.0f,  0.0f,
+				-1.0f, -1.0f, -1.0f,
+				 0.0f,  1.0f,  0.0f
+			));
+
+			const Matrix modelView( view * model);
+
+			glUniformMatrix4fv(modelviewLoc, 1, GL_FALSE, modelView.data());
 
 			shape->Draw();
 		}

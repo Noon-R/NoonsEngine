@@ -20,7 +20,14 @@ public:
 
 	static Matrix Scale(GLfloat x, GLfloat y, GLfloat z);
 
+	//a : angle , x,y,z : Axis
 	static Matrix Rotate(GLfloat a, GLfloat x, GLfloat y, GLfloat z);
+
+	static Matrix LookAt(
+		GLfloat ex, GLfloat ey, GLfloat ez,
+		GLfloat gx, GLfloat gy, GLfloat gz,
+		GLfloat ux, GLfloat uy, GLfloat uz
+		);
 
 	const GLfloat& operator[](std::size_t i) const;
 
