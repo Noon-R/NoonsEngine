@@ -16,10 +16,6 @@ WindowBase::WindowBase(int width, int height, const char* title, GLFWmonitor* mo
 		exit(1);
 	}
 
-	m_program = loadProgram("point.vert","point.frag");
-	m_sizeLoc = glGetUniformLocation(m_program, "size");
-	m_scaleLoc = glGetUniformLocation(m_program, "scale");
-	
 	glfwSwapInterval(1);
 
 	glfwSetWindowUserPointer(m_window, this);
@@ -34,15 +30,6 @@ WindowBase::~WindowBase() {
 
 void WindowBase::SetWindowContext() const {
 	glfwMakeContextCurrent(m_window);
-}
-
-
-
-void WindowBase::UseShader() const
-{
-	glUseProgram(m_program);
-	glUniform2fv(m_sizeLoc, 1, m_size);
-	glUniform1f(m_scaleLoc, m_scale);
 }
 
 void WindowBase::SwapBuffers() const{

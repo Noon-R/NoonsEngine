@@ -4,7 +4,9 @@
 #include <memory>
 
 #include"WindowBase.h"
+#include "glShader.h"
 #include"Shape.h"
+#include "Matrix.h"
 
 
 constexpr Object::Vertex rectangleVertex[] = {
@@ -36,8 +38,8 @@ int main() {
 	//glfwWindowHint(GLFW_DECORATED, GL_FALSE);
 
 
-	
-
+	GLuint m_program(loadProgram("point.vert", "point.frag"));
+	GLuint modelLoc(glGetUniformLocation(m_program, "model"));
 
 	WindowBase* window02 = new WindowBase(640, 480, "Noon's Engine02", NULL, NULL);
 
@@ -53,7 +55,6 @@ int main() {
 		window02->SetWindowContext(); {
 			glClearColor(0.2f, 0.5f, 0.2f, 0.0f);
 			glClear(GL_COLOR_BUFFER_BIT);
-			window02->UseShader();
 		}
 		window02->SwapBuffers();
 		
@@ -61,7 +62,19 @@ int main() {
 			
 			glClearColor(0.2f, 0.3f, 0.2f, 1.0f);
 			glClear(GL_COLOR_BUFFER_BIT);
-			window->UseShader();
+			
+			glUseProgram(m_program);
+			
+			const GLfloat *const size(window->GetSize());
+			const GLfloat scale(window->GetScale() * 2.0f);
+			const Matrix scaling(Matrix::Scale(scale / size[0], scale / size[1], 1.0f));
+
+			const Matrix translation(Matrix::Translate(0.5,0,0));
+
+			const Matrix model(translation * scaling);
+
+			glUniformMatrix4fv(modelLoc, 1, GL_FALSE, model.data());
+
 			shape->Draw();
 		}
 		window->SwapBuffers();
