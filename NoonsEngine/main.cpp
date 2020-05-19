@@ -3,18 +3,40 @@
 #include <vector>
 #include <memory>
 
-#include"WindowBase.h"
+#include "WindowBase.h"
 #include "glShader.h"
-#include"Shape.h"
+#include "Shape.h"
+#include "ShapeIndex.h"
 #include "Matrix.h"
 
 
-constexpr Object::Vertex rectangleVertex[] = {
-	{ -0.5f, -0.5f,0},
-	{  0.5f, -0.5f,0},
-	{  0.5f,  0.5f,0},
-	{ -0.5f,  0.5f,0}
-};
+constexpr Object::Vertex cubeVertex[] = { 
+	{ -1.0f, -1.0f, -1.0f },  // (0)
+	{ -1.0f, -1.0f,  1.0f },  // (1)   
+	{ -1.0f,  1.0f,  1.0f },  // (2) 
+	{ -1.0f,  1.0f, -1.0f },  // (3)
+	{  1.0f,  1.0f, -1.0f },  // (4) 
+	{  1.0f, -1.0f, -1.0f },  // (5)   
+	{  1.0f, -1.0f,  1.0f },  // (6)   
+	{  1.0f,  1.0f,  1.0f }   // (7)
+}; 
+
+// 六面体の稜線の両端点のインデックス 
+constexpr GLuint wireCubeIndex[] = { 
+	1, 0, // (a)  
+	2, 7, // (b) 
+	3, 0, // (c) 
+	4, 7, // (d) 
+	5, 0, // (e) 
+	6, 7, // (f) 
+	1, 2, // (g) 
+	2, 3, // (h)  
+	3, 4, // (i)  
+	4, 5, // (j) 
+	5, 6, // (k) 
+	6, 1  // (l) 
+}; 
+
 
 
 
@@ -42,7 +64,7 @@ int main() {
 	GLuint modelviewLoc(glGetUniformLocation(m_program, "modelview"));
 	GLuint projectionLoc(glGetUniformLocation(m_program, "projection"));
 
-	std::unique_ptr<Shape> shape(new Shape(3, 4, rectangleVertex,window));
+	std::unique_ptr<Shape> shape(new ShapeIndex(3, 8, cubeVertex,window,24, wireCubeIndex));
 
 
 	while (*window) {
