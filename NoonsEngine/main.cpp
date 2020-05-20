@@ -170,6 +170,13 @@ int main() {
 	//glfwWindowHint(GLFW_FLOATING, GL_TRUE); 
 	//glfwWindowHint(GLFW_DECORATED, GL_FALSE);
 
+	glFrontFace(GL_CCW);
+	glCullFace(GL_BACK);
+	glEnable(GL_CULL_FACE);
+
+	glClearDepth(1.0);
+	glDepthFunc(GL_LESS);
+	glEnable(GL_DEPTH_TEST);
 
 	GLuint m_program(loadProgram("point.vert", "point.frag"));
 	GLuint modelviewLoc(glGetUniformLocation(m_program, "modelview"));
@@ -184,7 +191,7 @@ int main() {
 		window->SetWindowContext(); {
 			
 			glClearColor(0.2f, 0.3f, 0.2f, 1.0f);
-			glClear(GL_COLOR_BUFFER_BIT);
+			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 			
 			glUseProgram(m_program);
 			
@@ -211,6 +218,13 @@ int main() {
 
 			glUniformMatrix4fv(projectionLoc, 1, GL_FALSE, projection.data());
 			glUniformMatrix4fv(modelviewLoc, 1, GL_FALSE, modelView.data());
+
+			shape->Draw();
+
+
+			const Matrix modelview1(modelView * Matrix::Translate(0.0f, 0.0f, 3.0f));
+
+			glUniformMatrix4fv(modelviewLoc, 1, GL_FALSE, modelview1.data());
 
 			shape->Draw();
 		}
