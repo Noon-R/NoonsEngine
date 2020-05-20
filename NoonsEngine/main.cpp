@@ -23,6 +23,8 @@ constexpr Object::Vertex cubeVertex[] = {
 	{  1.0f,  1.0f,  1.0f, 0.8f, 0.8f, 0.8f }   // (7)
 }; 
 
+
+//WithIndexVertex
 //constexpr Object::Vertex solidCubeVertex[] = {
 //
 //	{ -1.0f, -1.0f, -1.0f,  0.1f,  0.8f, 0.1f},
@@ -56,6 +58,7 @@ constexpr Object::Vertex cubeVertex[] = {
 //	{ -1.0f,  1.0f,  1.0f,  0.8f,  0.8f, 0.1f}
 //};
 
+//SolidCube
 constexpr Object::Vertex solidCubeVertex[] = {
 
 	{ -1.0f, -1.0f, -1.0f,  0.1f,  0.8f, 0.1f},
