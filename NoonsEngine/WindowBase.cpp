@@ -21,6 +21,8 @@ WindowBase::WindowBase(int width, int height, const char* title, GLFWmonitor* mo
 	glfwSetWindowUserPointer(m_window, this);
 
 	glfwSetWindowSizeCallback(m_window, Resize);
+	SetSize(width, height);
+	Resize(m_window, m_size[0], m_size[1]);
 }
 
 WindowBase::~WindowBase() {
