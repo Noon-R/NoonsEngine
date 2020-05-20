@@ -50,10 +50,10 @@ Matrix Matrix::Rotate(GLfloat a, GLfloat x, GLfloat y, GLfloat z) {
 		const GLfloat lm(l * m), mn(m * n), nl(n * l);
 		const GLfloat c(cos(a)), c1(1.0f - c), s(sin(a));
 
-		t[0] = (1.0f - 12) * c + 12;
+		t[0] = (1.0f - l2) * c + l2;
 		t[1] = lm * c1 + n * s;
 		t[2] = nl * c1 - m * s;
-		t[4] = lm * c1 + n * s;
+		t[4] = lm * c1 - n * s;
 		t[5] = (1.0f - m2) * c + m2;
 		t[6] = mn * c1 + l * s;
 		t[8] = nl * c1 + m * s;

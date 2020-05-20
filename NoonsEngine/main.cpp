@@ -176,7 +176,7 @@ int main() {
 	GLuint projectionLoc(glGetUniformLocation(m_program, "projection"));
 
 	std::unique_ptr<Shape> shape(new SolidShape(3, 36, solidCubeVertex, window));
-
+	glfwSetTime(0.0);
 
 	while (*window) {
 	
@@ -192,17 +192,17 @@ int main() {
 			const GLfloat scale(window->GetScale() * 2.0f);
 			const GLfloat fovy(window->GetScale() * 0.01f);
 			const GLfloat aspect(size[0] / size[1]);
+
 			const Matrix projection(Matrix::Perspective( fovy, aspect, 1.0f, 10.0f));
-
 			const Matrix scaling(Matrix::Scale(scale / size[0], scale / size[1], 1.0f));
-
 			const Matrix translation(Matrix::Translate(0,0,0));
 
+			const Matrix r(Matrix::Rotate(static_cast<GLfloat>(glfwGetTime()), 0.0f, 1.0f, 0.0f));
 			//const Matrix model(translation * scaling);
-			const Matrix model(translation );
+			const Matrix model(r);
 
 			const Matrix view(Matrix::LookAt(
-				 2.0f,  3.0f,  3.0f,
+				 3.0f,  4.0f,  5.0f,
 				 0.0f,  0.0f,  0.0f,
 				 0.0f,  1.0f,  0.0f
 			));
