@@ -7,6 +7,7 @@
 #include "glShader.h"
 #include "Shape.h"
 #include "ShapeIndex.h"
+#include "SolidShapeIndex.h"
 #include "Matrix.h"
 
 
@@ -20,6 +21,16 @@ constexpr Object::Vertex cubeVertex[] = {
 	{  1.0f, -1.0f,  1.0f, 0.8f, 0.8f, 0.0f },  // (6)   
 	{  1.0f,  1.0f,  1.0f, 0.8f, 0.8f, 0.8f }   // (7)
 }; 
+
+
+constexpr GLuint solidCUbeIndex[] = {
+	0, 1, 2, 0, 2, 3,
+	0, 3, 4, 0, 4, 5,
+	0, 5, 6, 0, 6, 1,
+	7, 6, 5, 7, 5, 4,
+	7, 4, 3, 7, 3, 2,
+	7, 2, 1, 7, 1, 6
+};
 
 // 六面体の稜線の両端点のインデックス 
 constexpr GLuint wireCubeIndex[] = { 
@@ -64,7 +75,7 @@ int main() {
 	GLuint modelviewLoc(glGetUniformLocation(m_program, "modelview"));
 	GLuint projectionLoc(glGetUniformLocation(m_program, "projection"));
 
-	std::unique_ptr<Shape> shape(new ShapeIndex(3, 8, cubeVertex,window,24, wireCubeIndex));
+	std::unique_ptr<Shape> shape(new SolidShapeIndex(3, 8, cubeVertex, 36, solidCUbeIndex, window));
 
 
 	while (*window) {
@@ -87,10 +98,11 @@ int main() {
 
 			const Matrix translation(Matrix::Translate(0,0,0));
 
-			const Matrix model(translation * scaling);
+			//const Matrix model(translation * scaling);
+			const Matrix model(translation );
 
 			const Matrix view(Matrix::LookAt(
-				 1.0f,  1.0f,  1.0f,
+				 2.0f,  3.0f,  3.0f,
 				 0.0f,  0.0f,  0.0f,
 				 0.0f,  1.0f,  0.0f
 			));
