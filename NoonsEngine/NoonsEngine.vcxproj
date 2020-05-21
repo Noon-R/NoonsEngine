@@ -154,8 +154,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="point.frag" />
-    <None Include="point.vert" />
+    <None Include="point.frag">
+      <FileType>Text</FileType>
+    </None>
+    <None Include="point.vert">
+      <FileType>Text</FileType>
+    </None>
+    <None Include="pointWithNormal.frag" />
+    <None Include="pointWithNormal.vert">
+      <FileType>Text</FileType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="glShader.h" />

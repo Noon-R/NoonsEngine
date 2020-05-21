@@ -20,7 +20,7 @@ public:
 
 	struct Vertex {
 		GLfloat position[3];
-		GLfloat color[3];
+		GLfloat normal[3];
 	};
 
 	Object(GLint size, GLsizei vertexcount, const Vertex* vertex, WindowBase* window,GLsizei indexcount = 0, const GLuint *index = NULL) {
@@ -39,7 +39,7 @@ public:
 
 		glVertexAttribPointer(0, size, GL_FLOAT, GL_FALSE, sizeof(Vertex), static_cast<Vertex * >(0) -> position);
 		glEnableVertexAttribArray(0);
-		glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), static_cast<Vertex*>(0)->color);
+		glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), static_cast<Vertex*>(0)->normal);
 		glEnableVertexAttribArray(1);
 
 
