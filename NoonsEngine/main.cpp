@@ -224,9 +224,10 @@ int main() {
 	glDepthFunc(GL_LESS);
 	glEnable(GL_DEPTH_TEST);
 
-	GLuint m_program(loadProgram("pointWithNormal.vert", "pointWithNormal.frag"));
-	GLuint modelviewLoc(glGetUniformLocation(m_program, "modelview"));
-	GLuint projectionLoc(glGetUniformLocation(m_program, "projection"));
+	const GLuint m_program(loadProgram("pointWithNormal.vert", "pointWithNormal.frag"));
+	const GLuint modelviewLoc(glGetUniformLocation(m_program, "modelview"));
+	const GLuint projectionLoc(glGetUniformLocation(m_program, "projection"));
+	const GLuint normalMatrixLoc(glGetUniformLocation(m_program, "normalMatrix"));
 
 	std::unique_ptr<Shape> shape(new SolidShape(3, 36, solidCubeVertex, window));
 	glfwSetTime(0.0);
@@ -246,6 +247,8 @@ int main() {
 			const GLfloat fovy(window->GetScale() * 0.01f);
 			const GLfloat aspect(size[0] / size[1]);
 
+
+
 			const Matrix projection(Matrix::Perspective( fovy, aspect, 1.0f, 10.0f));
 			const Matrix scaling(Matrix::Scale(scale / size[0], scale / size[1], 1.0f));
 			const Matrix translation(Matrix::Translate(0,0,0));
@@ -260,17 +263,24 @@ int main() {
 				 0.0f,  1.0f,  0.0f
 			));
 
+			GLfloat normalMatrix[9];
+
 			const Matrix modelView( view * model);
+
+			modelView.GetNormalMatrix(normalMatrix);
 
 			glUniformMatrix4fv(projectionLoc, 1, GL_FALSE, projection.data());
 			glUniformMatrix4fv(modelviewLoc, 1, GL_FALSE, modelView.data());
+			glUniformMatrix3fv(normalMatrixLoc, 1, GL_FALSE, normalMatrix);
 
 			shape->Draw();
 
-
 			const Matrix modelview1(modelView * Matrix::Translate(0.0f, 0.0f, 3.0f));
 
+			modelview1.GetNormalMatrix(normalMatrix);
+
 			glUniformMatrix4fv(modelviewLoc, 1, GL_FALSE, modelview1.data());
+			glUniformMatrix3fv(normalMatrixLoc, 1, GL_FALSE, normalMatrix);
 
 			shape->Draw();
 		}
