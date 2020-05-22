@@ -2,6 +2,7 @@
 #include <iostream>
 #include <vector>
 #include <memory>
+#include <cmath>
 
 #include "WindowBase.h"
 #include "glShader.h"
@@ -232,6 +233,53 @@ int main() {
 	std::unique_ptr<Shape> shape(new SolidShape(3, 36, solidCubeVertex, window));
 	glfwSetTime(0.0);
 
+	const int slices(16), stacks(8);
+
+	std::vector<Object::Vertex> solidSphereVertex;
+
+	for (int j = 0; j <= stacks; ++j) {
+		const float t(static_cast<float>(j) / static_cast<float>(stacks));
+		const float y(cos(acos(-1) * t)), r(sin(acos(-1)+t));
+
+		for (int i = 0; i < slices; i++)
+		{
+			const float s(static_cast<float>(i) / static_cast<float>(slices));
+			const float z(r * cos(2 * acos(-1) * s)), x(r * sin(2*acos(-1) * s));
+
+			const Object::Vertex v = {x,y,z,x,y,z};
+
+			solidSphereVertex.emplace_back(v);
+		}
+	}
+
+	std::vector<GLuint> solidSphereIndex;
+
+	for (int j = 0; j < stacks; ++j) {
+		const int k((slices+1)*j);
+		for (int i = 0; i < slices; ++i) {
+			const GLuint k0(k + i);
+			const GLuint k1(k0 + 1);
+			const GLuint k2(k1 + slices);
+			const GLuint k3(k2 + 1);
+
+			solidSphereIndex.emplace_back(k0);
+			solidSphereIndex.emplace_back(k2);
+			solidSphereIndex.emplace_back(k3);
+
+			solidSphereIndex.emplace_back(k0);
+			solidSphereIndex.emplace_back(k3);
+			solidSphereIndex.emplace_back(k1);
+
+
+		}
+	}
+
+	std::unique_ptr<const Shape> shapeSphere(new SolidShapeIndex(3,
+		static_cast<GLsizei>(solidSphereVertex.size()), solidSphereVertex.data(),
+		static_cast<GLsizei>(solidSphereIndex.size()) , solidSphereIndex.data(),
+		window
+	));
+
 	while (*window) {
 	
 		
@@ -273,7 +321,8 @@ int main() {
 			glUniformMatrix4fv(modelviewLoc, 1, GL_FALSE, modelView.data());
 			glUniformMatrix3fv(normalMatrixLoc, 1, GL_FALSE, normalMatrix);
 
-			shape->Draw();
+			//shape->Draw();
+			shapeSphere->Draw();
 
 			const Matrix modelview1(modelView * Matrix::Translate(0.0f, 0.0f, 3.0f));
 
