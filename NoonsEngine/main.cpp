@@ -10,6 +10,8 @@
 #include "ShapeIndex.h"
 #include "SolidShapeIndex.h"
 #include "SolidShape.h"
+#include "Uniform.h"
+#include "Material.h"
 #include "Vector.h"
 #include "Matrix.h"
 
@@ -234,11 +236,21 @@ int main() {
 	const GLuint LdiffLoc(glGetUniformLocation(m_program, "Ldiff"));
 	const GLuint LspecLoc(glGetUniformLocation(m_program, "Lspec"));
 
+	const GLint materialLoc(glGetUniformBlockIndex(m_program, "Material"));
+	glUniformBlockBinding(m_program, materialLoc, 0);
+
 	static constexpr int Lcount(2);
 	static constexpr Vector Lpos[] = { 0.0f, 0.0f, 5.0f, 1.0f, 8.0f, 0.0f, 0.0f, 1.0f };
 	static constexpr GLfloat Lamb[] = { 0.2f, 0.1f, 0.1f, 0.1f, 0.1f, 0.1f };
 	static constexpr GLfloat Ldiff[] = { 0.2f, 0.1f, 0.1f, 0.9f, 0.9f, 0.9f };
 	static constexpr GLfloat Lspec[] = { 1.0f, 0.5f, 0.5f, 0.9f, 0.9f, 0.9f };
+
+	static constexpr Material color[] = {
+		{0.6f, 0.6f, 0.2f, 0.6f, 0.6f, 0.2f, 0.3f, 0.3f, 0.3f, 30.0f},
+		{0.1f, 0.1f, 0.5f, 0.1f, 0.1f, 0.5f, 0.4f, 0.4f, 0.4f, 60.0f}
+	};
+
+	const Uniform<Material> material[] = { &color[0], &color[1]};
 
 	std::unique_ptr<Shape> shape(new SolidShape(3, 36, solidCubeVertex, window));
 
@@ -340,6 +352,7 @@ int main() {
 			glUniform3fv(LspecLoc, Lcount, Lspec);
 			
 			//shape->Draw();
+			material[0].Select(0);
 			shapeSphere->Draw();
 
 			const Matrix modelview1(modelView * Matrix::Translate(0.0f, 0.0f, 3.0f));
@@ -349,6 +362,7 @@ int main() {
 			glUniformMatrix4fv(modelviewLoc, 1, GL_FALSE, modelview1.data());
 			glUniformMatrix3fv(normalMatrixLoc, 1, GL_FALSE, normalMatrix);
 
+			material[1].Select(0);
 			shape->Draw();
 		}
 		window->SwapBuffers();
