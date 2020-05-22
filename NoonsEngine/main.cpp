@@ -10,8 +10,8 @@
 #include "ShapeIndex.h"
 #include "SolidShapeIndex.h"
 #include "SolidShape.h"
+#include "Vector.h"
 #include "Matrix.h"
-
 
 constexpr Object::Vertex cubeVertex[] = { 
 	{ -1.0f, -1.0f, -1.0f, 0.0f, 0.0f, 0.0f },  // (0)
@@ -229,9 +229,18 @@ int main() {
 	const GLuint modelviewLoc(glGetUniformLocation(m_program, "modelview"));
 	const GLuint projectionLoc(glGetUniformLocation(m_program, "projection"));
 	const GLuint normalMatrixLoc(glGetUniformLocation(m_program, "normalMatrix"));
+	const GLuint LposLoc(glGetUniformLocation(m_program, "Lpos"));
+	const GLuint LambLoc(glGetUniformLocation(m_program, "Lamb"));
+	const GLuint LdiffLoc(glGetUniformLocation(m_program, "Ldiff"));
+	const GLuint LspecLoc(glGetUniformLocation(m_program, "Lspec"));
+
+	static constexpr int Lcount(2);
+	static constexpr Vector Lpos[] = { 0.0f, 0.0f, 5.0f, 1.0f, 8.0f, 0.0f, 0.0f, 1.0f };
+	static constexpr GLfloat Lamb[] = { 0.2f, 0.1f, 0.1f, 0.1f, 0.1f, 0.1f };
+	static constexpr GLfloat Ldiff[] = { 0.2f, 0.1f, 0.1f, 0.9f, 0.9f, 0.9f };
+	static constexpr GLfloat Lspec[] = { 1.0f, 0.5f, 0.5f, 0.9f, 0.9f, 0.9f };
 
 	std::unique_ptr<Shape> shape(new SolidShape(3, 36, solidCubeVertex, window));
-	glfwSetTime(0.0);
 
 	const int slices(16), stacks(8);
 
@@ -281,6 +290,8 @@ int main() {
 		window
 	));
 
+	glfwSetTime(0.0);
+
 	while (*window) {
 	
 		
@@ -321,7 +332,13 @@ int main() {
 			glUniformMatrix4fv(projectionLoc, 1, GL_FALSE, projection.data());
 			glUniformMatrix4fv(modelviewLoc, 1, GL_FALSE, modelView.data());
 			glUniformMatrix3fv(normalMatrixLoc, 1, GL_FALSE, normalMatrix);
-
+			for (int i = 0; i < Lcount; ++i) {
+				glUniform4fv(LposLoc + i, 1, (view * Lpos[i]).data());
+			}
+			glUniform3fv(LambLoc, Lcount, Lamb);
+			glUniform3fv(LdiffLoc, Lcount, Ldiff);
+			glUniform3fv(LspecLoc, Lcount, Lspec);
+			
 			//shape->Draw();
 			shapeSphere->Draw();
 
