@@ -7,23 +7,25 @@ class Uniform {
 
 public:
 
-	Uniform(const T* data = NULL) 
-		: m_buffer(new UniformBuffer(data))
+	Uniform(const T* data = NULL, unsigned int count = 1) 
+		: m_buffer(new UniformBuffer(data,count))
 	{
 	}
 
 	virtual ~Uniform() {}
 
-	void Set(const T* data) const {
+	void Set(const T* data, unsigned int start = 0, unsigned int count = 1) const {
 		glBindBuffer(GL_UNIFORM_BUFFER, m_buffer->ubo);
-		glBufferSubData(GL_UNIFORM_BUFFER, 0,
-			sizeof(T), data
+		for (unsigned int i = 0; i < count; ++i) {
+			glBufferSubData(GL_UNIFORM_BUFFER, (start + i) * m_buffer->blocksize,
+				sizeof(T), data + i
 			);
+		}
 	}
 
-	void Select(GLuint bp) const {
-		glBindBufferBase(GL_UNIFORM_BUFFER, bp,
-			m_buffer->ubo
+	void Select(GLuint bp, unsigned int i = 0) const {
+		glBindBufferRange(GL_UNIFORM_BUFFER, bp,
+			m_buffer->ubo, i * m_buffer->blocksize, sizeof(T)
 			);
 	}
 
@@ -32,13 +34,24 @@ private:
 
 	struct UniformBuffer {
 		GLuint ubo;
+		GLsizeiptr blocksize;
 
-		UniformBuffer(const T* data) {
+		UniformBuffer(const T* data, unsigned int count) {
+
+			GLint alignment;
+			glGetIntegerv(GL_UNIFORM_BUFFER_OFFSET_ALIGNMENT, &alignment);
+			blocksize = (((sizeof(T) - 1) / alignment) + 1) * alignment;
+
 			glGenBuffers(1, &ubo);
 			glBindBuffer(GL_UNIFORM_BUFFER, ubo);
 			glBufferData(GL_UNIFORM_BUFFER,
-				sizeof(T), data, GL_STATIC_DRAW
+				count * blocksize , NULL, GL_STATIC_DRAW
 				);
+			for (unsigned int i = 0; i < count; i++) {
+				glBufferSubData(GL_UNIFORM_BUFFER, i * blocksize,
+					sizeof(T), data + i
+					);
+			}
 		}
 
 		~UniformBuffer() {
