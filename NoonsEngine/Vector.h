@@ -38,7 +38,7 @@ typedef struct Vector3{
 
 }Vector3;
 
-typedef struct {
+typedef struct Vector4{
 	double x, y, z, w;
 
 	const Vector4 operator+(const Vector4& value) {
