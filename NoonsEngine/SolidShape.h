@@ -7,8 +7,8 @@ class SolidShape
 {
 public:
 
-	SolidShape(GLint size, GLsizei vertexcount, const Object::Vertex* vertex, WindowBase* const window)
-		: Shape(size, vertexcount, vertex, window)
+	SolidShape(WindowBase* const window, GLint size, GLsizei vertexcount, const Object::Vertex* vertex)
+		: Shape(window, size, vertexcount, vertex)
 	{
 	}
 

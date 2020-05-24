@@ -23,7 +23,7 @@ public:
 		GLfloat normal[3];
 	};
 
-	Object(GLint size, GLsizei vertexcount, const Vertex* vertex, WindowBase* window,GLsizei indexcount = 0, const GLuint *index = NULL) {
+	Object(WindowBase* window, GLint size, GLsizei vertexcount, const Vertex* vertex, GLsizei indexcount = 0, const GLuint *index = NULL) {
 
 		window->SetWindowContext();
 

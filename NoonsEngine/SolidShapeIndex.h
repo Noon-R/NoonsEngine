@@ -7,8 +7,8 @@ class SolidShapeIndex
 {
 public:
 
-	SolidShapeIndex(GLint size, GLsizei vertexcount, const Object::Vertex* vertex, GLsizei indexcount, const GLuint* index, WindowBase * const window)
-		: ShapeIndex(size, vertexcount, vertex,window, indexcount,index)
+	SolidShapeIndex(WindowBase* const window, GLint size, GLsizei vertexcount, const Object::Vertex* vertex, GLsizei indexcount, const GLuint* index)
+		: ShapeIndex(window, size, vertexcount, vertex, indexcount,index)
 	{
 	}
 

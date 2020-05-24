@@ -8,8 +8,8 @@ class ShapeIndex
 
 public:
 
-	ShapeIndex(GLint size, GLsizei vertexcount, const Object::Vertex* vertex, WindowBase* const window, GLsizei indexcount, const GLuint* index)
-		: Shape(size, vertexcount, vertex,window,indexcount, index)
+	ShapeIndex(WindowBase* const window, GLint size, GLsizei vertexcount, const Object::Vertex* vertex, GLsizei indexcount, const GLuint* index)
+		: Shape(window, size, vertexcount, vertex,indexcount, index)
 		, m_indexcount(indexcount)
 	{
 	}

@@ -216,13 +216,18 @@ int main() {
 		return -1;
 	}
 
-	//glfwWindowHint(GLFW_FLOATING, GL_TRUE); 
+	//FloatingWindow
+	//glfwWindowHint(GLFW_FLOATING, GL_TRUE);
+
+	//Without Frame
 	//glfwWindowHint(GLFW_DECORATED, GL_FALSE);
 
+	//BackCulling
 	glFrontFace(GL_CCW);
 	glCullFace(GL_BACK);
 	glEnable(GL_CULL_FACE);
 
+	//Depth
 	glClearDepth(1.0);
 	glDepthFunc(GL_LESS);
 	glEnable(GL_DEPTH_TEST);
@@ -235,8 +240,8 @@ int main() {
 	const GLuint LambLoc(glGetUniformLocation(m_program, "Lamb"));
 	const GLuint LdiffLoc(glGetUniformLocation(m_program, "Ldiff"));
 	const GLuint LspecLoc(glGetUniformLocation(m_program, "Lspec"));
-
 	const GLint materialLoc(glGetUniformBlockIndex(m_program, "Material"));
+
 	glUniformBlockBinding(m_program, materialLoc, 0);
 
 	static constexpr int Lcount(2);
@@ -252,7 +257,7 @@ int main() {
 
 	const Uniform<Material> material(color, 2);
 
-	std::unique_ptr<Shape> shape(new SolidShape(3, 36, solidCubeVertex, window));
+	std::unique_ptr<Shape> shape(new SolidShape(window, 3, 36, solidCubeVertex));
 
 	const int slices(16), stacks(8);
 
@@ -296,10 +301,10 @@ int main() {
 		}
 	}
 
-	std::unique_ptr<const Shape> shapeSphere(new SolidShapeIndex(3,
+	std::unique_ptr<const Shape> shapeSphere(new SolidShapeIndex(window,
+		3,
 		static_cast<GLsizei>(solidSphereVertex.size()), solidSphereVertex.data(),
-		static_cast<GLsizei>(solidSphereIndex.size()) , solidSphereIndex.data(),
-		window
+		static_cast<GLsizei>(solidSphereIndex.size()) , solidSphereIndex.data()
 	));
 
 	glfwSetTime(0.0);
