@@ -19,6 +19,9 @@
     <Filter Include="ヘッダー ファイル\Shape">
       <UniqueIdentifier>{95b8f5db-d4df-4967-9c9a-c63e2db8f096}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\Views">
+      <UniqueIdentifier>{a1612d7c-63de-4931-ab61-5b71605590fc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -31,6 +34,15 @@
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="Matrix.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="ADefineView.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="SampleView.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="SphereShape.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
@@ -85,6 +97,12 @@
     </ClInclude>
     <ClInclude Include="SphereShape.h">
       <Filter>ヘッダー ファイル\Shape</Filter>
+    </ClInclude>
+    <ClInclude Include="ADefineView.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="SampleView.h">
+      <Filter>ヘッダー ファイル\Views</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

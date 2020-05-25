@@ -4,17 +4,7 @@
 #include <memory>
 #include <cmath>
 
-#include "WindowBase.h"
-#include "glShader.h"
-#include "Shape.h"
-#include "ShapeIndex.h"
-#include "SolidShapeIndex.h"
-#include "SolidShape.h"
-#include "SphereShape.h"
-#include "Uniform.h"
-#include "Material.h"
-#include "Vector.h"
-#include "Matrix.h"
+#include "SampleView.h"
 
 constexpr Object::Vertex cubeVertex[] = { 
 	{ -1.0f, -1.0f, -1.0f, 0.0f, 0.0f, 0.0f },  // (0)
@@ -108,50 +98,7 @@ constexpr Object::Vertex cubeVertex[] = {
 //	{ -1.0f,  1.0f,  1.0f,  0.8f,  0.8f, 0.1f}
 //};
 
-constexpr Object::Vertex solidCubeVertex[] = {
 
-	{ -1.0f, -1.0f, -1.0f,  -1.0f, 0.0f, 0.0f},
-	{ -1.0f, -1.0f,  1.0f,  -1.0f, 0.0f, 0.0f},
-	{ -1.0f,  1.0f,  1.0f,  -1.0f, 0.0f, 0.0f},
-	{ -1.0f, -1.0f, -1.0f,  -1.0f, 0.0f, 0.0f},
-	{ -1.0f,  1.0f,  1.0f,  -1.0f, 0.0f, 0.0f},
-	{ -1.0f,  1.0f, -1.0f,  -1.0f, 0.0f, 0.0f},
-
-	{  1.0f, -1.0f, -1.0f,  0.0f, 0.0f, -1.0f},
-	{ -1.0f, -1.0f, -1.0f,  0.0f, 0.0f, -1.0f},
-	{ -1.0f,  1.0f, -1.0f,  0.0f, 0.0f, -1.0f},
-	{  1.0f, -1.0f, -1.0f,  0.0f, 0.0f, -1.0f},
-	{ -1.0f,  1.0f, -1.0f,  0.0f, 0.0f, -1.0f},
-	{  1.0f,  1.0f, -1.0f,  0.0f, 0.0f, -1.0f},
-
-	{ -1.0f, -1.0f, -1.0f,  0.0f, -1.0f, 0.0f},
-	{  1.0f, -1.0f, -1.0f,  0.0f, -1.0f, 0.0f},
-	{  1.0f, -1.0f,  1.0f,  0.0f, -1.0f, 0.0f},
-	{ -1.0f, -1.0f, -1.0f,  0.0f, -1.0f, 0.0f},
-	{  1.0f, -1.0f,  1.0f,  0.0f, -1.0f, 0.0f},
-	{ -1.0f, -1.0f,  1.0f,  0.0f, -1.0f, 0.0f},
-
-	{  1.0f, -1.0f,  1.0f,  1.0f, 0.0f, 0.0f},
-	{  1.0f, -1.0f, -1.0f,  1.0f, 0.0f, 0.0f},
-	{  1.0f,  1.0f, -1.0f,  1.0f, 0.0f, 0.0f},
-	{  1.0f, -1.0f,  1.0f,  1.0f, 0.0f, 0.0f},
-	{  1.0f,  1.0f, -1.0f,  1.0f, 0.0f, 0.0f},
-	{  1.0f,  1.0f,  1.0f,  1.0f, 0.0f, 0.0f},
-
-	{ -1.0f,  1.0f, -1.0f,  0.0f, 1.0f, 0.0f},
-	{ -1.0f,  1.0f,  1.0f,  0.0f, 1.0f, 0.0f},
-	{  1.0f,  1.0f,  1.0f,  0.0f, 1.0f, 0.0f},
-	{ -1.0f,  1.0f, -1.0f,  0.0f, 1.0f, 0.0f},
-	{  1.0f,  1.0f,  1.0f,  0.0f, 1.0f, 0.0f},
-	{  1.0f,  1.0f, -1.0f,  0.0f, 1.0f, 0.0f},
-
-	{ -1.0f, -1.0f,  1.0f,  0.0f, 0.0f, 1.0f},
-	{  1.0f, -1.0f,  1.0f,  0.0f, 0.0f, 1.0f},
-	{  1.0f,  1.0f,  1.0f,  0.0f, 0.0f, 1.0f},
-	{ -1.0f, -1.0f,  1.0f,  0.0f, 0.0f, 1.0f},
-	{  1.0f,  1.0f,  1.0f,  0.0f, 0.0f, 1.0f},
-	{ -1.0f,  1.0f,  1.0f,  0.0f, 0.0f, 1.0f}
-};
 
 
 //constexpr GLuint solidCubeIndex[] = {
@@ -217,11 +164,9 @@ int main() {
 		return -1;
 	}
 
-	//FloatingWindow
-	//glfwWindowHint(GLFW_FLOATING, GL_TRUE);
+	SampleView* view01 = new SampleView(window);
 
-	//Without Frame
-	//glfwWindowHint(GLFW_DECORATED, GL_FALSE);
+	
 
 	//BackCulling
 	glFrontFace(GL_CCW);
@@ -233,102 +178,41 @@ int main() {
 	glDepthFunc(GL_LESS);
 	glEnable(GL_DEPTH_TEST);
 
-	const GLuint m_program(loadProgram("pointWithNormal.vert", "pointWithNormal.frag"));
-	const GLuint modelviewLoc(glGetUniformLocation(m_program, "modelview"));
-	const GLuint projectionLoc(glGetUniformLocation(m_program, "projection"));
-	const GLuint normalMatrixLoc(glGetUniformLocation(m_program, "normalMatrix"));
-	const GLuint LposLoc(glGetUniformLocation(m_program, "Lpos"));
-	const GLuint LambLoc(glGetUniformLocation(m_program, "Lamb"));
-	const GLuint LdiffLoc(glGetUniformLocation(m_program, "Ldiff"));
-	const GLuint LspecLoc(glGetUniformLocation(m_program, "Lspec"));
-	const GLint materialLoc(glGetUniformBlockIndex(m_program, "Material"));
+	//FloatingWindow
+	//glfwWindowHint(GLFW_FLOATING, GL_TRUE);
+	//No Frame
+	//glfwWindowHint(GLFW_DECORATED, GL_FALSE);
 
-	glUniformBlockBinding(m_program, materialLoc, 0);
 
-	static constexpr int Lcount(2);
-	static constexpr Vector Lpos[] = { 0.0f, 0.0f, 5.0f, 1.0f, 8.0f, 0.0f, 0.0f, 1.0f };
-	static constexpr GLfloat Lamb[] = { 0.2f, 0.1f, 0.1f, 0.1f, 0.1f, 0.1f };
-	static constexpr GLfloat Ldiff[] = { 0.2f, 0.1f, 0.1f, 0.9f, 0.9f, 0.9f };
-	static constexpr GLfloat Lspec[] = { 1.0f, 0.5f, 0.5f, 0.9f, 0.9f, 0.9f };
+	WindowBase* window02 = new WindowBase(960, 540, "Noon's Engine02", NULL, NULL);
+	if (!window02->GetWindow()) {
+		return -1;
+	}
 
-	static constexpr Material color[] = {
-		{0.6f, 0.6f, 0.2f, 0.6f, 0.6f, 0.2f, 0.3f, 0.3f, 0.3f, 30.0f},
-		{0.1f, 0.1f, 0.5f, 0.1f, 0.1f, 0.5f, 0.4f, 0.4f, 0.4f, 60.0f}
-	};
+	SampleView* view02 = new SampleView(window02);
 
-	const Uniform<Material> material(color, 2);
+	//BackCulling
+	glFrontFace(GL_CCW);
+	glCullFace(GL_BACK);
+	glEnable(GL_CULL_FACE);
 
-	std::unique_ptr<Shape> shape(new SolidShape(window, 3, 36, solidCubeVertex));
+	//Depth
+	glClearDepth(1.0);
+	glDepthFunc(GL_LESS);
+	glEnable(GL_DEPTH_TEST);
 
-	
 
-	std::unique_ptr<const Shape> shapeSphere(CreateSolidSphere(window, 32, 16));
 
 	glfwSetTime(0.0);
 
 	while (*window) {
 	
+		window->SetWindowContext();
+		view01->Draw();
 		
-		window->SetWindowContext(); {
-			
-			glClearColor(0.2f, 0.3f, 0.2f, 1.0f);
-			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-			
-			glUseProgram(m_program);
-			
-			const GLfloat *const size(window->GetSize());
-			const GLfloat scale(window->GetScale() * 2.0f);
-			const GLfloat fovy(window->GetScale() * 0.01f);
-			const GLfloat aspect(size[0] / size[1]);
+		window02->SetWindowContext();
+		view02->Draw();
 
-
-
-			const Matrix projection(Matrix::Perspective( fovy, aspect, 1.0f, 10.0f));
-			const Matrix scaling(Matrix::Scale(scale / size[0], scale / size[1], 1.0f));
-			const Matrix translation(Matrix::Translate(0,0,0));
-
-			const Matrix r(Matrix::Rotate(static_cast<GLfloat>(glfwGetTime()), 0.0f, 1.0f, 0.0f));
-			//const Matrix model(translation * scaling);
-			const Matrix model(r);
-
-			const Matrix view(Matrix::LookAt(
-				 3.0f,  4.0f,  5.0f,
-				 0.0f,  0.0f,  0.0f,
-				 0.0f,  1.0f,  0.0f
-			));
-
-			GLfloat normalMatrix[9];
-
-			const Matrix modelView( view * model);
-
-			modelView.GetNormalMatrix(normalMatrix);
-
-			glUniformMatrix4fv(projectionLoc, 1, GL_FALSE, projection.data());
-			glUniformMatrix4fv(modelviewLoc, 1, GL_FALSE, modelView.data());
-			glUniformMatrix3fv(normalMatrixLoc, 1, GL_FALSE, normalMatrix);
-			for (int i = 0; i < Lcount; ++i) {
-				glUniform4fv(LposLoc + i, 1, (view * Lpos[i]).data());
-			}
-			glUniform3fv(LambLoc, Lcount, Lamb);
-			glUniform3fv(LdiffLoc, Lcount, Ldiff);
-			glUniform3fv(LspecLoc, Lcount, Lspec);
-			
-			//shape->Draw();
-			material.Select(0,0);
-			shapeSphere->Draw();
-
-			const Matrix modelview1(modelView * Matrix::Translate(0.0f, 0.0f, 3.0f));
-
-			modelview1.GetNormalMatrix(normalMatrix);
-
-			glUniformMatrix4fv(modelviewLoc, 1, GL_FALSE, modelview1.data());
-			glUniformMatrix3fv(normalMatrixLoc, 1, GL_FALSE, normalMatrix);
-
-			material.Select(0,1);
-			shape->Draw();
-		}
-		window->SwapBuffers();
-		
 		glfwPollEvents();
 	}
 
