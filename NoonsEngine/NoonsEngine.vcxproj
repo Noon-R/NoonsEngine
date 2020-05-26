@@ -153,6 +153,7 @@
     <ClCompile Include="Matrix.cpp" />
     <ClCompile Include="SampleView.cpp" />
     <ClCompile Include="SphereShape.cpp" />
+    <ClCompile Include="Vector.cpp" />
     <ClCompile Include="WindowBase.cpp" />
   </ItemGroup>
   <ItemGroup>

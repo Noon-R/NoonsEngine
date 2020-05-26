@@ -3,7 +3,14 @@
 #include <iostream>
 
 #include "WindowBase.h"
-
+#include "glShader.h"
+#include "ShapeIndex.h"
+#include "SolidShape.h"
+#include "SphereShape.h"
+#include "Uniform.h"
+#include "Material.h"
+#include "Vector.h"
+#include "Matrix.h"
 
 class ADefineView {
 

@@ -92,3 +92,5 @@ typedef struct Vector4{
 
 using Vector = std::array<GLfloat, 4>;
 
+Vector operator*(const Matrix& m, const Vector& v);
+

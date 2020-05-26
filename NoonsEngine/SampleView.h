@@ -1,16 +1,7 @@
 #pragma once
 
 #include "ADefineView.h"
-#include "glShader.h"
 
-#include "ShapeIndex.h"
-
-#include "SolidShape.h"
-#include "SphereShape.h"
-#include "Uniform.h"
-#include "Material.h"
-#include "Vector.h"
-#include "Matrix.h"
 
 class SampleView
 	:public ADefineView
