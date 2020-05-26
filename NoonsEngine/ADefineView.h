@@ -6,7 +6,7 @@
 #include "glShader.h"
 #include "ShapeIndex.h"
 #include "SolidShape.h"
-#include "SphereShape.h"
+#include "ShapeCreator.h"
 #include "Uniform.h"
 #include "Material.h"
 #include "Vector.h"

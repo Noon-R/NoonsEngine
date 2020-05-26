@@ -152,7 +152,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Matrix.cpp" />
     <ClCompile Include="SampleView.cpp" />
-    <ClCompile Include="SphereShape.cpp" />
+    <ClCompile Include="ShapeCreator.cpp" />
     <ClCompile Include="Vector.cpp" />
     <ClCompile Include="WindowBase.cpp" />
   </ItemGroup>
@@ -177,10 +177,10 @@
     <ClInclude Include="Object.h" />
     <ClInclude Include="SampleView.h" />
     <ClInclude Include="Shape.h" />
+    <ClInclude Include="ShapeCreator.h" />
     <ClInclude Include="ShapeIndex.h" />
     <ClInclude Include="SolidShape.h" />
     <ClInclude Include="SolidShapeIndex.h" />
-    <ClInclude Include="SphereShape.h" />
     <ClInclude Include="Uniform.h" />
     <ClInclude Include="Vector.h" />
     <ClInclude Include="WindowBase.h" />

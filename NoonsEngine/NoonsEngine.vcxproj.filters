@@ -42,10 +42,10 @@
     <ClCompile Include="SampleView.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="SphereShape.cpp">
+    <ClCompile Include="Vector.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="Vector.cpp">
+    <ClCompile Include="ShapeCreator.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
@@ -98,14 +98,14 @@
     <ClInclude Include="Object.h">
       <Filter>ヘッダー ファイル\Shape</Filter>
     </ClInclude>
-    <ClInclude Include="SphereShape.h">
-      <Filter>ヘッダー ファイル\Shape</Filter>
-    </ClInclude>
     <ClInclude Include="ADefineView.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="SampleView.h">
       <Filter>ヘッダー ファイル\Views</Filter>
+    </ClInclude>
+    <ClInclude Include="ShapeCreator.h">
+      <Filter>ヘッダー ファイル\Shape</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
