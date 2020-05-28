@@ -15,6 +15,8 @@ layout (std140) uniform Material{
 };
 in vec4 position;
 in vec3 normal;
+in vec4 color;
+in vec2 uv;
 out vec3 Idiff;
 out vec4 P;
 out vec3 N;

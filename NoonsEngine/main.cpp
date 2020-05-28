@@ -6,14 +6,6 @@
 
 #include "SampleView.h"
 
-
-
-
-
-
-
-
-
 int main() {
 
 	if (glfwInit() == GL_FALSE) {
