@@ -153,6 +153,8 @@
     <ClCompile Include="Matrix.cpp" />
     <ClCompile Include="SampleView.cpp" />
     <ClCompile Include="ShapeCreator.cpp" />
+    <ClCompile Include="TestView.cpp" />
+    <ClCompile Include="Texture.cpp" />
     <ClCompile Include="Vector.cpp" />
     <ClCompile Include="WindowBase.cpp" />
   </ItemGroup>
@@ -168,6 +170,8 @@
     <None Include="pointWithNormal.vert">
       <FileType>Text</FileType>
     </None>
+    <None Include="testuv.frag" />
+    <None Include="testuv.vert" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ADefineView.h" />
@@ -181,6 +185,8 @@
     <ClInclude Include="ShapeIndex.h" />
     <ClInclude Include="SolidShape.h" />
     <ClInclude Include="SolidShapeIndex.h" />
+    <ClInclude Include="TestView.h" />
+    <ClInclude Include="Texture.h" />
     <ClInclude Include="Uniform.h" />
     <ClInclude Include="Vector.h" />
     <ClInclude Include="WindowBase.h" />

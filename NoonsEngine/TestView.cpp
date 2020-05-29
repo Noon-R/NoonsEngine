@@ -1,20 +1,20 @@
-#include "SampleView.h"
+#include "TestView.h"
 
 
 
 
 
-SampleView::SampleView(WindowBase* const window)
+TestView::TestView(WindowBase* const window)
 	:ADefineView(window)
-	, m_program(loadProgram("pointWithNormal.vert", "pointWithNormal.frag"))
-	,m_modelviewLoc(glGetUniformLocation(m_program, "modelview"))
-	,m_projectionLoc(glGetUniformLocation(m_program, "projection"))
-	,m_normalMatrixLoc(glGetUniformLocation(m_program, "normalMatrix"))
-	,m_LposLoc(glGetUniformLocation(m_program, "Lpos"))
-	,m_LambLoc(glGetUniformLocation(m_program, "Lamb"))
-	,m_LdiffLoc(glGetUniformLocation(m_program, "Ldiff"))
-	,m_LspecLoc(glGetUniformLocation(m_program, "Lspec"))
-	,m_materialLoc(glGetUniformBlockIndex(m_program, "Material"))
+	, m_program(loadProgram("testuv.vert", "testuv.frag"))
+	, m_modelviewLoc(glGetUniformLocation(m_program, "modelview"))
+	, m_projectionLoc(glGetUniformLocation(m_program, "projection"))
+	, m_normalMatrixLoc(glGetUniformLocation(m_program, "normalMatrix"))
+	, m_LposLoc(glGetUniformLocation(m_program, "Lpos"))
+	, m_LambLoc(glGetUniformLocation(m_program, "Lamb"))
+	, m_LdiffLoc(glGetUniformLocation(m_program, "Ldiff"))
+	, m_LspecLoc(glGetUniformLocation(m_program, "Lspec"))
+	, m_materialLoc(glGetUniformBlockIndex(m_program, "Material"))
 
 {
 
@@ -29,31 +29,40 @@ SampleView::SampleView(WindowBase* const window)
 		{0.6f, 0.6f, 0.2f, 0.6f, 0.6f, 0.2f, 0.3f, 0.3f, 0.3f, 30.0f},
 		{0.1f, 0.1f, 0.5f, 0.1f, 0.1f, 0.5f, 0.4f, 0.4f, 0.4f, 60.0f}
 	};
-
+	
 	material = new Uniform<Material>(color, 2);
 
-	shape.reset(CreateSolidCube(m_window));
-	shapeSphere.reset(CreateSolidSphere(m_window, 32, 16));
+	Object::Vertex quad[] = {
+		{1.0f ,1.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f},
+		{-1.0f ,1.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f},
+		{-1.0f ,-1.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+		{1.0f ,-1.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f}
+
+	};
+
+	GLuint index[] = { 0,1,2, 2,3,0 };
+	shape.reset(new SolidShapeIndex(m_window, 3, 6, quad, 6, index));
+	
 
 }
 
-int SampleView::Init()
+int TestView::Init()
 {
 
-	
+
 
 	return 0;
 }
 
-int SampleView::Update()
+int TestView::Update()
 {
 
-	
+
 
 	return 0;
 }
 
-int SampleView::Draw()
+int TestView::Draw()
 {
 
 	m_window->SetWindowContext(); {
@@ -68,23 +77,23 @@ int SampleView::Draw()
 		const GLfloat fovy(m_window->GetScale() * 0.01f);
 		const GLfloat aspect(size[0] / size[1]);
 
-		const Matrix projection(Matrix::Perspective(fovy, aspect, 1.0f, 10.0f));
+		const Matrix projection(Matrix::Orthographic(-1.5f, 1.5f, -1.5f, 1.5f, 0, 10));
 		const Matrix scaling(Matrix::Scale(scale / size[0], scale / size[1], 1.0f));
 		const Matrix translation(Matrix::Translate(0, 0, 0));
 
-		const Matrix r(Matrix::Rotate(static_cast<GLfloat>(glfwGetTime()), 0.0f, 1.0f, 0.0f));
+		//const Matrix r(Matrix::Rotate(static_cast<GLfloat>(glfwGetTime()), 0.0f, 1.0f, 0.0f));
 		//const Matrix model(translation * scaling);
-		const Matrix model(r);
+		//const Matrix model(r);
 
 		const Matrix view(Matrix::LookAt(
-			3.0f, 4.0f, 5.0f,
+			0.0f, 0.0f, 1.0f,
 			0.0f, 0.0f, 0.0f,
 			0.0f, 1.0f, 0.0f
 		));
 
 		GLfloat normalMatrix[9];
 
-		const Matrix modelView(view * model);
+		const Matrix modelView(view);
 
 		modelView.GetNormalMatrix(normalMatrix);
 
@@ -98,19 +107,7 @@ int SampleView::Draw()
 		glUniform3fv(m_LdiffLoc, Lcount, Ldiff);
 		glUniform3fv(m_LspecLoc, Lcount, Lspec);
 
-
-		//shape->Draw();
 		material->Select(0, 0);
-		shapeSphere->Draw();
-
-		const Matrix modelview1(modelView * Matrix::Translate(0.0f, 0.0f, 3.0f));
-
-		modelview1.GetNormalMatrix(normalMatrix);
-
-		glUniformMatrix4fv(m_modelviewLoc, 1, GL_FALSE, modelview1.data());
-		glUniformMatrix3fv(m_normalMatrixLoc, 1, GL_FALSE, normalMatrix);
-
-		material->Select(0, 1);
 		shape->Draw();
 	}
 	m_window->SwapBuffers();

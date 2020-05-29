@@ -5,6 +5,7 @@
 #include <cmath>
 
 #include "SampleView.h"
+#include "TestView.h"
 
 int main() {
 
@@ -47,7 +48,7 @@ int main() {
 		return -1;
 	}
 
-	SampleView* view02 = new SampleView(window02);
+	TestView* view02 = new TestView(window02);
 
 	//BackCulling
 	glFrontFace(GL_CCW);
