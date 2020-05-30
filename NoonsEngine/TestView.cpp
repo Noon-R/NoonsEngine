@@ -26,7 +26,14 @@ TestView::TestView(WindowBase* const window)
 
 	data = stbi_load("noon_moon_quad_256.png",&width, &height, &bpp,0);
 
-	m_tex = new Texture( GL_RGBA, width,height,data,m_window);
+	unsigned char cols[] = {
+		255,255,255,255,	255,0,0,255,		0,255,0,255,		0,0,255,255,
+		255,255,0,255,		200,200,200,200,    255,0,255,255,		0,255,255,255,
+		125,200,200,255,	200,125,200,255,	100,100,100,100,	200,200,125,255,
+		0,0,0,0,			125,125,200,255,	125,200,125,255,	0,0,0,255
+	};
+
+	m_tex = new Texture( GL_RGBA, 4,4,cols,m_window);
 
 	stbi_image_free(data);
 	glUniformBlockBinding(m_program, m_materialLoc, 0);
@@ -41,11 +48,10 @@ TestView::TestView(WindowBase* const window)
 	material = new Uniform<Material>(color, 2);
 
 	Object::Vertex quad[] = {
-		{1.0f ,1.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f},
-		{-1.0f ,1.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f},
-		{-1.0f ,-1.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
-		{1.0f ,-1.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f}
-
+		{1.0f ,1.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f},
+		{-1.0f ,1.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f},
+		{-1.0f ,-1.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+		{1.0f ,-1.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f}
 	};
 
 	GLuint index[] = { 0,1,2, 2,3,0 };
@@ -85,7 +91,7 @@ int TestView::Draw()
 		const GLfloat fovy(m_window->GetScale() * 0.01f);
 		const GLfloat aspect(size[0] / size[1]);
 
-		const Matrix projection(Matrix::Orthographic(-1.5f, 1.5f, -1.5f, 1.5f, 0, 10));
+		const Matrix projection(Matrix::Orthographic(-1.5f * aspect, 1.5f * aspect, -1.5f, 1.5f, 0, 10));
 		const Matrix scaling(Matrix::Scale(scale / size[0], scale / size[1], 1.0f));
 		const Matrix translation(Matrix::Translate(0, 0, 0));
 

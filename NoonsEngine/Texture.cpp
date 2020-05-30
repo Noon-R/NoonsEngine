@@ -36,7 +36,6 @@ int Texture::ChangeTexture(GLenum level, int width, int height, const void* data
 	}
 
 	window->SetWindowContext();
-	glActiveTexture(GL_TEXTURE0);
 
 	glGenTextures(1, &m_textureID);
 	glBindTexture(GL_TEXTURE_2D, m_textureID);
