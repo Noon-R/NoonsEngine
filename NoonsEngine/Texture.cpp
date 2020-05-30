@@ -1,10 +1,10 @@
 #include "Texture.h"
 
-Texture::Texture(GLenum level, int width, int height, const void* data)
+Texture::Texture(GLenum level, int width, int height, const void* data, WindowBase* const window)
 	:m_textureID(0)
 {
 	
-	ChangeTexture(level, width, height, data);
+	ChangeTexture(level, width, height, data,window);
 }
 
 Texture::~Texture()
@@ -15,7 +15,7 @@ Texture::~Texture()
 int Texture::BindTexture()
 {
 
-	glGenTextures(1, &m_textureID);
+	glBindTexture(GL_TEXTURE_2D, m_textureID);
 	return 0;
 }
 
@@ -26,7 +26,7 @@ int Texture::ReleaseTexture()
 	return 0;
 }
 
-int Texture::ChangeTexture(GLenum level, int width, int height, const void* data)
+int Texture::ChangeTexture(GLenum level, int width, int height, const void* data, WindowBase* const window)
 {
 	m_width = width;
 	m_height = height;
@@ -34,6 +34,9 @@ int Texture::ChangeTexture(GLenum level, int width, int height, const void* data
 	if (m_textureID != 0) {
 		glDeleteTextures(1, &m_textureID);
 	}
+
+	window->SetWindowContext();
+	glActiveTexture(GL_TEXTURE0);
 
 	glGenTextures(1, &m_textureID);
 	glBindTexture(GL_TEXTURE_2D, m_textureID);
@@ -44,7 +47,7 @@ int Texture::ChangeTexture(GLenum level, int width, int height, const void* data
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
-	glTexImage2D(GL_TEXTURE_2D, level, 0, m_width, m_height, 0, level, GL_UNSIGNED_BYTE, data);
+	glTexImage2D(GL_TEXTURE_2D, 0, level, m_width, m_height, 0, level, GL_UNSIGNED_BYTE, data);
 
 	glBindTexture(GL_TEXTURE_2D, 0);
 

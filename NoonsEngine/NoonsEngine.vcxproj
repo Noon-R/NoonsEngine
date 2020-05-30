@@ -185,6 +185,7 @@
     <ClInclude Include="ShapeIndex.h" />
     <ClInclude Include="SolidShape.h" />
     <ClInclude Include="SolidShapeIndex.h" />
+    <ClInclude Include="stb_image.h" />
     <ClInclude Include="TestView.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="Uniform.h" />

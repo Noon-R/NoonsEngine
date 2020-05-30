@@ -6,12 +6,12 @@
 class Texture {
 
 public:
-	Texture(GLenum level, int width, int height, const void* data);
+	Texture(GLenum level, int width, int height, const void* data, WindowBase* const window);
 	~Texture();
 	int BindTexture();
 	int ReleaseTexture();
 
-	int ChangeTexture(GLenum level,int width,int height, const void* data);
+	int ChangeTexture(GLenum level,int width,int height, const void* data, WindowBase* const window);
 
 private:
 

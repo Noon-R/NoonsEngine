@@ -7,6 +7,7 @@
 #include "ShapeIndex.h"
 #include "SolidShape.h"
 #include "ShapeCreator.h"
+#include "Texture.h"
 #include "Uniform.h"
 #include "Material.h"
 #include "Vector.h"

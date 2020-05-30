@@ -1,8 +1,9 @@
 #include "TestView.h"
 
 
-
-
+#define STB_IMAGE_IMPLEMENTATION
+#include "stb_image.h"
+#include <iostream>
 
 TestView::TestView(WindowBase* const window)
 	:ADefineView(window)
@@ -18,9 +19,16 @@ TestView::TestView(WindowBase* const window)
 
 {
 
-	//shaderŠÖ˜A‚ðŠÈ’P‚É‚¢‚¶‚ê‚é‚æ‚¤‚É‚µ‚Ä‚¨‚«‚½‚¢‚Ë
+	unsigned char* data;
+	int width;
+	int height;
+	int bpp;
 
+	data = stbi_load("noon_moon_quad_256.png",&width, &height, &bpp,0);
 
+	m_tex = new Texture( GL_RGBA, width,height,data,m_window);
+
+	stbi_image_free(data);
 	glUniformBlockBinding(m_program, m_materialLoc, 0);
 
 
@@ -107,8 +115,11 @@ int TestView::Draw()
 		glUniform3fv(m_LdiffLoc, Lcount, Ldiff);
 		glUniform3fv(m_LspecLoc, Lcount, Lspec);
 
+		glActiveTexture(GL_TEXTURE0);
+		m_tex->BindTexture();
 		material->Select(0, 0);
 		shape->Draw();
+		m_tex->ReleaseTexture();
 	}
 	m_window->SwapBuffers();
 
