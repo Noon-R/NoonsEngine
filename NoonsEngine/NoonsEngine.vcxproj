@@ -175,6 +175,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ADefineView.h" />
+    <ClInclude Include="GameView.h" />
     <ClInclude Include="glShader.h" />
     <ClInclude Include="Material.h" />
     <ClInclude Include="Matrix.h" />

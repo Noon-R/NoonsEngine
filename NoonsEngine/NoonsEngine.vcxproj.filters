@@ -140,5 +140,8 @@
     <ClInclude Include="stb_image.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
+    <ClInclude Include="GameView.h">
+      <Filter>ヘッダー ファイル\Views</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
