@@ -151,6 +151,7 @@
     <ClCompile Include="glShader.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Matrix.cpp" />
+    <ClCompile Include="ModelLoader.cpp" />
     <ClCompile Include="SampleView.cpp" />
     <ClCompile Include="ShapeCreator.cpp" />
     <ClCompile Include="TestView.cpp" />
@@ -179,6 +180,7 @@
     <ClInclude Include="glShader.h" />
     <ClInclude Include="Material.h" />
     <ClInclude Include="Matrix.h" />
+    <ClInclude Include="ModelLoader.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="SampleView.h" />
     <ClInclude Include="Shape.h" />
