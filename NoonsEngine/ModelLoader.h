@@ -3,6 +3,8 @@
 #include <fstream>
 #include <vector>
 #include <string>
+#include <sstream>
+#include <algorithm>
 
 #include "Object.h"
 
