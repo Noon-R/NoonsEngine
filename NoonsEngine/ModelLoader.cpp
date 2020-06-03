@@ -5,7 +5,7 @@ Object::Vertex* LoadObjFile(char const* name)
 {
 	std::vector<Object::Vertex> vertecies;
 	std::vector<float[3]> poses;
-	std::vector<float[3]> normal;
+	std::vector<float[3]> normals;
 	std::vector<float[2]> uvs;
 
 	std::string filePath = "./Models/" + std::string(name);
@@ -23,26 +23,40 @@ Object::Vertex* LoadObjFile(char const* name)
 
 	while (std::getline(objFIle,line)) {
 
-		if (line[0] == 'v' && line[1] == ' ') {
-			std::stringstream ss;
-			Object::Vertex vertex;
+		std::stringstream ss;
+		std::string top;
 
-			ss << line.substr(2);
+		ss >> top;
 
-			ss >> vertex.position[0] >> vertex.position[1] >> vertex.position[2];
+		if (top == "v") {
+			float pos[3];
 
-			vertecies.push_back(vertex);
-		}
+			ss >> pos[0] >> pos[1] >> pos[2];
 
-		if (line[0] == 'v' && line[1] == ' ') {
-			std::stringstream ss;
-			Object::Vertex vertex;
+			poses.push_back(pos);
+		}else if (top == "vn") {
+			float nor[3];
 
-			ss << line.substr(2);
+			ss >> nor[0] >> nor[1] >> nor[2];
 
-			ss >> vertex.position[0] >> vertex.position[1] >> vertex.position[2];
+			normals.push_back(nor);
+		} else if (top == "vt") {
+			float uv[2];
 
-			vertecies.push_back(vertex);
+			ss >> uv[0] >> uv[1];
+
+			uvs.push_back(uv);
+		} else if (top == "f") {
+			for (int i = 0; i < 3; ++i) {
+				Object::Vertex ver;
+				std::string str;
+				ss >> str;
+
+				str;
+			}
+
+		} else {
+			continue;
 		}
 
 		std::cout << line << std::endl;
