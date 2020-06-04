@@ -26,33 +26,46 @@ Object::Vertex* LoadObjFile(char const* name)
 		std::stringstream ss;
 		std::string top;
 
+		ss << line;
 		ss >> top;
 
 		if (top == "v") {
-			float pos[3];
+			float pos[3] = {};
 
 			ss >> pos[0] >> pos[1] >> pos[2];
 
 			poses.push_back(pos);
 		}else if (top == "vn") {
-			float nor[3];
+			float nor[3] = {};
 
 			ss >> nor[0] >> nor[1] >> nor[2];
 
 			normals.push_back(nor);
 		} else if (top == "vt") {
-			float uv[2];
+			float uv[2] = {};
 
 			ss >> uv[0] >> uv[1];
 
 			uvs.push_back(uv);
 		} else if (top == "f") {
+			std::string str;
 			for (int i = 0; i < 3; ++i) {
-				Object::Vertex ver;
-				std::string str;
-				ss >> str;
+				Object::Vertex ver ;
 
-				str;
+				ss >> str;
+				for (int i = 0; i < 3; ++i) {
+					ver.position[i] = poses[str[0] - '0'][i];
+				}
+
+				for (int i = 0; i < 2; ++i) {
+					ver.uv[i] = uvs[str[2] - '0'][i];
+				}
+
+				for (int i = 0; i < 3; ++i) {
+					ver.normal[i] = normals[str[4] - '0'][i];
+				}
+				
+				vertecies.push_back(ver);
 			}
 
 		} else {
@@ -62,5 +75,5 @@ Object::Vertex* LoadObjFile(char const* name)
 		std::cout << line << std::endl;
 	}
 
-	return nullptr;
+	return &vertecies[0];
 }
