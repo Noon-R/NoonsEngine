@@ -5,8 +5,9 @@
 #include <string>
 #include <sstream>
 #include <algorithm>
+#include <array>
 
 #include "Object.h"
 
-Object::Vertex* LoadObjFile(char const* name);
+std::pair<std::vector<Object::Vertex>, int> LoadObjFile(char const* name);
 

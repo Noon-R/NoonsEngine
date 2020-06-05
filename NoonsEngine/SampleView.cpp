@@ -31,8 +31,13 @@ SampleView::SampleView(WindowBase* const window)
 	};
 
 	material = new Uniform<Material>(color, 2);
+	std::pair<std::vector<Object::Vertex>, int> vertexInfo = LoadObjFile("sample01.obj");
 
-	shape.reset(CreateSolidCube(m_window));
+	std::cout << vertexInfo.first[0].position[0] << std::endl;
+	std::cout << vertexInfo.first[0].position[1] << std::endl;
+	std::cout << vertexInfo.first[0].position[2] << std::endl;
+
+	shape.reset(new SolidShape(m_window,3,vertexInfo.second,&vertexInfo.first[0]));
 	shapeSphere.reset(CreateSolidSphere(m_window, 32, 16));
 
 }
@@ -99,9 +104,9 @@ int SampleView::Draw()
 		glUniform3fv(m_LspecLoc, Lcount, Lspec);
 
 
-		//shape->Draw();
 		material->Select(0, 0);
-		shapeSphere->Draw();
+		shape->Draw();
+		//shapeSphere->Draw();
 
 		const Matrix modelview1(modelView * Matrix::Translate(0.0f, 0.0f, 3.0f));
 
@@ -111,7 +116,7 @@ int SampleView::Draw()
 		glUniformMatrix3fv(m_normalMatrixLoc, 1, GL_FALSE, normalMatrix);
 
 		material->Select(0, 1);
-		shape->Draw();
+		//shape->Draw();
 	}
 	m_window->SwapBuffers();
 

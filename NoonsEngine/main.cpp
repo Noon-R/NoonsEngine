@@ -6,7 +6,7 @@
 
 #include "SampleView.h"
 #include "TestView.h"
-#include "ModelLoader.h"
+
 
 int main() {
 
@@ -65,7 +65,6 @@ int main() {
 
 	glfwSetTime(0.0);
 
-	LoadObjFile("sample01.obj");
 
 	while (*window) {
 	

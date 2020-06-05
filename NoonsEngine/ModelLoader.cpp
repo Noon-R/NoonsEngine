@@ -1,12 +1,27 @@
 #include "ModelLoader.h"
 
 
-Object::Vertex* LoadObjFile(char const* name)
+std::string replaceAll(std::string& replacedStr, std::string from, std::string to) {
+	unsigned int pos = replacedStr.find(from);
+	int toLen = to.length();
+
+	if (from.empty()) {
+		return replacedStr;
+	}
+
+	while ((pos = replacedStr.find(from, pos)) != std::string::npos) {
+		replacedStr.replace(pos, from.length(), to);
+		pos += toLen;
+	}
+	return replacedStr;
+}
+
+std::pair<std::vector<Object::Vertex>, int> LoadObjFile(char const* name)
 {
 	std::vector<Object::Vertex> vertecies;
-	std::vector<float[3]> poses;
-	std::vector<float[3]> normals;
-	std::vector<float[2]> uvs;
+	std::vector<std::array<float, 3>> poses;
+	std::vector<std::array<float, 3>> normals;
+	std::vector<std::array<float, 2>> uvs;
 
 	std::string filePath = "./Models/" + std::string(name);
 
@@ -18,7 +33,7 @@ Object::Vertex* LoadObjFile(char const* name)
 
 	if (objFIle.fail()) {
 		std::cout << "Could not Find File or Read File" << std::endl;
-		return nullptr;
+		return std::make_pair(vertecies,0);
 	}
 
 	while (std::getline(objFIle,line)) {
@@ -28,21 +43,21 @@ Object::Vertex* LoadObjFile(char const* name)
 
 		ss << line;
 		ss >> top;
-
+		
 		if (top == "v") {
-			float pos[3] = {};
+			std::array<float, 3> pos;
 
 			ss >> pos[0] >> pos[1] >> pos[2];
 
 			poses.push_back(pos);
 		}else if (top == "vn") {
-			float nor[3] = {};
+			std::array<float, 3> nor;
 
 			ss >> nor[0] >> nor[1] >> nor[2];
 
 			normals.push_back(nor);
 		} else if (top == "vt") {
-			float uv[2] = {};
+			std::array<float, 2> uv;
 
 			ss >> uv[0] >> uv[1];
 
@@ -51,29 +66,40 @@ Object::Vertex* LoadObjFile(char const* name)
 			std::string str;
 			for (int i = 0; i < 3; ++i) {
 				Object::Vertex ver ;
+				
+				for (int j = 0; j < 4; ++j) {
+					ver.color[j] = 1.0f;
+				}
 
 				ss >> str;
-				for (int i = 0; i < 3; ++i) {
-					ver.position[i] = poses[str[0] - '0'][i];
+				replaceAll(str,"/"," ");
+				int p, u, n;
+				std::stringstream vs;
+				vs << str;
+				vs >> p >> u >> n;
+
+				for (int j = 0; j < 3; ++j) {
+					ver.position[j] = poses[p-1][j];
 				}
 
-				for (int i = 0; i < 2; ++i) {
-					ver.uv[i] = uvs[str[2] - '0'][i];
+				for (int j = 0; j < 2; ++j) {
+					ver.uv[j] = uvs[u-1][j];
 				}
 
-				for (int i = 0; i < 3; ++i) {
-					ver.normal[i] = normals[str[4] - '0'][i];
+				for (int j = 0; j < 3; ++j) {
+					ver.normal[j] = normals[n-1][j];
 				}
 				
 				vertecies.push_back(ver);
 			}
-
+			
 		} else {
 			continue;
 		}
+		
 
 		std::cout << line << std::endl;
 	}
 
-	return &vertecies[0];
+	return std::make_pair(vertecies, vertecies.size()); ;
 }

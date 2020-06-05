@@ -12,6 +12,7 @@
 #include "Material.h"
 #include "Vector.h"
 #include "Matrix.h"
+#include "ModelLoader.h"
 
 class ADefineView {
 
