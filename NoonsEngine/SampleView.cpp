@@ -2,11 +2,12 @@
 
 
 
-
+#define STB_IMAGE_IMPLEMENTATION
+#include "stb_image.h"
 
 SampleView::SampleView(WindowBase* const window)
 	:ADefineView(window)
-	, m_program(loadProgram("pointWithNormal.vert", "pointWithNormal.frag"))
+	, m_program(loadProgram("testuv.vert", "testuv.frag"))
 	,m_modelviewLoc(glGetUniformLocation(m_program, "modelview"))
 	,m_projectionLoc(glGetUniformLocation(m_program, "projection"))
 	,m_normalMatrixLoc(glGetUniformLocation(m_program, "normalMatrix"))
@@ -23,7 +24,15 @@ SampleView::SampleView(WindowBase* const window)
 
 	glUniformBlockBinding(m_program, m_materialLoc, 0);
 
+	unsigned char* data;
+	int width;
+	int height;
+	int bpp;
 
+	data = stbi_load("mochiz04.jpg", &width, &height, &bpp, 0);
+
+
+	m_tex = new Texture(GL_RGB, width, height, data, m_window);
 
 	static constexpr Material color[] = {
 		{0.6f, 0.6f, 0.2f, 0.6f, 0.6f, 0.2f, 0.3f, 0.3f, 0.3f, 30.0f},
@@ -31,7 +40,7 @@ SampleView::SampleView(WindowBase* const window)
 	};
 
 	material = new Uniform<Material>(color, 2);
-	std::pair<std::vector<Object::Vertex>, int> vertexInfo = LoadObjFile("sample01.obj");
+	std::pair<std::vector<Object::Vertex>, int> vertexInfo = LoadObjFile("sord.obj");
 
 	std::cout << vertexInfo.first[0].position[0] << std::endl;
 	std::cout << vertexInfo.first[0].position[1] << std::endl;
@@ -82,7 +91,7 @@ int SampleView::Draw()
 		const Matrix model(r);
 
 		const Matrix view(Matrix::LookAt(
-			3.0f, 4.0f, 5.0f,
+			3.0f, 1.0f, 5.0f,
 			0.0f, 0.0f, 0.0f,
 			0.0f, 1.0f, 0.0f
 		));
@@ -105,7 +114,10 @@ int SampleView::Draw()
 
 
 		material->Select(0, 0);
+		glActiveTexture(GL_TEXTURE0);
+		m_tex->BindTexture();
 		shape->Draw();
+		m_tex->ReleaseTexture();
 		//shapeSphere->Draw();
 
 		const Matrix modelview1(modelView * Matrix::Translate(0.0f, 0.0f, 3.0f));

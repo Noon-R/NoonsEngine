@@ -1,8 +1,7 @@
 #include "TestView.h"
 
 
-#define STB_IMAGE_IMPLEMENTATION
-#include "stb_image.h"
+
 #include <iostream>
 
 TestView::TestView(WindowBase* const window)
@@ -24,7 +23,7 @@ TestView::TestView(WindowBase* const window)
 	int height;
 	int bpp;
 
-	data = stbi_load("noon_moon_quad_256.png",&width, &height, &bpp,0);
+	//data = stbi_load("noon_moon_quad_256.png",&width, &height, &bpp,0);
 
 	unsigned char cols[] = {
 		255,255,255,255,	255,0,0,255,		0,255,0,255,		0,0,255,255,
@@ -35,7 +34,7 @@ TestView::TestView(WindowBase* const window)
 
 	m_tex = new Texture( GL_RGBA, 4,4,cols,m_window);
 
-	stbi_image_free(data);
+	//stbi_image_free(data);
 	glUniformBlockBinding(m_program, m_materialLoc, 0);
 
 

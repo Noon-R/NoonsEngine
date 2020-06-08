@@ -36,4 +36,7 @@ private:
 	Uniform<Material>* material;
 	std::unique_ptr<Shape> shape;
 	std::unique_ptr<Shape> shapeSphere;
+
+	Texture* m_tex;
+
 };
