@@ -156,6 +156,7 @@
     <ClCompile Include="ShapeCreator.cpp" />
     <ClCompile Include="TestView.cpp" />
     <ClCompile Include="Texture.cpp" />
+    <ClCompile Include="UITestView.cpp" />
     <ClCompile Include="Vector.cpp" />
     <ClCompile Include="WindowBase.cpp" />
   </ItemGroup>
@@ -191,6 +192,7 @@
     <ClInclude Include="stb_image.h" />
     <ClInclude Include="TestView.h" />
     <ClInclude Include="Texture.h" />
+    <ClInclude Include="UITestView.h" />
     <ClInclude Include="Uniform.h" />
     <ClInclude Include="Vector.h" />
     <ClInclude Include="WindowBase.h" />
