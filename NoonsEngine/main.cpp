@@ -6,6 +6,7 @@
 
 #include "SampleView.h"
 #include "TestView.h"
+#include "UITestView.h"
 
 
 int main() {
@@ -24,9 +25,9 @@ int main() {
 		return -1;
 	}
 
-	SampleView* view01 = new SampleView(window);
+	//SampleView* view01 = new SampleView(window);
 
-	
+	UITestView* view01 = new UITestView(window);
 
 	//BackCulling
 	glFrontFace(GL_CCW);

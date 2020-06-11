@@ -176,9 +176,6 @@
     <ClInclude Include="ModelLoader.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="UITestView.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="imconfig.h">
       <Filter>ヘッダー ファイル\imgui</Filter>
     </ClInclude>
@@ -202,6 +199,9 @@
     </ClInclude>
     <ClInclude Include="imstb_truetype.h">
       <Filter>ヘッダー ファイル\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="UITestView.h">
+      <Filter>ヘッダー ファイル\Views</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

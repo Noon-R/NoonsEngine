@@ -12,13 +12,13 @@ public:
 	//UseShader And Set some UniformParams
 	void SwapBuffers() const;
 	void SetSize(GLfloat width, GLfloat height);
-	const GLFWwindow* GetWindow();
+	GLFWwindow* GetWindow();
 	const GLfloat* GetSize() const;
 	GLfloat GetAspect() const;
 	GLfloat GetScale() const;
 	explicit operator bool() const;
 private:
-	GLFWwindow* const m_window;
+	GLFWwindow* m_window;
 	GLfloat m_size[2];
 	GLfloat m_scale;
 
