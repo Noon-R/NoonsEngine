@@ -61,6 +61,7 @@ int main() {
 	while (*window) {
 	
 		window->SetWindowContext();
+		view01->Update();
 		view01->Draw();
 
 		glfwPollEvents();

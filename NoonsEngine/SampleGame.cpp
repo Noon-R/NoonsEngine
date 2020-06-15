@@ -1,5 +1,7 @@
 #include "SampleGame.h"
 
+Vector3 cubePos;
+
 SampleGame::SampleGame(WindowBase* const window)
 	:ADefineView(window)
 	, m_program(loadProgram("pointWithNormal.vert", "pointWithNormal.frag"))
@@ -14,6 +16,8 @@ SampleGame::SampleGame(WindowBase* const window)
 
 {
 
+	glfwSetInputMode(m_window->GetWindow(), GLFW_STICKY_KEYS, GLFW_TRUE);
+
 	//shaderŠÖ˜A‚ðŠÈ’P‚É‚¢‚¶‚ê‚é‚æ‚¤‚É‚µ‚Ä‚¨‚«‚½‚¢‚Ë
 
 
@@ -27,7 +31,6 @@ SampleGame::SampleGame(WindowBase* const window)
 	material = new Uniform<Material>(color, 2);
 
 	shape.reset(CreateSolidCube(m_window));
-
 }
 
 int SampleGame::Init()
@@ -37,6 +40,20 @@ int SampleGame::Init()
 
 int SampleGame::Update()
 {
+
+	if (glfwGetKey(m_window->GetWindow(), GLFW_KEY_W)) {
+		cubePos.z += 0.1;
+	} else if (glfwGetKey(m_window->GetWindow(), GLFW_KEY_S)) {
+		cubePos.z -= 0.1;
+	}
+
+	if (glfwGetKey(m_window->GetWindow(), GLFW_KEY_A)) {
+		cubePos.x += 0.1;
+	}
+	else if (glfwGetKey(m_window->GetWindow(), GLFW_KEY_D)) {
+		cubePos.x -= 0.1;
+	}
+
 	return 0;
 }
 
@@ -45,7 +62,7 @@ int SampleGame::Draw()
 
 	m_window->SetWindowContext(); {
 
-		glClearColor(0.0f, 0.0f, 0.3f, 1.0f);
+		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		glUseProgram(m_program);
@@ -57,15 +74,15 @@ int SampleGame::Draw()
 
 		const Matrix projection(Matrix::Perspective(fovy, aspect, 1.0f, 10.0f));
 		const Matrix scaling(Matrix::Scale(scale / size[0], scale / size[1], 1.0f));
-		const Matrix translation(Matrix::Translate(0, 0, 0));
+		
 
 		const Matrix r(Matrix::Rotate(static_cast<GLfloat>(glfwGetTime()), 0.0f, 1.0f, 0.0f));
 		//const Matrix model(translation * scaling);
-		const Matrix model(r);
+		const Matrix model(Matrix::Translate(cubePos.x, cubePos.y, cubePos.z));
 
 		const Matrix view(Matrix::LookAt(
-			3.0f, 1.0f, 5.0f,
-			0.0f, 0.0f, 0.0f,
+			0.0f + cubePos.x, 2.0f + cubePos.y, -5.0f + cubePos.z,
+			cubePos.x, cubePos.y, cubePos.z,
 			0.0f, 1.0f, 0.0f
 		));
 
@@ -89,6 +106,16 @@ int SampleGame::Draw()
 		material->Select(0, 0);
 		shape->Draw();
 		
+		const Matrix modelview1(view * Matrix::Translate(0.0f, 0.0f, 3.0f));
+
+		modelview1.GetNormalMatrix(normalMatrix);
+
+		glUniformMatrix4fv(m_modelviewLoc, 1, GL_FALSE, modelview1.data());
+		glUniformMatrix3fv(m_normalMatrixLoc, 1, GL_FALSE, normalMatrix);
+
+		material->Select(0, 1);
+		shape->Draw();
+
 	}
 	m_window->SwapBuffers();
 
