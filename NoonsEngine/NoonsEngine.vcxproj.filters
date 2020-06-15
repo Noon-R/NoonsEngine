@@ -96,6 +96,9 @@
     <ClCompile Include="imgui_widgets.cpp">
       <Filter>ソース ファイル\imgui</Filter>
     </ClCompile>
+    <ClCompile Include="SampleGame.cpp">
+      <Filter>ソース ファイル\VIews</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -170,9 +173,6 @@
     <ClInclude Include="stb_image.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="GameView.h">
-      <Filter>ヘッダー ファイル\Views</Filter>
-    </ClInclude>
     <ClInclude Include="ModelLoader.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
@@ -201,6 +201,9 @@
       <Filter>ヘッダー ファイル\imgui</Filter>
     </ClInclude>
     <ClInclude Include="UITestView.h">
+      <Filter>ヘッダー ファイル\Views</Filter>
+    </ClInclude>
+    <ClInclude Include="SampleGame.h">
       <Filter>ヘッダー ファイル\Views</Filter>
     </ClInclude>
   </ItemGroup>

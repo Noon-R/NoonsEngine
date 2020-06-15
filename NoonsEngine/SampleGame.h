@@ -2,11 +2,12 @@
 
 #include "ADefineView.h"
 
-class GameView
+class SampleGame
 	:public ADefineView {
 
+	
 public:
-	GameView(WindowBase* const window);
+	SampleGame(WindowBase* const window);
 
 	virtual int Init();
 	virtual int Update();
@@ -33,7 +34,4 @@ private:
 
 	Uniform<Material>* material;
 	std::unique_ptr<Shape> shape;
-	std::unique_ptr<Shape> shapeSphere;
-
-	Texture* m_tex;
 };

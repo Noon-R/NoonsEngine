@@ -161,6 +161,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Matrix.cpp" />
     <ClCompile Include="ModelLoader.cpp" />
+    <ClCompile Include="SampleGame.cpp" />
     <ClCompile Include="SampleView.cpp" />
     <ClCompile Include="ShapeCreator.cpp" />
     <ClCompile Include="TestView.cpp" />
@@ -186,7 +187,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ADefineView.h" />
-    <ClInclude Include="GameView.h" />
     <ClInclude Include="glShader.h" />
     <ClInclude Include="imconfig.h" />
     <ClInclude Include="imgui.h" />
@@ -200,6 +200,7 @@
     <ClInclude Include="Matrix.h" />
     <ClInclude Include="ModelLoader.h" />
     <ClInclude Include="Object.h" />
+    <ClInclude Include="SampleGame.h" />
     <ClInclude Include="SampleView.h" />
     <ClInclude Include="Shape.h" />
     <ClInclude Include="ShapeCreator.h" />
