@@ -163,6 +163,7 @@
     <ClCompile Include="ModelLoader.cpp" />
     <ClCompile Include="SampleGame.cpp" />
     <ClCompile Include="SampleView.cpp" />
+    <ClCompile Include="ShaderBase.cpp" />
     <ClCompile Include="ShapeCreator.cpp" />
     <ClCompile Include="TestView.cpp" />
     <ClCompile Include="Texture.cpp" />
@@ -202,6 +203,7 @@
     <ClInclude Include="Object.h" />
     <ClInclude Include="SampleGame.h" />
     <ClInclude Include="SampleView.h" />
+    <ClInclude Include="ShaderBase.h" />
     <ClInclude Include="Shape.h" />
     <ClInclude Include="ShapeCreator.h" />
     <ClInclude Include="ShapeIndex.h" />
