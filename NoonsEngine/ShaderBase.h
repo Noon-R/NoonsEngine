@@ -12,6 +12,11 @@ public:
 
 
 private:
+
+	struct ShaderLoc {
+		GLuint location;
+	};
+
 	WindowBase* m_window;
 
 	const GLuint m_program;
