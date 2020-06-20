@@ -18,8 +18,6 @@ SampleGame::SampleGame(WindowBase* const window)
 
 	glfwSetInputMode(m_window->GetWindow(), GLFW_STICKY_KEYS, GLFW_TRUE);
 
-	//shaderŠÖ˜A‚ðŠÈ’P‚É‚¢‚¶‚ê‚é‚æ‚¤‚É‚µ‚Ä‚¨‚«‚½‚¢‚Ë
-
 
 	glUniformBlockBinding(m_program, m_materialLoc, 0);
 
