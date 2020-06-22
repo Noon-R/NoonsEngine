@@ -13,9 +13,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="ヘッダー ファイル\MathCulc">
-      <UniqueIdentifier>{909c9946-cbaa-446e-83a1-4b23945f03ae}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ヘッダー ファイル\Shape">
       <UniqueIdentifier>{95b8f5db-d4df-4967-9c9a-c63e2db8f096}</UniqueIdentifier>
     </Filter>
@@ -39,6 +36,12 @@
     </Filter>
     <Filter Include="ソース ファイル\imgui">
       <UniqueIdentifier>{c1ff0275-feec-46ac-baa8-3a441ef13441}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Core">
+      <UniqueIdentifier>{12cdb07f-8616-420e-ae29-741a45917e11}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Core\MathCulc">
+      <UniqueIdentifier>{909c9946-cbaa-446e-83a1-4b23945f03ae}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -128,23 +131,17 @@
     <ClInclude Include="WindowBase.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="glShader.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="Vector.h">
-      <Filter>ヘッダー ファイル\MathCulc</Filter>
+      <Filter>ヘッダー ファイル\Core\MathCulc</Filter>
     </ClInclude>
     <ClInclude Include="Matrix.h">
-      <Filter>ヘッダー ファイル\MathCulc</Filter>
+      <Filter>ヘッダー ファイル\Core\MathCulc</Filter>
     </ClInclude>
     <ClInclude Include="Material.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="Uniform.h">
       <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="Shape.h">
-      <Filter>ヘッダー ファイル\Shape</Filter>
     </ClInclude>
     <ClInclude Include="ShapeIndex.h">
       <Filter>ヘッダー ファイル\Shape</Filter>
@@ -155,17 +152,11 @@
     <ClInclude Include="SolidShapeIndex.h">
       <Filter>ヘッダー ファイル\Shape</Filter>
     </ClInclude>
-    <ClInclude Include="Object.h">
-      <Filter>ヘッダー ファイル\Shape</Filter>
-    </ClInclude>
     <ClInclude Include="SampleView.h">
       <Filter>ヘッダー ファイル\Views</Filter>
     </ClInclude>
     <ClInclude Include="ShapeCreator.h">
       <Filter>ヘッダー ファイル\Shape</Filter>
-    </ClInclude>
-    <ClInclude Include="ADefineView.h">
-      <Filter>ヘッダー ファイル\Views</Filter>
     </ClInclude>
     <ClInclude Include="TestView.h">
       <Filter>ヘッダー ファイル\Views</Filter>
@@ -214,6 +205,18 @@
     </ClInclude>
     <ClInclude Include="NoonBaseTypes.h">
       <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="glShader.h">
+      <Filter>ヘッダー ファイル\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="ADefineView.h">
+      <Filter>ヘッダー ファイル\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Object.h">
+      <Filter>ヘッダー ファイル\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Shape.h">
+      <Filter>ヘッダー ファイル\Core</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
