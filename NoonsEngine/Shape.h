@@ -13,7 +13,7 @@ protected:
 	const GLsizei m_vertexcount;
 
 public:
-	Shape(WindowBase* const window,GLint size, GLsizei vertexcount, const Object::Vertex *vertex, GLsizei indexcount = 0, const GLuint* index = NULL)
+	Shape(AWindowBase* const window,GLint size, GLsizei vertexcount, const Object::Vertex *vertex, GLsizei indexcount = 0, const GLuint* index = NULL)
 		:m_object(new Object(window, size, vertexcount, vertex, indexcount, index))
 		,m_vertexcount(vertexcount)
 	{

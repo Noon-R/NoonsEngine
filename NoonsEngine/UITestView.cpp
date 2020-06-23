@@ -1,6 +1,6 @@
 #include "UITestView.h"
 
-UITestView::UITestView(WindowBase* const window)
+UITestView::UITestView(AWindowBase* const window)
 	:ADefineView(window)
 {
     IMGUI_CHECKVERSION();

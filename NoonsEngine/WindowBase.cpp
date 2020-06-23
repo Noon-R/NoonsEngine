@@ -3,7 +3,7 @@
 
 
 
-WindowBase::WindowBase(int width, int height, const char* title, GLFWmonitor* monitor, GLFWwindow* share) 
+AWindowBase::AWindowBase(int width, int height, const char* title, GLFWmonitor* monitor, GLFWwindow* share) 
 	: m_window(glfwCreateWindow(width, height, title, monitor, share)),
 	  m_scale(100)
 {
@@ -25,57 +25,57 @@ WindowBase::WindowBase(int width, int height, const char* title, GLFWmonitor* mo
 	Resize(m_window, m_size[0], m_size[1]);
 }
 
-WindowBase::~WindowBase() {
+AWindowBase::~AWindowBase() {
 	glfwDestroyWindow(m_window);
 }
 
 
-void WindowBase::SetWindowContext() const {
+void AWindowBase::SetWindowContext() const {
 	glfwMakeContextCurrent(m_window);
 }
 
-void WindowBase::SwapBuffers() const{
+void AWindowBase::SwapBuffers() const{
 	glfwSwapBuffers(m_window);
 }
 
-void WindowBase::SetSize(GLfloat width, GLfloat height)
+void AWindowBase::SetSize(GLfloat width, GLfloat height)
 {
 	m_size[0] = width;
 	m_size[1] = height;
 }
 
-GLFWwindow* WindowBase::GetWindow() {
+GLFWwindow* AWindowBase::GetWindow() {
 	return m_window;
 }
 
-GLfloat WindowBase::GetAspect() const
+GLfloat AWindowBase::GetAspect() const
 {
 	return m_size[0] / m_size[1];
 }
 
-const GLfloat *WindowBase::GetSize() const
+const GLfloat *AWindowBase::GetSize() const
 {
 	return m_size;
 }
 
-GLfloat WindowBase::GetScale() const
+GLfloat AWindowBase::GetScale() const
 {
 	return m_scale;
 }
 
-WindowBase::operator bool() const
+AWindowBase::operator bool() const
 {
 	return !(glfwWindowShouldClose(m_window));
 
 }
 
-void WindowBase::Resize(GLFWwindow* const window, int width, int height) {
+void AWindowBase::Resize(GLFWwindow* const window, int width, int height) {
 
 	int fw, fh;
 
 	glfwGetFramebufferSize(window, &fw, &fh);
 
-	WindowBase* const instance(static_cast<WindowBase*>(glfwGetWindowUserPointer(window)));
+	AWindowBase* const instance(static_cast<AWindowBase*>(glfwGetWindowUserPointer(window)));
 
 	if (instance != NULL) {
 		instance->SetSize(static_cast<GLfloat>(width), static_cast<GLfloat>(height));

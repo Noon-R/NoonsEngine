@@ -4,7 +4,7 @@
 
 #include <iostream>
 
-TestView::TestView(WindowBase* const window)
+TestView::TestView(AWindowBase* const window)
 	:ADefineView(window)
 	, m_program(loadProgram("testuv.vert", "testuv.frag"))
 	, m_modelviewLoc(glGetUniformLocation(m_program, "modelview"))

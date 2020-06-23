@@ -43,6 +43,9 @@
     <Filter Include="ヘッダー ファイル\Core\MathCulc">
       <UniqueIdentifier>{909c9946-cbaa-446e-83a1-4b23945f03ae}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\Core\Base">
+      <UniqueIdentifier>{98e4a090-abe7-4898-9a73-88da774410b0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -128,20 +131,11 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="WindowBase.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="Vector.h">
       <Filter>ヘッダー ファイル\Core\MathCulc</Filter>
     </ClInclude>
     <ClInclude Include="Matrix.h">
       <Filter>ヘッダー ファイル\Core\MathCulc</Filter>
-    </ClInclude>
-    <ClInclude Include="Material.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="Uniform.h">
-      <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="ShapeIndex.h">
       <Filter>ヘッダー ファイル\Shape</Filter>
@@ -161,13 +155,7 @@
     <ClInclude Include="TestView.h">
       <Filter>ヘッダー ファイル\Views</Filter>
     </ClInclude>
-    <ClInclude Include="Texture.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="stb_image.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="ModelLoader.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="imconfig.h">
@@ -209,14 +197,29 @@
     <ClInclude Include="glShader.h">
       <Filter>ヘッダー ファイル\Core</Filter>
     </ClInclude>
-    <ClInclude Include="ADefineView.h">
-      <Filter>ヘッダー ファイル\Core</Filter>
-    </ClInclude>
     <ClInclude Include="Object.h">
       <Filter>ヘッダー ファイル\Core</Filter>
     </ClInclude>
     <ClInclude Include="Shape.h">
       <Filter>ヘッダー ファイル\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Material.h">
+      <Filter>ヘッダー ファイル\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="ModelLoader.h">
+      <Filter>ヘッダー ファイル\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture.h">
+      <Filter>ヘッダー ファイル\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Uniform.h">
+      <Filter>ヘッダー ファイル\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="ADefineView.h">
+      <Filter>ヘッダー ファイル\Core\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="AWindowBase.h">
+      <Filter>ヘッダー ファイル\Core\Base</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -7,7 +7,7 @@ class SampleGame
 
 	
 public:
-	SampleGame(WindowBase* const window);
+	SampleGame(AWindowBase* const window);
 
 	virtual int Init();
 	virtual int Update();

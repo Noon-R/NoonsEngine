@@ -17,13 +17,13 @@
 class ADefineView {
 
 public :
-	ADefineView(WindowBase* const window);
+	ADefineView(AWindowBase* const window);
 	virtual int Init() = 0;
 	virtual int Update() = 0;
 	virtual int Draw() = 0;
 
 protected:
 
-	WindowBase* const m_window;
+	AWindowBase* const m_window;
 
 };

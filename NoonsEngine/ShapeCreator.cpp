@@ -185,7 +185,7 @@ constexpr GLuint wireCubeIndex[] = {
 	6, 1
 };
 
-Shape* CreateSolidSphere(WindowBase* const window, const int slices, const int stacks) {
+Shape* CreateSolidSphere(AWindowBase* const window, const int slices, const int stacks) {
 
 	std::vector<Object::Vertex> solidSphereVertex;
 	float pi = acos(-1);
@@ -233,7 +233,7 @@ Shape* CreateSolidSphere(WindowBase* const window, const int slices, const int s
 	);
 }
 
-Shape* CreateSolidCube(WindowBase* const window)
+Shape* CreateSolidCube(AWindowBase* const window)
 {
 	return new SolidShape(window, 3, 36, solidCubeVertex);
 }

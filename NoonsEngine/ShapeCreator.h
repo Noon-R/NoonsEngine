@@ -8,5 +8,5 @@
 #include "WindowBase.h"
 #include "Object.h"
 
-Shape* CreateSolidSphere(WindowBase* const window, const int slices, const int stacks);
-Shape* CreateSolidCube(WindowBase* const window);
+Shape* CreateSolidSphere(AWindowBase* const window, const int slices, const int stacks);
+Shape* CreateSolidCube(AWindowBase* const window);

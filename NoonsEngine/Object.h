@@ -27,7 +27,7 @@ public:
 		GLfloat uv[2];
 	};
 
-	Object(WindowBase* window, GLint size, GLsizei vertexcount, const Vertex* vertex ,GLsizei indexcount = 0, const GLuint *index = NULL) {
+	Object(AWindowBase* window, GLint size, GLsizei vertexcount, const Vertex* vertex ,GLsizei indexcount = 0, const GLuint *index = NULL) {
 
 		window->SetWindowContext();
 

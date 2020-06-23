@@ -1,6 +1,6 @@
 #include "Texture.h"
 
-Texture::Texture(GLenum level, int width, int height, const void* data, WindowBase* const window)
+Texture::Texture(GLenum level, int width, int height, const void* data, AWindowBase* const window)
 	:m_textureID(0)
 {
 	
@@ -26,7 +26,7 @@ int Texture::ReleaseTexture()
 	return 0;
 }
 
-int Texture::ChangeTexture(GLenum level, int width, int height, const void* data, WindowBase* const window)
+int Texture::ChangeTexture(GLenum level, int width, int height, const void* data, AWindowBase* const window)
 {
 	m_width = width;
 	m_height = height;

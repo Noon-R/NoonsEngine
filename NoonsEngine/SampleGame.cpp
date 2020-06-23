@@ -2,7 +2,7 @@
 
 Vector3 cubePos;
 
-SampleGame::SampleGame(WindowBase* const window)
+SampleGame::SampleGame(AWindowBase* const window)
 	:ADefineView(window)
 	, m_program(loadProgram("pointWithNormal.vert", "pointWithNormal.frag"))
 	, m_modelviewLoc(glGetUniformLocation(m_program, "modelview"))

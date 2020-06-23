@@ -10,7 +10,7 @@ class UITestView
 	:public ADefineView
 {
 public:
-	UITestView(WindowBase* const window);
+	UITestView(AWindowBase* const window);
 	~UITestView();
 
 	virtual int Init();

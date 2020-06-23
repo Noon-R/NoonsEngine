@@ -1,6 +1,6 @@
 #include "ShaderBase.h"
 
-ShaderBase::ShaderBase(WindowBase* window, const char* vert, const char* frag)
+ShaderBase::ShaderBase(AWindowBase* window, const char* vert, const char* frag)
 	: m_window(window)
 	, m_program(loadProgram(vert, frag))
 {

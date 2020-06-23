@@ -3,11 +3,11 @@
 #include<GL/glew.h>
 #include<GLFW/glfw3.h>
 
-class WindowBase {
+class AWindowBase {
 public:
 
-	WindowBase(int width, int height, const char* title, GLFWmonitor* monitor, GLFWwindow* share);
-	~WindowBase();
+	AWindowBase(int width, int height, const char* title, GLFWmonitor* monitor, GLFWwindow* share);
+	~AWindowBase();
 	void SetWindowContext() const;
 	//UseShader And Set some UniformParams
 	void SwapBuffers() const;

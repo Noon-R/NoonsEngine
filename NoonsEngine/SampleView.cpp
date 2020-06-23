@@ -5,7 +5,7 @@
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"
 
-SampleView::SampleView(WindowBase* const window)
+SampleView::SampleView(AWindowBase* const window)
 	:ADefineView(window)
 	, m_program(loadProgram("testuv.vert", "testuv.frag"))
 	,m_modelviewLoc(glGetUniformLocation(m_program, "modelview"))

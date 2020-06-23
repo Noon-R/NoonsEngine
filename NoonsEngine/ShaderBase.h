@@ -5,7 +5,7 @@
 
 class ShaderBase {
 public:
-	ShaderBase(WindowBase* window,const char * vert, const char* flag);
+	ShaderBase(AWindowBase* window,const char * vert, const char* flag);
 	~ShaderBase();
 
 	int UseShader();
@@ -18,7 +18,7 @@ public:
 private:
 
 
-	WindowBase* m_window;
+	AWindowBase* m_window;
 
 	const GLuint m_program;
 

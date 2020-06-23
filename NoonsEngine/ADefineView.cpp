@@ -1,6 +1,6 @@
 #include "ADefineView.h"
 
-ADefineView::ADefineView(WindowBase* const window)
+ADefineView::ADefineView(AWindowBase* const window)
 	:m_window(window)
 {
 }

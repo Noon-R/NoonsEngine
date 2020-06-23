@@ -216,7 +216,7 @@
     <ClInclude Include="UITestView.h" />
     <ClInclude Include="Uniform.h" />
     <ClInclude Include="Vector.h" />
-    <ClInclude Include="WindowBase.h" />
+    <ClInclude Include="AWindowBase.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

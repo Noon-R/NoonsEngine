@@ -9,7 +9,7 @@ class TestView
 {
 public:
 
-	TestView(WindowBase* const window);
+	TestView(AWindowBase* const window);
 
 	virtual int Init();
 	virtual int Update();

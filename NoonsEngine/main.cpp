@@ -21,7 +21,7 @@ int main() {
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
 
-	WindowBase* window = new WindowBase(1920, 1080, "Noon's Engine", NULL, NULL);
+	AWindowBase* window = new AWindowBase(1920, 1080, "Noon's Engine", NULL, NULL);
 	if (!window->GetWindow()) {
 		return -1;
 	}
