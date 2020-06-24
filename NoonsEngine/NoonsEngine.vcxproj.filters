@@ -46,6 +46,9 @@
     <Filter Include="ヘッダー ファイル\Core\Base">
       <UniqueIdentifier>{98e4a090-abe7-4898-9a73-88da774410b0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\EngineCore">
+      <UniqueIdentifier>{88452a9e-8cf7-4241-83b5-757e3958016a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -106,6 +109,9 @@
       <Filter>ソース ファイル\VIews</Filter>
     </ClCompile>
     <ClCompile Include="ShaderBase.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="AGameObjectBase.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
@@ -191,9 +197,6 @@
     <ClInclude Include="ShaderBase.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="NoonBaseTypes.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="glShader.h">
       <Filter>ヘッダー ファイル\Core</Filter>
     </ClInclude>
@@ -220,6 +223,12 @@
     </ClInclude>
     <ClInclude Include="AWindowBase.h">
       <Filter>ヘッダー ファイル\Core\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="AGameObjectBase.h">
+      <Filter>ヘッダー ファイル\EngineCore</Filter>
+    </ClInclude>
+    <ClInclude Include="NoonBaseTypes.h">
+      <Filter>ヘッダー ファイル\EngineCore</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

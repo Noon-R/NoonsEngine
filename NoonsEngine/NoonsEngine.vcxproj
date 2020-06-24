@@ -151,6 +151,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ADefineView.cpp" />
+    <ClCompile Include="AGameObjectBase.cpp" />
     <ClCompile Include="glShader.cpp" />
     <ClCompile Include="imgui.cpp" />
     <ClCompile Include="imgui_demo.cpp" />
@@ -188,6 +189,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ADefineView.h" />
+    <ClInclude Include="AGameObjectBase.h" />
     <ClInclude Include="glShader.h" />
     <ClInclude Include="imconfig.h" />
     <ClInclude Include="imgui.h" />
