@@ -73,12 +73,14 @@
     <LinkIncremental>true</LinkIncremental>
     <ExecutablePath>$(VC_ExecutablePath_x86);$(CommonExecutablePath)</ExecutablePath>
     <ReferencePath>$(VC_ReferencesPath_x86);</ReferencePath>
-    <LibraryPath>$(VC_LibraryPath_x86);D:\VS_Package\glew-2.2.0\lib\Release\Win32;$(WindowsSDK_LibraryPath_x86)</LibraryPath>
+    <LibraryPath>D:\C_language\cpp_project\bullet3-2.89\bin;$(VC_LibraryPath_x86);D:\VS_Package\glew-2.2.0\lib\Release\Win32;$(WindowsSDK_LibraryPath_x86)</LibraryPath>
     <ExcludePath>$(CommonExcludePath);$(VC_ExecutablePath_x86);$(VC_LibraryPath_x86)</ExcludePath>
-    <IncludePath>D:\VS_Package\glew-2.2.0\include;$(IncludePath)</IncludePath>
+    <IncludePath>D:\C_language\cpp_project\bullet3-2.89\src;D:\VS_Package\glew-2.2.0\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>D:\C_language\cpp_project\bullet3-2.89\src;$(IncludePath)</IncludePath>
+    <LibraryPath>D:\C_language\cpp_project\bullet3-2.89\bin;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -87,6 +89,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
+    <IncludePath>D:\C_language\cpp_project\bullet3-2.89\src;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -147,22 +150,75 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ADefineView.cpp" />
+    <ClCompile Include="AGameObjectBase.cpp" />
     <ClCompile Include="glShader.cpp" />
+    <ClCompile Include="imgui.cpp" />
+    <ClCompile Include="imgui_demo.cpp" />
+    <ClCompile Include="imgui_draw.cpp" />
+    <ClCompile Include="imgui_impl_glfw.cpp" />
+    <ClCompile Include="imgui_impl_opengl3.cpp" />
+    <ClCompile Include="imgui_widgets.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Matrix.cpp" />
+    <ClCompile Include="ModelLoader.cpp" />
+    <ClCompile Include="SampleGame.cpp" />
+    <ClCompile Include="SampleView.cpp" />
+    <ClCompile Include="ShaderBase.cpp" />
+    <ClCompile Include="ShapeCreator.cpp" />
+    <ClCompile Include="TestView.cpp" />
+    <ClCompile Include="Texture.cpp" />
+    <ClCompile Include="UITestView.cpp" />
+    <ClCompile Include="Vector.cpp" />
     <ClCompile Include="WindowBase.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="point.frag" />
-    <None Include="point.vert" />
+    <None Include="point.frag">
+      <FileType>Text</FileType>
+    </None>
+    <None Include="point.vert">
+      <FileType>Text</FileType>
+    </None>
+    <None Include="pointWithNormal.frag" />
+    <None Include="pointWithNormal.vert">
+      <FileType>Text</FileType>
+    </None>
+    <None Include="testuv.frag" />
+    <None Include="testuv.vert" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ADefineView.h" />
+    <ClInclude Include="AGameObjectBase.h" />
     <ClInclude Include="glShader.h" />
+    <ClInclude Include="imconfig.h" />
+    <ClInclude Include="imgui.h" />
+    <ClInclude Include="imgui_impl_glfw.h" />
+    <ClInclude Include="imgui_impl_opengl3.h" />
+    <ClInclude Include="imgui_internal.h" />
+    <ClInclude Include="imstb_rectpack.h" />
+    <ClInclude Include="imstb_textedit.h" />
+    <ClInclude Include="imstb_truetype.h" />
+    <ClInclude Include="Material.h" />
     <ClInclude Include="Matrix.h" />
+    <ClInclude Include="ModelLoader.h" />
+    <ClInclude Include="NoonBaseTypes.h" />
     <ClInclude Include="Object.h" />
+    <ClInclude Include="SampleGame.h" />
+    <ClInclude Include="SampleView.h" />
+    <ClInclude Include="ShaderBase.h" />
     <ClInclude Include="Shape.h" />
-    <ClInclude Include="WindowBase.h" />
+    <ClInclude Include="ShapeCreator.h" />
+    <ClInclude Include="ShapeIndex.h" />
+    <ClInclude Include="SolidShape.h" />
+    <ClInclude Include="SolidShapeIndex.h" />
+    <ClInclude Include="stb_image.h" />
+    <ClInclude Include="TestView.h" />
+    <ClInclude Include="Texture.h" />
+    <ClInclude Include="UITestView.h" />
+    <ClInclude Include="Uniform.h" />
+    <ClInclude Include="Vector.h" />
+    <ClInclude Include="AWindowBase.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

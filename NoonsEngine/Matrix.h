@@ -12,6 +12,8 @@ public:
 
 	const GLfloat* data() const;
 
+	void GetNormalMatrix(GLfloat *m) const;
+
 	void LoadIdentity();
 
 	static Matrix identity();

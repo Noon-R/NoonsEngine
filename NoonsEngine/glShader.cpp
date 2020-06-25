@@ -99,6 +99,9 @@ GLuint createProgram(const char* vsrc, const char* fsrc) {
 	}
 
 	glBindAttribLocation(program, 0, "position");
+	glBindAttribLocation(program, 1, "normal");
+	glBindAttribLocation(program, 2, "color");
+	glBindAttribLocation(program, 3, "uv");
 	glBindFragDataLocation(program, 0, "fragment");
 	glLinkProgram(program);
 

@@ -3,22 +3,22 @@
 #include<GL/glew.h>
 #include<GLFW/glfw3.h>
 
-class WindowBase {
+class AWindowBase {
 public:
 
-	WindowBase(int width, int height, const char* title, GLFWmonitor* monitor, GLFWwindow* share);
-	~WindowBase();
+	AWindowBase(int width, int height, const char* title, GLFWmonitor* monitor, GLFWwindow* share);
+	~AWindowBase();
 	void SetWindowContext() const;
 	//UseShader And Set some UniformParams
 	void SwapBuffers() const;
 	void SetSize(GLfloat width, GLfloat height);
-	const GLFWwindow* GetWindow();
+	GLFWwindow* GetWindow();
 	const GLfloat* GetSize() const;
 	GLfloat GetAspect() const;
 	GLfloat GetScale() const;
 	explicit operator bool() const;
 private:
-	GLFWwindow* const m_window;
+	GLFWwindow* m_window;
 	GLfloat m_size[2];
 	GLfloat m_scale;
 
