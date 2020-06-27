@@ -215,6 +215,7 @@
     <ClInclude Include="stb_image.h" />
     <ClInclude Include="TestView.h" />
     <ClInclude Include="Texture.h" />
+    <ClInclude Include="Transform.h" />
     <ClInclude Include="UITestView.h" />
     <ClInclude Include="Uniform.h" />
     <ClInclude Include="Vector.h" />
