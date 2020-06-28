@@ -168,6 +168,7 @@
     <ClCompile Include="ShapeCreator.cpp" />
     <ClCompile Include="TestView.cpp" />
     <ClCompile Include="Texture.cpp" />
+    <ClCompile Include="Transform.cpp" />
     <ClCompile Include="UITestView.cpp" />
     <ClCompile Include="Vector.cpp" />
     <ClCompile Include="WindowBase.cpp" />
