@@ -1,7 +1,7 @@
 #pragma once
 #include<GL/glew.h>
 
-#include "WindowBase.h"
+#include "AWindowBase.h"
 
 class Object
 {
