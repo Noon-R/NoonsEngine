@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-#include "WindowBase.h"
+#include "AWindowBase.h"
 #include "glShader.h"
 #include "ShapeIndex.h"
 #include "SolidShape.h"
