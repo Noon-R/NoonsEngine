@@ -1,6 +1,6 @@
 #pragma once
 
-#include "AWindowBase.h"
+#include "WindowBase.h"
 #include "glShader.h"
 
 class ShaderBase {
