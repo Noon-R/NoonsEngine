@@ -1,0 +1,105 @@
+#include "ModelLoader.h"
+
+
+std::string replaceAll(std::string& replacedStr, std::string from, std::string to) {
+	unsigned int pos = replacedStr.find(from);
+	int toLen = to.length();
+
+	if (from.empty()) {
+		return replacedStr;
+	}
+
+	while ((pos = replacedStr.find(from, pos)) != std::string::npos) {
+		replacedStr.replace(pos, from.length(), to);
+		pos += toLen;
+	}
+	return replacedStr;
+}
+
+std::pair<std::vector<Object::Vertex>, int> LoadObjFile(char const* name)
+{
+	std::vector<Object::Vertex> vertecies;
+	std::vector<std::array<float, 3>> poses;
+	std::vector<std::array<float, 3>> normals;
+	std::vector<std::array<float, 2>> uvs;
+
+	std::string filePath = "./Models/" + std::string(name);
+
+	std::ifstream objFIle(filePath,std::ios::in);
+	std::string line;
+
+	std::cout << filePath << std::endl;
+
+
+	if (objFIle.fail()) {
+		std::cout << "Could not Find File or Read File" << std::endl;
+		return std::make_pair(vertecies,0);
+	}
+
+	while (std::getline(objFIle,line)) {
+
+		std::stringstream ss;
+		std::string top;
+
+		ss << line;
+		ss >> top;
+		
+		if (top == "v") {
+			std::array<float, 3> pos;
+
+			ss >> pos[0] >> pos[1] >> pos[2];
+
+			poses.push_back(pos);
+		}else if (top == "vn") {
+			std::array<float, 3> nor;
+
+			ss >> nor[0] >> nor[1] >> nor[2];
+
+			normals.push_back(nor);
+		} else if (top == "vt") {
+			std::array<float, 2> uv;
+
+			ss >> uv[0] >> uv[1];
+
+			uvs.push_back(uv);
+		} else if (top == "f") {
+			std::string str;
+			for (int i = 0; i < 3; ++i) {
+				Object::Vertex ver ;
+				
+				for (int j = 0; j < 4; ++j) {
+					ver.color[j] = 1.0f;
+				}
+
+				ss >> str;
+				replaceAll(str,"/"," ");
+				int p, u, n;
+				std::stringstream vs;
+				vs << str;
+				vs >> p >> u >> n;
+
+				for (int j = 0; j < 3; ++j) {
+					ver.position[j] = poses[p-1][j];
+				}
+
+				for (int j = 0; j < 2; ++j) {
+					ver.uv[j] = uvs[u-1][j];
+				}
+
+				for (int j = 0; j < 3; ++j) {
+					ver.normal[j] = normals[n-1][j];
+				}
+				
+				vertecies.push_back(ver);
+			}
+			
+		} else {
+			continue;
+		}
+		
+
+		std::cout << line << std::endl;
+	}
+
+	return std::make_pair(vertecies, vertecies.size()); ;
+}

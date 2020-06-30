@@ -13,5 +13,228 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="ヘッダー ファイル\Shape">
+      <UniqueIdentifier>{95b8f5db-d4df-4967-9c9a-c63e2db8f096}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Views">
+      <UniqueIdentifier>{a1612d7c-63de-4931-ab61-5b71605590fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\VIews">
+      <UniqueIdentifier>{7faf8ca1-de16-4386-896b-f56981209a66}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Shapes">
+      <UniqueIdentifier>{60d8c09d-1a67-4f8c-a623-8c5b353edd8e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\math">
+      <UniqueIdentifier>{2bca42b2-88f3-440a-b34d-90559587cdbc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Windows">
+      <UniqueIdentifier>{521f8a31-dc1a-4ca3-a9d8-c6486db65006}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\imgui">
+      <UniqueIdentifier>{6b367cf0-430c-482c-a8a0-c627d77c6711}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\imgui">
+      <UniqueIdentifier>{c1ff0275-feec-46ac-baa8-3a441ef13441}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Core">
+      <UniqueIdentifier>{12cdb07f-8616-420e-ae29-741a45917e11}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Core\MathCulc">
+      <UniqueIdentifier>{909c9946-cbaa-446e-83a1-4b23945f03ae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Core\Base">
+      <UniqueIdentifier>{98e4a090-abe7-4898-9a73-88da774410b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\EngineCore">
+      <UniqueIdentifier>{88452a9e-8cf7-4241-83b5-757e3958016a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="glShader.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="ADefineView.cpp">
+      <Filter>ソース ファイル\VIews</Filter>
+    </ClCompile>
+    <ClCompile Include="SampleView.cpp">
+      <Filter>ソース ファイル\VIews</Filter>
+    </ClCompile>
+    <ClCompile Include="ShapeCreator.cpp">
+      <Filter>ソース ファイル\Shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="Matrix.cpp">
+      <Filter>ソース ファイル\math</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector.cpp">
+      <Filter>ソース ファイル\math</Filter>
+    </ClCompile>
+    <ClCompile Include="WindowBase.cpp">
+      <Filter>ソース ファイル\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="TestView.cpp">
+      <Filter>ソース ファイル\VIews</Filter>
+    </ClCompile>
+    <ClCompile Include="ModelLoader.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="UITestView.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui.cpp">
+      <Filter>ソース ファイル\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui_demo.cpp">
+      <Filter>ソース ファイル\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui_draw.cpp">
+      <Filter>ソース ファイル\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui_impl_glfw.cpp">
+      <Filter>ソース ファイル\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui_impl_opengl3.cpp">
+      <Filter>ソース ファイル\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui_widgets.cpp">
+      <Filter>ソース ファイル\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="SampleGame.cpp">
+      <Filter>ソース ファイル\VIews</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderBase.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="AGameObjectBase.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Transform.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="point.vert">
+      <Filter>リソース ファイル</Filter>
+    </None>
+    <None Include="point.frag">
+      <Filter>リソース ファイル</Filter>
+    </None>
+    <None Include="pointWithNormal.vert">
+      <Filter>リソース ファイル</Filter>
+    </None>
+    <None Include="pointWithNormal.frag">
+      <Filter>リソース ファイル</Filter>
+    </None>
+    <None Include="testuv.frag">
+      <Filter>リソース ファイル</Filter>
+    </None>
+    <None Include="testuv.vert">
+      <Filter>リソース ファイル</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Vector.h">
+      <Filter>ヘッダー ファイル\Core\MathCulc</Filter>
+    </ClInclude>
+    <ClInclude Include="Matrix.h">
+      <Filter>ヘッダー ファイル\Core\MathCulc</Filter>
+    </ClInclude>
+    <ClInclude Include="ShapeIndex.h">
+      <Filter>ヘッダー ファイル\Shape</Filter>
+    </ClInclude>
+    <ClInclude Include="SolidShape.h">
+      <Filter>ヘッダー ファイル\Shape</Filter>
+    </ClInclude>
+    <ClInclude Include="SolidShapeIndex.h">
+      <Filter>ヘッダー ファイル\Shape</Filter>
+    </ClInclude>
+    <ClInclude Include="SampleView.h">
+      <Filter>ヘッダー ファイル\Views</Filter>
+    </ClInclude>
+    <ClInclude Include="ShapeCreator.h">
+      <Filter>ヘッダー ファイル\Shape</Filter>
+    </ClInclude>
+    <ClInclude Include="TestView.h">
+      <Filter>ヘッダー ファイル\Views</Filter>
+    </ClInclude>
+    <ClInclude Include="stb_image.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="imconfig.h">
+      <Filter>ヘッダー ファイル\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui.h">
+      <Filter>ヘッダー ファイル\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui_impl_glfw.h">
+      <Filter>ヘッダー ファイル\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui_impl_opengl3.h">
+      <Filter>ヘッダー ファイル\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui_internal.h">
+      <Filter>ヘッダー ファイル\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imstb_rectpack.h">
+      <Filter>ヘッダー ファイル\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imstb_textedit.h">
+      <Filter>ヘッダー ファイル\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="imstb_truetype.h">
+      <Filter>ヘッダー ファイル\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="UITestView.h">
+      <Filter>ヘッダー ファイル\Views</Filter>
+    </ClInclude>
+    <ClInclude Include="SampleGame.h">
+      <Filter>ヘッダー ファイル\Views</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderBase.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="glShader.h">
+      <Filter>ヘッダー ファイル\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Object.h">
+      <Filter>ヘッダー ファイル\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Shape.h">
+      <Filter>ヘッダー ファイル\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Material.h">
+      <Filter>ヘッダー ファイル\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="ModelLoader.h">
+      <Filter>ヘッダー ファイル\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture.h">
+      <Filter>ヘッダー ファイル\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Uniform.h">
+      <Filter>ヘッダー ファイル\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="ADefineView.h">
+      <Filter>ヘッダー ファイル\Core\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="AWindowBase.h">
+      <Filter>ヘッダー ファイル\Core\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="AGameObjectBase.h">
+      <Filter>ヘッダー ファイル\EngineCore</Filter>
+    </ClInclude>
+    <ClInclude Include="NoonBaseTypes.h">
+      <Filter>ヘッダー ファイル\EngineCore</Filter>
+    </ClInclude>
+    <ClInclude Include="Transform.h">
+      <Filter>ヘッダー ファイル\EngineCore</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
