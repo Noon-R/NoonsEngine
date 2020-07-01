@@ -23,15 +23,16 @@ int Transform::Rotatae(float x, float y, float z, float radian)
 	return 0;
 }
 
-int Transform::SetPosition()
+int Transform::SetPosition(float x, float y, float z)
 {
 	return 0;
 }
 
-int Transform::SetRotation()
+int Transform::SetRotation(float x, float y, float z)
 {
 	return 0;
 }
+
 
 float* Transform::GetPosition()
 {

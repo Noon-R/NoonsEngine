@@ -6,8 +6,8 @@ public:
 
 	int Translate(float x, float y, float z);
 	int Rotatae(float x, float y, float z, float radian);
-	int SetPosition();
-	int SetRotation();
+	int SetPosition(float x, float y,float z);
+	int SetRotation(float x, float y, float z);
 	float* GetPosition();
 	float* GetRoattion();
 	
