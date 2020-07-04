@@ -5,7 +5,9 @@ public:
 	~Transform();
 
 	int Translate(float x, float y, float z);
-	int Rotatae(float x, float y, float z, float radian);
+
+	//setting x,y,z:Axis radian: angle
+	int Rotatae(float x, float y, float z);
 	int FixObject();
 	int SetPosition(float x, float y,float z);
 	int SetRotation(float roll, float yaw, float pitch);

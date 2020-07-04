@@ -25,7 +25,7 @@ int Transform::Translate(float x, float y, float z)
 	return 0;
 }
 
-int Transform::Rotatae(float x, float y, float z, float radian)
+int Transform::Rotatae(float x, float y, float z)
 {
 	if (m_isFixing)return -1;
 
