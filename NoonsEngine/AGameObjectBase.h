@@ -1,5 +1,8 @@
 #pragma once
 
+#include "Transform.h"
+#include "ShaderBase.h"
+
 class AGameObject
 {
 public:
@@ -8,6 +11,8 @@ public:
 
 private:
 
+	Transform m_transform;
+	ShaderBase m_shader;
 
 };
 
