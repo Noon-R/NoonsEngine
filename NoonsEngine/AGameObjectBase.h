@@ -8,6 +8,7 @@ class AGameObject
 public:
 	AGameObject();
 	~AGameObject();
+	int DrawObject();
 
 private:
 
