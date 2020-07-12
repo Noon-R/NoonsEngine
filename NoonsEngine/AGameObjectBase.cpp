@@ -7,3 +7,8 @@ AGameObject::AGameObject()
 AGameObject::~AGameObject()
 {
 }
+
+
+int AGameObject::DrawObject(){
+    
+}
