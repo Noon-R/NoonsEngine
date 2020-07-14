@@ -2,11 +2,12 @@
 
 #include "Transform.h"
 #include "ShaderBase.h"
+#include "Matrix.h"
 
 class AGameObject
 {
 public:
-	AGameObject();
+	AGameObject(AWindowBase* window, const char* vert, const char* frag);
 	~AGameObject();
 	int DrawObject();
 
