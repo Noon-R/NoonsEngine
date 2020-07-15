@@ -99,7 +99,7 @@ int SampleGame::Draw()
 		glUniform3fv(m_LambLoc, Lcount, Lamb);
 		glUniform3fv(m_LdiffLoc, Lcount, Ldiff);
 		glUniform3fv(m_LspecLoc, Lcount, Lspec);
-
+		
 
 		material->Select(0, 0);
 		shape->Draw();
