@@ -9,7 +9,7 @@ class AGameObject
 public:
 	AGameObject(AWindowBase* window, const char* vert, const char* frag);
 	~AGameObject();
-	int DrawObject();
+	int DrawObject(float const * Lpos,);
 
 private:
 

@@ -13,7 +13,7 @@ AGameObject::~AGameObject()
 
 int AGameObject::DrawObject(){
     
-    const float* pos = m_transform.GetPosition;
+    const float* pos = m_transform.GetPosition();
     Matrix translate(Matrix::Translate(*pos, *(pos+1), *(pos+2)));
 
     m_shader.UseShader();
