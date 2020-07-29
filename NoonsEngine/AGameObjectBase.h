@@ -4,6 +4,8 @@
 #include "ShaderBase.h"
 #include "Matrix.h"
 #include "Shape.h"
+#include "Material.h"
+#include "Uniform.h"
 
 class AGameObject
 {
@@ -16,6 +18,7 @@ private:
 
 	Transform m_transform;
 	ShaderBase m_shader;
-	Shape m_shape;
+	Shape* m_shape;
+	Uniform<Material>* m_material;
 };
 
