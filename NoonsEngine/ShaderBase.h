@@ -9,10 +9,10 @@ public:
 	~ShaderBase();
 
 	int UseShader();
-	int SetUniformMatrix3(const char* name, GLfloat const * data);
-	int SetUniformMatrix4(const char* name, GLfloat const* data);
-	int SetUniform3f(const char* name, GLfloat const * data);
-	int SetUniform4f(const char* name, GLfloat const* data);
+	int SetUniformMatrix3(const char* name, int count, GLfloat const * data);
+	int SetUniformMatrix4(const char* name, int count, GLfloat const* data);
+	int SetUniform3f(const char* name, int count, GLfloat const * data);
+	int SetUniform4f(const char* name, int count, GLfloat const* data);
 
 private:
 

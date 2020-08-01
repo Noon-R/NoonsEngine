@@ -61,12 +61,12 @@ int Transform::SetRotation(float roll, float yaw, float pitch)
 }
 
 
-float* Transform::GetPosition()
+float const* Transform::GetPosition()
 {
 	return m_pos;
 }
 
-float* Transform::GetRoattion()
+float const* Transform::GetRoattion()
 {
 	return m_rotation;
 }

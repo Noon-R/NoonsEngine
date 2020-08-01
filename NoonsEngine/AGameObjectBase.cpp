@@ -17,15 +17,15 @@ AGameObject::~AGameObject()
 {
 }
 
-int AGameObject::DrawObject(float const* Lpos, float const* Lamb, float const* Ldiff)
+int AGameObject::DrawObject(AWindowBase const * window, float const* Lpos, float const* Lamb, float const* Ldiff, float const* Lspec)
 {
     const float* pos = m_transform.GetPosition();
     Matrix translate(Matrix::Translate(*pos, *(pos + 1), *(pos + 2)));
 
 
-	const GLfloat* const size(m_window->GetSize());
-	const GLfloat scale(m_window->GetScale() * 2.0f);
-	const GLfloat fovy(m_window->GetScale() * 0.01f);
+	const GLfloat* const size(window->GetSize());
+	const GLfloat scale(window->GetScale() * 2.0f);
+	const GLfloat fovy(window->GetScale() * 0.01f);
 	const GLfloat aspect(size[0] / size[1]);
 
 	const Matrix projection(Matrix::Perspective(fovy, aspect, 1.0f, 10.0f));
@@ -34,11 +34,12 @@ int AGameObject::DrawObject(float const* Lpos, float const* Lamb, float const* L
 
 	const Matrix r(Matrix::Rotate(static_cast<GLfloat>(glfwGetTime()), 0.0f, 1.0f, 0.0f));
 	//const Matrix model(translation * scaling);
-	const Matrix model(Matrix::Translate(cubePos.x, cubePos.y, cubePos.z));
+	float const* position = m_transform.GetPosition();
+	const Matrix model(Matrix::Translate(*position, *(position + 1), *(position + 2)));
 
 	const Matrix view(Matrix::LookAt(
-		0.0f + cubePos.x, 2.0f + cubePos.y, -5.0f + cubePos.z,
-		cubePos.x, cubePos.y, cubePos.z,
+		0.0f , 2.0f , -5.0f ,
+		0, 0, 0,
 		0.0f, 1.0f, 0.0f
 	));
 
@@ -48,19 +49,16 @@ int AGameObject::DrawObject(float const* Lpos, float const* Lamb, float const* L
 
 	modelView.GetNormalMatrix(normalMatrix);
 
-	m_shader.SetUniformMatrix4("projection", projection.data());
-	m_shader.SetUniformMatrix4("modelview", modelView.data());
-	m_shader.SetUniformMatrix3("normalMatrix", normalMatrix);
-	for (int i = 0; i < Lcount; ++i) {
-		m_shader.SetUniform4f("Lpos", (view * Lpos[i]).data());
+	int Lcount = 2;
 
-	}
-	glUniform3fv(m_LambLoc, Lcount, Lamb);
-	glUniform3fv(m_LdiffLoc, Lcount, Ldiff);
-	glUniform3fv(m_LspecLoc, Lcount, Lspec);
+	m_shader.SetUniformMatrix4("projection", 1,projection.data());
+	m_shader.SetUniformMatrix4("modelview", 1,modelView.data());
+	m_shader.SetUniformMatrix3("normalMatrix", 1, normalMatrix);
 
-
-
+	m_shader.SetUniform4f("Lpos", Lcount, Lpos);
+	m_shader.SetUniform3f("Lamb", Lcount, Lamb);
+	m_shader.SetUniform3f("Ldiff", Lcount, Ldiff);
+	m_shader.SetUniform3f("Lspec", Lcount, Lspec);
 
     m_shader.UseShader();
 
@@ -68,13 +66,6 @@ int AGameObject::DrawObject(float const* Lpos, float const* Lamb, float const* L
     m_shape->Draw();
     return 0;
 }
-, m_program(loadProgram("pointWithNormal.vert", "pointWithNormal.frag"))
-, m_modelviewLoc(glGetUniformLocation(m_program, "modelview"))
-, m_projectionLoc(glGetUniformLocation(m_program, "projection"))
-, m_normalMatrixLoc(glGetUniformLocation(m_program, "normalMatrix"))
-, m_LposLoc(glGetUniformLocation(m_program, "Lpos"))
-, m_LambLoc(glGetUniformLocation(m_program, "Lamb"))
-, m_LdiffLoc(glGetUniformLocation(m_program, "Ldiff"))
-, m_LspecLoc(glGetUniformLocation(m_program, "Lspec"))
-, m_materialLoc(glGetUniformBlockIndex(m_program, "Material"))
+
+// m_materialLoc(glGetUniformBlockIndex(m_program, "Material"))
 
