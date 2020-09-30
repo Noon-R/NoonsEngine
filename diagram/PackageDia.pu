@@ -8,6 +8,7 @@ package GraphicsBaseLayer{
 
 package NoonEngine{
     package View
+    package GameObject
     package InputManager
 }
 
@@ -17,8 +18,20 @@ package JointLayer{
     package UI
 }
 
+package OSOriginal{
+    package Win
+    package OSX
+}
+
+package EX{
+    package ImGui
+}
+
 NoonEngine <-- JointLayer 
 JointLayer <-- GraphicsBaseLayer
+JointLayer <-- OSOriginal
+
+UI <- ImGui
 
 View <- 3DDrawer
 View <- UI
