@@ -28,7 +28,7 @@ private:
 
 	const GLuint m_materialLoc;
 
-	Texture*  m_tex;
+	Noon::GraphicsCore::Texture*  m_tex;
 
 	static constexpr int Lcount = 2;
 	static constexpr Vector Lpos[2] = { {0.0f, 0.0f, 5.0f, 1.0f},{ 8.0f, 0.0f, 0.0f, 1.0f } };

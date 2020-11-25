@@ -32,7 +32,7 @@ TestView::TestView(AWindowBase* const window)
 		0,0,0,0,			125,125,200,255,	125,200,125,255,	0,0,0,255
 	};
 
-	m_tex = new Texture( GL_RGBA, 4,4,cols,m_window);
+	m_tex = new Noon::GraphicsCore::Texture( GL_RGBA, 4,4,cols,m_window);
 
 	//stbi_image_free(data);
 	glUniformBlockBinding(m_program, m_materialLoc, 0);

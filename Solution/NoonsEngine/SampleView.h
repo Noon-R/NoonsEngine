@@ -37,6 +37,6 @@ private:
 	std::unique_ptr<Shape> shape;
 	std::unique_ptr<Shape> shapeSphere;
 
-	Texture* m_tex;
+	Noon::GraphicsCore::Texture* m_tex;
 
 };

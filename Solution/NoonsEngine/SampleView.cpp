@@ -1,7 +1,5 @@
 #include "SampleView.h"
 
-
-
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"
 
@@ -32,7 +30,7 @@ SampleView::SampleView(AWindowBase* const window)
 	data = stbi_load("mochiz04.jpg", &width, &height, &bpp, 0);
 
 
-	m_tex = new Texture(GL_RGB, width, height, data, m_window);
+	m_tex = new Noon::GraphicsCore::Texture(GL_RGB, width, height, data, m_window);
 
 	static constexpr Material color[] = {
 		{0.6f, 0.6f, 0.2f, 0.6f, 0.6f, 0.2f, 0.3f, 0.3f, 0.3f, 30.0f},
