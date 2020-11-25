@@ -1,21 +1,10 @@
 #include "ModelLoader.h"
 
+#include "StringReplacer.h"
 
-std::string replaceAll(std::string& replacedStr, std::string from, std::string to) {
-	unsigned int pos = replacedStr.find(from);
-	int toLen = to.length();
-
-	if (from.empty()) {
-		return replacedStr;
-	}
-
-	while ((pos = replacedStr.find(from, pos)) != std::string::npos) {
-		replacedStr.replace(pos, from.length(), to);
-		pos += toLen;
-	}
-	return replacedStr;
-}
-
+//3角形ポリゴン限定
+//UV情報、法線情報がそろっている場合のものだけ
+//.mtlは読み込んでいない
 std::pair<std::vector<Object::Vertex>, int> LoadObjFile(char const* name)
 {
 	std::vector<Object::Vertex> vertecies;
@@ -33,8 +22,18 @@ std::pair<std::vector<Object::Vertex>, int> LoadObjFile(char const* name)
 
 	if (objFIle.fail()) {
 		std::cout << "Could not Find File or Read File" << std::endl;
+		std::cout << "Make Sure Of FileName and Directory" << std::endl;
 		return std::make_pair(vertecies,0);
 	}
+
+	//１行ずつなんのデータかの確認
+
+	/*
+		v : 頂点座標
+		vn: 法線ベクトル情報
+		vt: UV情報
+		f : ポリゴン情報
+	*/
 
 	while (std::getline(objFIle,line)) {
 
@@ -72,7 +71,7 @@ std::pair<std::vector<Object::Vertex>, int> LoadObjFile(char const* name)
 				}
 
 				ss >> str;
-				replaceAll(str,"/"," ");
+				Noon::Util::ReplaceAllChar(str,"/"," ");
 				int p, u, n;
 				std::stringstream vs;
 				vs << str;

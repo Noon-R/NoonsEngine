@@ -49,6 +49,9 @@
     <Filter Include="ヘッダー ファイル\EngineCore">
       <UniqueIdentifier>{88452a9e-8cf7-4241-83b5-757e3958016a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\Core\Util">
+      <UniqueIdentifier>{fa33eda6-70b8-4a36-a2f4-31f5a991dadd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -115,6 +118,9 @@
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="Transform.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="StringReplacer.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
@@ -235,6 +241,9 @@
     </ClInclude>
     <ClInclude Include="Transform.h">
       <Filter>ヘッダー ファイル\EngineCore</Filter>
+    </ClInclude>
+    <ClInclude Include="StringReplacer.h">
+      <Filter>ヘッダー ファイル\Core\Util</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
