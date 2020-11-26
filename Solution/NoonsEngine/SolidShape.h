@@ -7,7 +7,7 @@ class SolidShape
 {
 public:
 
-	SolidShape(AWindowBase* const window, GLint size, GLsizei vertexcount, const Object::Vertex* vertex)
+	SolidShape(AWindowBase* const window, GLint size, GLsizei vertexcount, const Noon::GraphicsCore::Vertex* vertex)
 		: Shape(window, size, vertexcount, vertex)
 	{
 	}

@@ -38,7 +38,7 @@ SampleView::SampleView(AWindowBase* const window)
 	};
 
 	material = new Uniform<Material>(color, 2);
-	std::pair<std::vector<Object::Vertex>, int> vertexInfo = LoadObjFile("sord.obj");
+	std::pair<std::vector<Noon::GraphicsCore::Vertex>, int> vertexInfo = LoadObjFile("sord.obj");
 
 	std::cout << vertexInfo.first[0].position[0] << std::endl;
 	std::cout << vertexInfo.first[0].position[1] << std::endl;

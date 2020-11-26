@@ -8,7 +8,7 @@ class ShapeIndex
 
 public:
 
-	ShapeIndex(AWindowBase* const window, GLint size, GLsizei vertexcount, const Object::Vertex* vertex, GLsizei indexcount, const GLuint* index)
+	ShapeIndex(AWindowBase* const window, GLint size, GLsizei vertexcount, const Noon::GraphicsCore::Vertex* vertex, GLsizei indexcount, const GLuint* index)
 		: Shape(window, size, vertexcount, vertex,indexcount, index)
 		, m_indexcount(indexcount)
 	{

@@ -9,5 +9,5 @@
 
 #include "Object.h"
 
-std::pair<std::vector<Object::Vertex>, int> LoadObjFile(char const* name);
+std::pair<std::vector<Noon::GraphicsCore::Vertex>, int> LoadObjFile(char const* name);
 

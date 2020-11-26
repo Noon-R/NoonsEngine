@@ -46,7 +46,7 @@ TestView::TestView(AWindowBase* const window)
 	
 	material = new Uniform<Material>(color, 2);
 
-	Object::Vertex quad[] = {
+	Noon::GraphicsCore::Vertex quad[] = {
 		{1.0f ,1.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f},
 		{-1.0f ,1.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f},
 		{-1.0f ,-1.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},

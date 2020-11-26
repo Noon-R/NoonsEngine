@@ -5,9 +5,9 @@
 //3角形ポリゴン限定
 //UV情報、法線情報がそろっている場合のものだけ
 //.mtlは読み込んでいない
-std::pair<std::vector<Object::Vertex>, int> LoadObjFile(char const* name)
+std::pair<std::vector<Noon::GraphicsCore::Vertex>, int> LoadObjFile(char const* name)
 {
-	std::vector<Object::Vertex> vertecies;
+	std::vector<Noon::GraphicsCore::Vertex> vertecies;
 	std::vector<std::array<float, 3>> poses;
 	std::vector<std::array<float, 3>> normals;
 	std::vector<std::array<float, 2>> uvs;
@@ -64,7 +64,7 @@ std::pair<std::vector<Object::Vertex>, int> LoadObjFile(char const* name)
 		} else if (top == "f") {
 			std::string str;
 			for (int i = 0; i < 3; ++i) {
-				Object::Vertex ver ;
+				Noon::GraphicsCore::Vertex ver ;
 				
 				for (int j = 0; j < 4; ++j) {
 					ver.color[j] = 1.0f;

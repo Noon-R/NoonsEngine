@@ -1,7 +1,7 @@
 #include "ShapeCreator.h"
 
 
-constexpr Object::Vertex solidCubeVertex[] = {
+constexpr Noon::GraphicsCore::Vertex solidCubeVertex[] = {
 
 	{ -1.0f, -1.0f, -1.0f,  -1.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f},
 	{ -1.0f, -1.0f,  1.0f,  -1.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f},
@@ -46,7 +46,7 @@ constexpr Object::Vertex solidCubeVertex[] = {
 	{ -1.0f,  1.0f,  1.0f,  0.0f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f}
 };
 
-//constexpr Object::Vertex cubeVertex[] = {
+//constexpr Noon::GraphicsCore::Vertex cubeVertex[] = {
 //	{ -1.0f, -1.0f, -1.0f, 0.0f, 0.0f, 0.0f },  
 //	{ -1.0f, -1.0f,  1.0f, 0.0f, 0.0f, 0.8f },     
 //	{ -1.0f,  1.0f,  1.0f, 0.0f, 0.8f, 0.0f },   
@@ -59,7 +59,7 @@ constexpr Object::Vertex solidCubeVertex[] = {
 
 
 ////WithIndexVertex
-//constexpr Object::Vertex solidCubeVertexNeedIndex[] = {
+//constexpr Noon::GraphicsCore::Vertex solidCubeVertexNeedIndex[] = {
 //
 //	{ -1.0f, -1.0f, -1.0f,  0.1f,  0.8f, 0.1f},
 //	{ -1.0f, -1.0f,  1.0f,  0.1f,  0.8f, 0.1f},
@@ -94,7 +94,7 @@ constexpr Object::Vertex solidCubeVertex[] = {
 
 
 ////SolidCube
-//constexpr Object::Vertex solidCubeVertex[] = {
+//constexpr Noon::GraphicsCore::Vertex solidCubeVertex[] = {
 //
 //	{ -1.0f, -1.0f, -1.0f,  0.1f,  0.8f, 0.1f},
 //	{ -1.0f, -1.0f,  1.0f,  0.1f,  0.8f, 0.1f},
@@ -187,7 +187,7 @@ constexpr GLuint wireCubeIndex[] = {
 
 Shape* CreateSolidSphere(AWindowBase* const window, const int slices, const int stacks) {
 
-	std::vector<Object::Vertex> solidSphereVertex;
+	std::vector<Noon::GraphicsCore::Vertex> solidSphereVertex;
 	float pi = acos(-1);
 	for (int j = 0; j <= stacks; ++j) {
 		const float t(static_cast<float>(j) / static_cast<float>(stacks));
@@ -198,7 +198,7 @@ Shape* CreateSolidSphere(AWindowBase* const window, const int slices, const int 
 			const float s(static_cast<float>(i) / static_cast<float>(slices));
 			const float z(r * cos(2 * pi * s)), x(r * sin(2 * pi * s));
 
-			const Object::Vertex v = { x,y,z,x,y,z , 1.0f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f };
+			const Noon::GraphicsCore::Vertex v = { x,y,z,x,y,z , 1.0f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f };
 
 			solidSphereVertex.emplace_back(v);
 		}

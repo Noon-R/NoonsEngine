@@ -1,5 +1,6 @@
 #pragma once
 #include<GL/glew.h>
+#include "Vertex.h"
 
 #include "AWindowBase.h"
 
@@ -20,14 +21,9 @@ private:
 
 public:
 
-	struct Vertex {
-		GLfloat position[3];
-		GLfloat normal[3];
-		GLfloat color[4];
-		GLfloat uv[2];
-	};
+	
 
-	Object(AWindowBase* window, GLint size, GLsizei vertexcount, const Vertex* vertex ,GLsizei indexcount = 0, const GLuint *index = NULL) {
+	Object(AWindowBase* window, GLint size, GLsizei vertexcount, const Noon::GraphicsCore::Vertex* vertex ,GLsizei indexcount = 0, const GLuint *index = NULL) {
 
 		window->SetWindowContext();
 
@@ -38,16 +34,16 @@ public:
 		glGenBuffers(1, &m_vbo);
 		glBindBuffer(GL_ARRAY_BUFFER, m_vbo);
 		glBufferData(GL_ARRAY_BUFFER,
-			vertexcount * sizeof(Vertex), vertex, GL_STATIC_DRAW
+			vertexcount * sizeof(Noon::GraphicsCore::Vertex), vertex, GL_STATIC_DRAW
 			);
 
-		glVertexAttribPointer(0, size, GL_FLOAT, GL_FALSE, sizeof(Vertex), static_cast<Vertex * >(0) -> position);
+		glVertexAttribPointer(0, size, GL_FLOAT, GL_FALSE, sizeof(Noon::GraphicsCore::Vertex), static_cast<Noon::GraphicsCore::Vertex * >(0) -> position);
 		glEnableVertexAttribArray(0);
-		glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), static_cast<Vertex*>(0)->normal);
+		glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(Noon::GraphicsCore::Vertex), static_cast<Noon::GraphicsCore::Vertex*>(0)->normal);
 		glEnableVertexAttribArray(1);
-		glVertexAttribPointer(2, 4, GL_FLOAT, GL_FALSE, sizeof(Vertex), static_cast<Vertex*>(0)->color);
+		glVertexAttribPointer(2, 4, GL_FLOAT, GL_FALSE, sizeof(Noon::GraphicsCore::Vertex), static_cast<Noon::GraphicsCore::Vertex*>(0)->color);
 		glEnableVertexAttribArray(2);
-		glVertexAttribPointer(3, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), static_cast<Vertex*>(0)->uv);
+		glVertexAttribPointer(3, 2, GL_FLOAT, GL_FALSE, sizeof(Noon::GraphicsCore::Vertex), static_cast<Noon::GraphicsCore::Vertex*>(0)->uv);
 		glEnableVertexAttribArray(3);
 
 		glGenBuffers(1, &m_ibo);

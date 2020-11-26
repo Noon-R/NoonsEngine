@@ -7,7 +7,7 @@ class SolidShapeIndex
 {
 public:
 
-	SolidShapeIndex(AWindowBase* const window, GLint size, GLsizei vertexcount, const Object::Vertex* vertex, GLsizei indexcount, const GLuint* index)
+	SolidShapeIndex(AWindowBase* const window, GLint size, GLsizei vertexcount, const Noon::GraphicsCore::Vertex* vertex, GLsizei indexcount, const GLuint* index)
 		: ShapeIndex(window, size, vertexcount, vertex, indexcount,index)
 	{
 	}

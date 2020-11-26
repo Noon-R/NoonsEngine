@@ -52,6 +52,9 @@
     <Filter Include="ヘッダー ファイル\Core\Util">
       <UniqueIdentifier>{fa33eda6-70b8-4a36-a2f4-31f5a991dadd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Util">
+      <UniqueIdentifier>{7880ad7d-46f0-44c7-b1cb-693b6dc4ca35}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -121,7 +124,7 @@
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="StringReplacer.cpp">
-      <Filter>ソース ファイル</Filter>
+      <Filter>ソース ファイル\Util</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -244,6 +247,9 @@
     </ClInclude>
     <ClInclude Include="StringReplacer.h">
       <Filter>ヘッダー ファイル\Core\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="Vertex.h">
+      <Filter>ヘッダー ファイル\Core</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
