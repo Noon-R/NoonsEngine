@@ -14,16 +14,24 @@
 #include "Matrix.h"
 #include "ModelLoader.h"
 
-class ADefineView {
+namespace Noon {
+	namespace EngineCore {
+	
+		class ADefineView {
 
-public :
-	ADefineView(AWindowBase* const window);
-	virtual int Init() = 0;
-	virtual int Update() = 0;
-	virtual int Draw() = 0;
+		public:
+			ADefineView(AWindowBase* window);
 
-protected:
+			void ChangeWindow(AWindowBase* window);
 
-	AWindowBase* const m_window;
+			virtual int Init() = 0;
+			virtual int Update() = 0;
+			virtual int Draw() = 0;
 
-};
+		protected:
+
+			AWindowBase* m_window;
+
+		};
+	}
+}

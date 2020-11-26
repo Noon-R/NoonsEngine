@@ -7,7 +7,7 @@
 #include "imgui_impl_opengl3.h"
 
 class UITestView
-	:public ADefineView
+	:public Noon::EngineCore::ADefineView
 {
 public:
 	UITestView(AWindowBase* const window);

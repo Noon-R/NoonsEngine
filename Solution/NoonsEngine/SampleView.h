@@ -4,7 +4,7 @@
 
 
 class SampleView
-	:public ADefineView
+	:public Noon::EngineCore::ADefineView
 {	
 public:
 

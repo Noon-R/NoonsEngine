@@ -3,7 +3,7 @@
 #include "ADefineView.h"
 
 class SampleGame
-	:public ADefineView {
+	:public Noon::EngineCore::ADefineView {
 
 	
 public:

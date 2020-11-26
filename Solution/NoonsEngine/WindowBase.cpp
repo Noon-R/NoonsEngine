@@ -44,7 +44,7 @@ void AWindowBase::SetSize(GLfloat width, GLfloat height)
 	m_size[1] = height;
 }
 
-GLFWwindow* AWindowBase::GetWindow() {
+GLFWwindow* AWindowBase::GetWindow() const {
 	return m_window;
 }
 

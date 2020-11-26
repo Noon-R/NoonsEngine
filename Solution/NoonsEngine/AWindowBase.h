@@ -8,14 +8,17 @@ public:
 
 	AWindowBase(int width, int height, const char* title, GLFWmonitor* monitor, GLFWwindow* share);
 	~AWindowBase();
-	void SetWindowContext() const;
-	//UseShader And Set some UniformParams
-	void SwapBuffers() const;
+	
 	void SetSize(GLfloat width, GLfloat height);
-	GLFWwindow* GetWindow();
-	const GLfloat* GetSize() const;
+
+	void SetWindowContext() const;
+	void SwapBuffers() const;
+	GLFWwindow* GetWindow() const;
 	GLfloat GetAspect() const;
 	GLfloat GetScale() const;
+
+	const GLfloat* GetSize() const;
+
 	explicit operator bool() const;
 private:
 	GLFWwindow* m_window;

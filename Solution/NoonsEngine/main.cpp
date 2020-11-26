@@ -25,7 +25,7 @@ int main() {
 	if (!window->GetWindow()) {
 		return -1;
 	}
-	SampleGame* view01 = new SampleGame(window);
+	UITestView* view01 = new UITestView(window);
 	
 
 	//BackCulling
