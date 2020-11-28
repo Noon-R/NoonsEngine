@@ -21,8 +21,10 @@ namespace Noon {
 
 		public:
 			ADefineView(AWindowBase* window);
+			~ADefineView();
 
 			void ChangeWindow(AWindowBase* window);
+			bool ShouldOpenWindow() const;
 
 			virtual int Init() = 0;
 			virtual int Update() = 0;
