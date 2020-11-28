@@ -1,4 +1,5 @@
 #pragma once
+#include "CONFIG.h"
 
 #ifdef DEBUG_NOONENGINE
 
@@ -15,9 +16,9 @@ typedef unsigned int  Nuint;
 #endif // DEBUG
 
 
-#ifndef NOON_TYPES_OPENGL
-#define NOON_TYPES_OPENGL 1
+#ifdef NOON_TYPES_OPENGL
 
+#include<GLFW/glfw3.h>
 #include <GL/glew.h>
 
 typedef GLfloat Nfloat;
@@ -26,7 +27,6 @@ typedef GLuint  Nuint;
 
 #endif
 
-#ifndef NOON_TYPES_DIRECTX
-#define NOON_TYPES_DIRECTX 1
+#ifdef NOON_TYPES_DIRECTX
 
 #endif

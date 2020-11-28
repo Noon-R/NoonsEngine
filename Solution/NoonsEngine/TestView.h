@@ -5,7 +5,7 @@
 
 
 class TestView
-	:public Noon::EngineCore::ADefineView
+	:public Noon::NoonEngineCore::ADefineView
 {
 public:
 

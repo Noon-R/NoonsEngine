@@ -1,6 +1,6 @@
 #include "Object.h"
 
-inline Object::Object(AWindowBase* window, GLint size, GLsizei vertexcount, const Noon::GraphicsCore::Vertex* vertex, GLsizei indexcount, const GLuint* index) {
+Object::Object(AWindowBase* window, GLint size, GLsizei vertexcount, const Noon::GraphicsCore::Vertex* vertex, GLsizei indexcount, const GLuint* index) {
 
 	window->SetWindowContext();
 
@@ -34,7 +34,7 @@ inline Object::Object(AWindowBase* window, GLint size, GLsizei vertexcount, cons
 
 }
 
-inline Object::~Object() {
+Object::~Object() {
 
 	glDeleteVertexArrays(1, &m_vao);
 
@@ -43,10 +43,10 @@ inline Object::~Object() {
 
 }
 
-inline void Object::Bind() const {
+void Object::Bind() const {
 	glBindVertexArray(m_vao);
 }
 
-inline void Object::Release() const {
+void Object::Release() const {
 	glBindVertexArray(0);
 }

@@ -15,7 +15,7 @@
 #include "ModelLoader.h"
 
 namespace Noon {
-	namespace EngineCore {
+	namespace NoonEngineCore {
 	
 		class ADefineView {
 

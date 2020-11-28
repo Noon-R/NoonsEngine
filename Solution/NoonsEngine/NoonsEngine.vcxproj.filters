@@ -16,9 +16,6 @@
     <Filter Include="ヘッダー ファイル\Engine">
       <UniqueIdentifier>{76014000-3066-4a85-9d29-ff2d664eaa65}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ヘッダー ファイル\Engine\GameEngineCore">
-      <UniqueIdentifier>{88452a9e-8cf7-4241-83b5-757e3958016a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ヘッダー ファイル\Engine\Shape">
       <UniqueIdentifier>{95b8f5db-d4df-4967-9c9a-c63e2db8f096}</UniqueIdentifier>
     </Filter>
@@ -64,14 +61,8 @@
     <Filter Include="ヘッダー ファイル\Engine\Util\MathCulc">
       <UniqueIdentifier>{909c9946-cbaa-446e-83a1-4b23945f03ae}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ヘッダー ファイル\Engine\GameEngineCore\GameObject">
-      <UniqueIdentifier>{0dd4cb45-6a65-4b40-b203-43005cd047b7}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ソース ファイル\Engine\Views">
       <UniqueIdentifier>{7faf8ca1-de16-4386-896b-f56981209a66}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\Engine\GameEngineCore">
-      <UniqueIdentifier>{81ab8a3f-4c88-4e56-a3fc-31c244779b62}</UniqueIdentifier>
     </Filter>
     <Filter Include="ソース ファイル\Engine\GraphicsCore">
       <UniqueIdentifier>{a6fba89b-411f-4956-949a-db519c6c0740}</UniqueIdentifier>
@@ -87,6 +78,18 @@
     </Filter>
     <Filter Include="ソース ファイル\Engine\GraphicsCore\Object\Material">
       <UniqueIdentifier>{eef3d90b-e81f-4d10-af1b-6880f9123039}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Engine\NoonEngineCore">
+      <UniqueIdentifier>{88452a9e-8cf7-4241-83b5-757e3958016a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Engine\NoonEngineCore\GameObject">
+      <UniqueIdentifier>{0dd4cb45-6a65-4b40-b203-43005cd047b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Engine\NoonEngineCore">
+      <UniqueIdentifier>{81ab8a3f-4c88-4e56-a3fc-31c244779b62}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Engine\NoonEngineCore\GameObject">
+      <UniqueIdentifier>{ec3895a5-13ed-4d12-8ee7-b7f857a15292}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -138,20 +141,11 @@
     <ClCompile Include="main.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="AGameObjectBase.cpp">
-      <Filter>ソース ファイル\Engine\GameEngineCore</Filter>
-    </ClCompile>
     <ClCompile Include="ModelLoader.cpp">
       <Filter>ソース ファイル\Engine\Util</Filter>
     </ClCompile>
     <ClCompile Include="glShader.cpp">
       <Filter>ソース ファイル\Engine\GraphicsCore</Filter>
-    </ClCompile>
-    <ClCompile Include="Transform.cpp">
-      <Filter>ソース ファイル\Engine\GameEngineCore</Filter>
-    </ClCompile>
-    <ClCompile Include="ADefineView.cpp">
-      <Filter>ソース ファイル\Engine\GraphicsCore\Base</Filter>
     </ClCompile>
     <ClCompile Include="Object.cpp">
       <Filter>ソース ファイル\Engine\GraphicsCore\Object</Filter>
@@ -161,6 +155,18 @@
     </ClCompile>
     <ClCompile Include="Texture.cpp">
       <Filter>ソース ファイル\Engine\GraphicsCore\Object\Material</Filter>
+    </ClCompile>
+    <ClCompile Include="AGameObjectBase.cpp">
+      <Filter>ソース ファイル\Engine\NoonEngineCore\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Transform.cpp">
+      <Filter>ソース ファイル\Engine\NoonEngineCore\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="ADefineView.cpp">
+      <Filter>ソース ファイル\Engine\NoonEngineCore</Filter>
+    </ClCompile>
+    <ClCompile Include="NoonEnginStateManager.cpp">
+      <Filter>ソース ファイル\Engine\NoonEngineCore</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -239,14 +245,11 @@
     <ClInclude Include="SampleGame.h">
       <Filter>ヘッダー ファイル\Engine\Views</Filter>
     </ClInclude>
-    <ClInclude Include="ADefineView.h">
-      <Filter>ヘッダー ファイル\Engine\GraphicsCore\Base</Filter>
-    </ClInclude>
     <ClInclude Include="AWindowBase.h">
       <Filter>ヘッダー ファイル\Engine\GraphicsCore\Base</Filter>
     </ClInclude>
     <ClInclude Include="NoonBaseTypes.h">
-      <Filter>ヘッダー ファイル\Engine\GameEngineCore</Filter>
+      <Filter>ヘッダー ファイル\Engine\NoonEngineCore</Filter>
     </ClInclude>
     <ClInclude Include="StringReplacer.h">
       <Filter>ヘッダー ファイル\Engine\Util</Filter>
@@ -282,10 +285,19 @@
       <Filter>ヘッダー ファイル\Ex</Filter>
     </ClInclude>
     <ClInclude Include="AGameObjectBase.h">
-      <Filter>ヘッダー ファイル\Engine\GameEngineCore\GameObject</Filter>
+      <Filter>ヘッダー ファイル\Engine\NoonEngineCore\GameObject</Filter>
     </ClInclude>
     <ClInclude Include="Transform.h">
-      <Filter>ヘッダー ファイル\Engine\GameEngineCore\GameObject</Filter>
+      <Filter>ヘッダー ファイル\Engine\NoonEngineCore\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="CONFIG.h">
+      <Filter>ヘッダー ファイル\Engine\NoonEngineCore</Filter>
+    </ClInclude>
+    <ClInclude Include="NoonEnginStateManager.h">
+      <Filter>ヘッダー ファイル\Engine\NoonEngineCore</Filter>
+    </ClInclude>
+    <ClInclude Include="ADefineView.h">
+      <Filter>ヘッダー ファイル\Engine\NoonEngineCore</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

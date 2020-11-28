@@ -4,13 +4,12 @@
 #include <memory>
 #include <cmath>
 
-#include "SampleView.h"
-#include "TestView.h"
-#include "UITestView.h"
-#include "SampleGame.h"
+#include "NoonEnginStateManager.h"
 
 
 int main() {
+
+	//-----------------------------------OpenGl------------------------------------
 
 	if (glfwInit() == GL_FALSE) {
 		return -1;
@@ -21,11 +20,10 @@ int main() {
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
 
-	AWindowBase* window = new AWindowBase(1920, 1080, "Noon's Engine", NULL, NULL);
-	if (!window->GetWindow()) {
-		return -1;
-	}
-	UITestView* view01 = new UITestView(window);
+	//------------------------------------------------------------------------------
+
+
+	
 	
 
 	//BackCulling
@@ -57,16 +55,15 @@ int main() {
 
 	glfwSetTime(0.0);
 
-
-	while (*window) {
-	
-		window->SetWindowContext();
-		view01->Update();
-		view01->Draw();
+	Noon::NoonEngineCore::NoonEngineStateManager* MainManager = new Noon::NoonEngineCore::NoonEngineStateManager();
+	while (MainManager->IsExistWindow()) {
+		
+		MainManager->Update();
 
 		glfwPollEvents();
 	}
 
+	delete MainManager;
 	glfwTerminate();
 	return 0;
 
