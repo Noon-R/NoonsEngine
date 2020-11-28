@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -75,21 +75,21 @@
     <ReferencePath>$(VC_ReferencesPath_x86);</ReferencePath>
     <LibraryPath>$(SolutionDir)Framework\glew\lib\Release\Win32;$(LibraryPath)</LibraryPath>
     <ExcludePath>$(CommonExcludePath);$(VC_ExecutablePath_x86);$(VC_LibraryPath_x86)</ExcludePath>
-    <IncludePath>$(SolutionDir)Framework\glew\include;$(SolutionDir)Framework\bullet\src;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)Framework\glew\include;$(SolutionDir)Framework\bullet\src;$(IncludePath);$(SolutionDir)Framework\bullet\src;$(SolutionDir)Framework\glew\include;$(SolutionDir)Framework\bullet\src</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(SolutionDir)Framework\glew-2.1.0\include;$(SolutionDir)Framework\glew-2.1.0\include;D:\C_language\cpp_project\bullet3-2.89\src;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)Framework\glew-2.1.0\include;$(SolutionDir)Framework\glew-2.1.0\include;D:\C_language\cpp_project\bullet3-2.89\src;$(IncludePath);$(SolutionDir)Framework\glew\include;$(SolutionDir)Framework\bullet\src</IncludePath>
     <LibraryPath>$(SolutionDir)Framework\glew-2.1.0\lib\Release\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(SolutionDir)Framework\glew-2.1.0\include;$(VC_IncludePath);$(WindowsSDK_IncludePath);;D:\VS_Package\glew-2.2.0\include</IncludePath>
+    <IncludePath>$(SolutionDir)Framework\glew\include;$(SolutionDir)Framework\glew-2.1.0\include;$(VC_IncludePath);$(WindowsSDK_IncludePath);;D:\VS_Package\glew-2.2.0\include;$(SolutionDir)Framework\bullet\src;$(SolutionDir)Framework\glew\include;$(SolutionDir)Framework\bullet\src</IncludePath>
     <LibraryPath>$(SolutionDir)Framework\glew-2.1.0\lib\Release\Win32;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(SolutionDir)Framework\glew-2.1.0\include;D:\C_language\cpp_project\bullet3-2.89\src;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)Framework\glew-2.1.0\include;D:\C_language\cpp_project\bullet3-2.89\src;$(IncludePath);$(SolutionDir)Framework\glew\include;$(SolutionDir)Framework\bullet\src</IncludePath>
     <LibraryPath>$(SolutionDir)Framework\glew-2.1.0\lib\Release\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -165,6 +165,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Matrix.cpp" />
     <ClCompile Include="ModelLoader.cpp" />
+    <ClCompile Include="Object.cpp" />
     <ClCompile Include="SampleGame.cpp" />
     <ClCompile Include="SampleView.cpp" />
     <ClCompile Include="ShaderBase.cpp" />
