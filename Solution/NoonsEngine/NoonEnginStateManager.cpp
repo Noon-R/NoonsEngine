@@ -1,5 +1,9 @@
 #include "NoonEnginStateManager.h"
 
+#include "imgui.h"
+#include "imgui_impl_glfw.h"
+#include "imgui_impl_opengl3.h"
+
 #include "UITestView.h"
 #include "SampleGame.h"
 
@@ -8,12 +12,15 @@ Noon::NoonEngineCore::NoonEngineStateManager::NoonEngineStateManager()
 	,m_gameViews()
 	,m_isLoop(Init())
 {
-
 	
+
 }
 
 Noon::NoonEngineCore::NoonEngineStateManager::~NoonEngineStateManager()
 {
+
+
+
 }
 
 bool Noon::NoonEngineCore::NoonEngineStateManager::Init()
@@ -32,7 +39,6 @@ bool Noon::NoonEngineCore::NoonEngineStateManager::Init()
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
 
-	//------------------------------------------------------------------------------
 
 
 	//FloatingWindow
@@ -43,18 +49,25 @@ bool Noon::NoonEngineCore::NoonEngineStateManager::Init()
 
 
 	glfwSetTime(0.0);
+	//------------------------------------------------------------------------------
 
-	AWindowBase* window = new AWindowBase(1920, 1080, "Noon's Engine", NULL, NULL);
-	if (window->GetWindow()) {
-		UITestView* view01 = new UITestView(window);
+	IMGUI_CHECKVERSION();
+	
+	for (int i = 0; i < 3; i++) {
 
-		m_engineViews.push_back(view01);
+		AWindowBase* window = new AWindowBase(500, 500, "Noon's Engine", NULL, NULL);
+		if (window->GetWindow()) {
+			UITestView* view01 = new UITestView(window);
 
-		isComplete = true;
+			m_engineViews.push_back(view01);
+
+			isComplete = true;
+		}
+		else {
+			isComplete = false;
+		}
 	}
-	else {
-		isComplete = false;
-	}
+	
 
 	AWindowBase* window02 = new AWindowBase(1920, 1080, "Noon's Engine", NULL, NULL);
 	if (window02->GetWindow()) {

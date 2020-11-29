@@ -5,6 +5,7 @@
 #include "imgui.h"
 #include "imgui_impl_glfw.h"
 #include "imgui_impl_opengl3.h"
+#include "imgui_internal.h"
 
 class UITestView
 	:public Noon::NoonEngineCore::ADefineView
@@ -18,6 +19,6 @@ public:
 	virtual int Draw();
 
 private:
-
+	ImGuiContext* m_uiContext;
 };
 

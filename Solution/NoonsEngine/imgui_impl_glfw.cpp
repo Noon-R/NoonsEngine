@@ -342,6 +342,7 @@ static void ImGui_ImplGlfw_UpdateGamepads()
         io.BackendFlags &= ~ImGuiBackendFlags_HasGamepad;
 }
 
+
 void ImGui_ImplGlfw_NewFrame()
 {
     ImGuiIO& io = ImGui::GetIO();
@@ -366,4 +367,9 @@ void ImGui_ImplGlfw_NewFrame()
 
     // Update game controllers (if enabled and available)
     ImGui_ImplGlfw_UpdateGamepads();
+}
+
+IMGUI_IMPL_API void ImGui_ImplGlfw_SetCurrentWindow(GLFWwindow* window)
+{
+    g_Window = window;
 }

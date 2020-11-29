@@ -2,21 +2,30 @@
 
 UITestView::UITestView(AWindowBase* const window)
 	:ADefineView(window)
+    , m_uiContext(ImGui::CreateContext())
 {
-    IMGUI_CHECKVERSION();
-    ImGui::CreateContext();
-
+    
+   
+    
     // imgui init
+    ImGui::SetCurrentContext(m_uiContext);
+    
     ImGui_ImplGlfw_InitForOpenGL(m_window->GetWindow(), true);
     ImGui_ImplOpenGL3_Init();
+    ImGui_ImplOpenGL3_CreateDeviceObjects();
+    ImGui_ImplOpenGL3_CreateFontsTexture();
+    
+    
 
 }
 
 UITestView::~UITestView()
 {
+    ImGui::SetCurrentContext(m_uiContext);
+
     ImGui_ImplOpenGL3_Shutdown();
     ImGui_ImplGlfw_Shutdown();
-    ImGui::DestroyContext();;
+    ImGui::DestroyContext(m_uiContext);
 
 }
 
@@ -39,10 +48,13 @@ int UITestView::Draw()
         glClearColor(0.2f, 0.3f, 0.2f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+        ImGui::SetCurrentContext(m_uiContext);
+        ImGui_ImplGlfw_SetCurrentWindow(m_window->GetWindow());
+        
         ImGui_ImplOpenGL3_NewFrame();
         ImGui_ImplGlfw_NewFrame();
         ImGui::NewFrame();
-
+        
         // gui
         {
             ImGui::Begin("Test Window");
