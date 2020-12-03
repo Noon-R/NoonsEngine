@@ -1,24 +1,32 @@
 #pragma once
 
-#include "ADefineView.h"
+#include "AViewBase.h"
 
 #include "imgui.h"
-#include "imgui_impl_glfw.h"
-#include "imgui_impl_opengl3.h"
 #include "imgui_internal.h"
 
 class UITestView
-	:public Noon::NoonEngineCore::ADefineView
+	:public Noon::NoonEngineCore::AViewBase
 {
 public:
 	UITestView(AWindowBase* const window);
 	~UITestView();
 
-	virtual int Init();
-	virtual int Update();
-	virtual int Draw();
+	virtual int Init(AWindowBase* const window) override;
+
+	virtual int Update(AWindowBase* const window) override;
+
+	virtual int PreDraw(AWindowBase* const window) override;
+
+	virtual int Draw(AWindowBase* const window) override;
+
+	virtual int PostDraw(AWindowBase* const window) override;
 
 private:
+
 	ImGuiContext* m_uiContext;
+	
+	
+
 };
 

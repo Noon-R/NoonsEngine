@@ -7,7 +7,7 @@
 #include <algorithm>
 #include <array>
 
-#include "Object.h"
+#include "Mesh.h"
 
 std::pair<std::vector<Noon::GraphicsCore::Vertex>, int> LoadObjFile(char const* name);
 

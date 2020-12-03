@@ -1,17 +1,25 @@
 #pragma once
 
-#include "ADefineView.h"
+#include "AViewBase.h"
+
+#include "Vector.h"
+#include "Uniform.h"
+#include "Material.h"
+#include "Shape.h"
 
 class SampleGame
-	:public Noon::NoonEngineCore::ADefineView {
+	:public Noon::NoonEngineCore::AViewBase {
 
 	
 public:
 	SampleGame(AWindowBase* const window);
 
-	virtual int Init();
-	virtual int Update();
-	virtual int Draw();
+	virtual int PreDraw(AWindowBase* const window) override;
+	virtual int Draw(AWindowBase* const window) override;
+	virtual int PostDraw(AWindowBase* const window) override;
+
+	virtual int Init(AWindowBase* const window) override;
+	virtual int Update(AWindowBase* const window) override;
 
 private:
 
@@ -34,4 +42,6 @@ private:
 
 	Uniform<Material>* material;
 	std::unique_ptr<Shape> shape;
+
+	
 };

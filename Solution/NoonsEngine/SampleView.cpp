@@ -1,10 +1,14 @@
 #include "SampleView.h"
 
+#include "glShader.h"
+#include "ShapeCreator.h"
+#include "ModelLoader.h"
+
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"
 
 SampleView::SampleView(AWindowBase* const window)
-	:ADefineView(window)
+	:AViewBase(window)
 	, m_program(loadProgram("testuv.vert", "testuv.frag"))
 	,m_modelviewLoc(glGetUniformLocation(m_program, "modelview"))
 	,m_projectionLoc(glGetUniformLocation(m_program, "projection"))
@@ -30,7 +34,7 @@ SampleView::SampleView(AWindowBase* const window)
 	data = stbi_load("mochiz04.jpg", &width, &height, &bpp, 0);
 
 
-	m_tex = new Noon::GraphicsCore::Texture(GL_RGB, width, height, data, m_window);
+	m_tex = new Noon::GraphicsCore::Texture(GL_RGB, width, height, data, window);
 
 	static constexpr Material color[] = {
 		{0.6f, 0.6f, 0.2f, 0.6f, 0.6f, 0.2f, 0.3f, 0.3f, 0.3f, 30.0f},
@@ -44,12 +48,22 @@ SampleView::SampleView(AWindowBase* const window)
 	std::cout << vertexInfo.first[0].position[1] << std::endl;
 	std::cout << vertexInfo.first[0].position[2] << std::endl;
 
-	shape.reset(new SolidShape(m_window,3,vertexInfo.second,&vertexInfo.first[0]));
-	shapeSphere.reset(CreateSolidSphere(m_window, 32, 16));
+	shape.reset(new SolidShape(window,3,vertexInfo.second,&vertexInfo.first[0]));
+	shapeSphere.reset(CreateSolidSphere(window, 32, 16));
 
 }
 
-int SampleView::Init()
+int SampleView::PreDraw(AWindowBase* const window)
+{
+	return 0;
+}
+
+int SampleView::PostDraw(AWindowBase* const window)
+{
+	return 0;
+}
+
+int SampleView::Init(AWindowBase* const window)
 {
 
 	
@@ -57,7 +71,7 @@ int SampleView::Init()
 	return 0;
 }
 
-int SampleView::Update()
+int SampleView::Update(AWindowBase* const window)
 {
 
 	
@@ -65,19 +79,19 @@ int SampleView::Update()
 	return 0;
 }
 
-int SampleView::Draw()
+int SampleView::Draw(AWindowBase* const window)
 {
 
-	m_window->SetWindowContext(); {
+	window->SetWindowContext(); {
 
 		glClearColor(0.2f, 0.3f, 0.2f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		glUseProgram(m_program);
 
-		const GLfloat* const size(m_window->GetSize());
-		const GLfloat scale(m_window->GetScale() * 2.0f);
-		const GLfloat fovy(m_window->GetScale() * 0.01f);
+		const GLfloat* const size(window->GetSize());
+		const GLfloat scale(window->GetScale() * 2.0f);
+		const GLfloat fovy(window->GetScale() * 0.01f);
 		const GLfloat aspect(size[0] / size[1]);
 
 		const Matrix projection(Matrix::Perspective(fovy, aspect, 1.0f, 10.0f));
@@ -128,7 +142,7 @@ int SampleView::Draw()
 		material->Select(0, 1);
 		//shape->Draw();
 	}
-	m_window->SwapBuffers();
+	window->SwapBuffers();
 
 	return 0;
 }

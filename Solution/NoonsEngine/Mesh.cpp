@@ -1,8 +1,10 @@
-#include "Object.h"
+#include "Mesh.h"
 
-Object::Object(AWindowBase* window, GLint size, GLsizei vertexcount, const Noon::GraphicsCore::Vertex* vertex, GLsizei indexcount, const GLuint* index) {
+#include "AWindowBase.h"
 
-	window->SetWindowContext();
+Mesh::Mesh(AWindowBase* window, GLint size, GLsizei vertexcount, const Noon::GraphicsCore::Vertex* vertex, GLsizei indexcount, const GLuint* index) {
+
+	//window->SetWindowContext();
 
 	glGenVertexArrays(1, &m_vao);
 	glBindVertexArray(m_vao);
@@ -34,7 +36,7 @@ Object::Object(AWindowBase* window, GLint size, GLsizei vertexcount, const Noon:
 
 }
 
-Object::~Object() {
+Mesh::~Mesh() {
 
 	glDeleteVertexArrays(1, &m_vao);
 
@@ -43,10 +45,10 @@ Object::~Object() {
 
 }
 
-void Object::Bind() const {
+void Mesh::Bind() const {
 	glBindVertexArray(m_vao);
 }
 
-void Object::Release() const {
+void Mesh::Release() const {
 	glBindVertexArray(0);
 }

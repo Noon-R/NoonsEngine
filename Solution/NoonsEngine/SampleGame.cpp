@@ -1,9 +1,12 @@
 #include "SampleGame.h"
 
+#include "glShader.h"
+#include "ShapeCreator.h"
+
 Vector3 cubePos;
 
 SampleGame::SampleGame(AWindowBase* const window)
-	:ADefineView(window)
+	:AViewBase(window)
 	, m_program(loadProgram("pointWithNormal.vert", "pointWithNormal.frag"))
 	, m_modelviewLoc(glGetUniformLocation(m_program, "modelview"))
 	, m_projectionLoc(glGetUniformLocation(m_program, "projection"))
@@ -16,7 +19,7 @@ SampleGame::SampleGame(AWindowBase* const window)
 
 {
 
-	glfwSetInputMode(m_window->GetWindow(), GLFW_STICKY_KEYS, GLFW_TRUE);
+	
 
 
 	glUniformBlockBinding(m_program, m_materialLoc, 0);
@@ -28,46 +31,46 @@ SampleGame::SampleGame(AWindowBase* const window)
 
 	material = new Uniform<Material>(color, 2);
 
-	shape.reset(CreateSolidCube(m_window));
+	shape.reset(CreateSolidCube(window));
 }
 
-int SampleGame::Init()
+int SampleGame::Init(AWindowBase* const window)
 {
 	return 0;
 }
 
-int SampleGame::Update()
+int SampleGame::Update(AWindowBase* const window)
 {
 
-	if (glfwGetKey(m_window->GetWindow(), GLFW_KEY_W)) {
+	if (glfwGetKey(window->GetWindow(), GLFW_KEY_W)) {
 		cubePos.z += 0.1;
-	} else if (glfwGetKey(m_window->GetWindow(), GLFW_KEY_S)) {
+	} else if (glfwGetKey(window->GetWindow(), GLFW_KEY_S)) {
 		cubePos.z -= 0.1;
 	}
 
-	if (glfwGetKey(m_window->GetWindow(), GLFW_KEY_A)) {
+	if (glfwGetKey(window->GetWindow(), GLFW_KEY_A)) {
 		cubePos.x += 0.1;
 	}
-	else if (glfwGetKey(m_window->GetWindow(), GLFW_KEY_D)) {
+	else if (glfwGetKey(window->GetWindow(), GLFW_KEY_D)) {
 		cubePos.x -= 0.1;
 	}
 
 	return 0;
 }
 
-int SampleGame::Draw()
+int SampleGame::Draw(AWindowBase* const window)
 {
 
-	m_window->SetWindowContext(); {
+	window->SetWindowContext(); {
 
 		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		glUseProgram(m_program);
 
-		const GLfloat* const size(m_window->GetSize());
-		const GLfloat scale(m_window->GetScale() * 2.0f);
-		const GLfloat fovy(m_window->GetScale() * 0.01f);
+		const GLfloat* const size(window->GetSize());
+		const GLfloat scale(window->GetScale() * 2.0f);
+		const GLfloat fovy(window->GetScale() * 0.01f);
 		const GLfloat aspect(size[0] / size[1]);
 
 		const Matrix projection(Matrix::Perspective(fovy, aspect, 1.0f, 10.0f));
@@ -115,7 +118,19 @@ int SampleGame::Draw()
 		shape->Draw();
 
 	}
-	m_window->SwapBuffers();
+	window->SwapBuffers();
 
 	return 0;
 }
+
+int SampleGame::PreDraw(AWindowBase* const window)
+{
+	return 0;
+}
+
+
+int SampleGame::PostDraw(AWindowBase* const window)
+{
+	return 0;
+}
+

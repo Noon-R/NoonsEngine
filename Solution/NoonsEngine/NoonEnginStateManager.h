@@ -1,7 +1,7 @@
 #pragma once
 
 #include<vector>
-#include "ADefineView.h"
+#include "AViewBase.h"
 
 namespace Noon {
 	namespace NoonEngineCore {
@@ -22,8 +22,8 @@ namespace Noon {
 
 		private:
 
-			std::vector<ADefineView*> m_engineViews;
-			std::vector<ADefineView*> m_gameViews;
+			std::vector<AViewBase*> m_engineViews;
+			std::vector<AViewBase*> m_gameViews;
 
 			bool m_isLoop;
 

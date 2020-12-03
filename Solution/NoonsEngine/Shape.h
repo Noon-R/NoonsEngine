@@ -1,12 +1,12 @@
 #pragma once
 #include<memory>
 
-#include "Object.h"
+#include "Mesh.h"
 
 class Shape{
 
 private:
-	std::shared_ptr<const Object> m_object;
+	std::shared_ptr<const Mesh> m_object;
 
 protected:
 
@@ -14,7 +14,7 @@ protected:
 
 public:
 	Shape(AWindowBase* const window,GLint size, GLsizei vertexcount, const Noon::GraphicsCore::Vertex *vertex, GLsizei indexcount = 0, const GLuint* index = NULL)
-		:m_object(new Object(window, size, vertexcount, vertex, indexcount, index))
+		:m_object(new Mesh(window, size, vertexcount, vertex, indexcount, index))
 		,m_vertexcount(vertexcount)
 	{
 	}

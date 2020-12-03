@@ -153,7 +153,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="ADefineView.cpp" />
+    <ClCompile Include="AViewBase.cpp" />
     <ClCompile Include="AGameObjectBase.cpp" />
     <ClCompile Include="glShader.cpp" />
     <ClCompile Include="imgui.cpp" />
@@ -166,7 +166,7 @@
     <ClCompile Include="Matrix.cpp" />
     <ClCompile Include="ModelLoader.cpp" />
     <ClCompile Include="NoonEnginStateManager.cpp" />
-    <ClCompile Include="Object.cpp" />
+    <ClCompile Include="Mesh.cpp" />
     <ClCompile Include="SampleGame.cpp" />
     <ClCompile Include="SampleView.cpp" />
     <ClCompile Include="ShaderBase.cpp" />
@@ -177,7 +177,7 @@
     <ClCompile Include="Transform.cpp" />
     <ClCompile Include="UITestView.cpp" />
     <ClCompile Include="Vector.cpp" />
-    <ClCompile Include="WindowBase.cpp" />
+    <ClCompile Include="AWindowBase.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -195,7 +195,7 @@
     <None Include="testuv.vert" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ADefineView.h" />
+    <ClInclude Include="AViewBase.h" />
     <ClInclude Include="AGameObjectBase.h" />
     <ClInclude Include="CONFIG.h" />
     <ClInclude Include="NoonEnginStateManager.h" />
@@ -212,7 +212,7 @@
     <ClInclude Include="Matrix.h" />
     <ClInclude Include="ModelLoader.h" />
     <ClInclude Include="NoonBaseTypes.h" />
-    <ClInclude Include="Object.h" />
+    <ClInclude Include="Mesh.h" />
     <ClInclude Include="SampleGame.h" />
     <ClInclude Include="SampleView.h" />
     <ClInclude Include="ShaderBase.h" />

@@ -1,21 +1,25 @@
 #include "UITestView.h"
 
+
+#include "imgui_impl_glfw.h"
+#include "imgui_impl_opengl3.h"
+
 UITestView::UITestView(AWindowBase* const window)
-	:ADefineView(window)
+	:AViewBase(window)
     , m_uiContext(ImGui::CreateContext())
 {
     
-   
-    
+   //-----------------UI Init---------------------
+    IMGUI_CHECKVERSION();
     // imgui init
     ImGui::SetCurrentContext(m_uiContext);
     
-    ImGui_ImplGlfw_InitForOpenGL(m_window->GetWindow(), true);
+    ImGui_ImplGlfw_InitForOpenGL(window->GetWindow(), true);
     ImGui_ImplOpenGL3_Init();
     ImGui_ImplOpenGL3_CreateDeviceObjects();
     ImGui_ImplOpenGL3_CreateFontsTexture();
     
-    
+    //----------------------------------------------
 
 }
 
@@ -29,32 +33,38 @@ UITestView::~UITestView()
 
 }
 
-int UITestView::Init()
+
+
+
+int UITestView::Init(AWindowBase* const window)
 {
     return 0;
 }
 
-int UITestView::Update()
+int UITestView::Update(AWindowBase* const window)
 {
-   
     return 0;
 }
 
-int UITestView::Draw()
+int UITestView::PreDraw(AWindowBase* const window)
 {
+    return 0;
+}
 
-    m_window->SetWindowContext(); {
+int UITestView::Draw(AWindowBase* const window)
+{
+    window->SetWindowContext(); {
 
         glClearColor(0.2f, 0.3f, 0.2f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         ImGui::SetCurrentContext(m_uiContext);
-        ImGui_ImplGlfw_SetCurrentWindow(m_window->GetWindow());
-        
+        ImGui_ImplGlfw_SetCurrentWindow(window->GetWindow());
+
         ImGui_ImplOpenGL3_NewFrame();
         ImGui_ImplGlfw_NewFrame();
         ImGui::NewFrame();
-        
+
         // gui
         {
             ImGui::Begin("Test Window");
@@ -81,6 +91,11 @@ int UITestView::Draw()
         ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
     }
-    m_window->SwapBuffers();
+    window->SwapBuffers();
+    return 0;
+}
+
+int UITestView::PostDraw(AWindowBase* const window)
+{
     return 0;
 }

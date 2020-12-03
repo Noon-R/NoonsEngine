@@ -91,6 +91,9 @@
     <Filter Include="ソース ファイル\Engine\NoonEngineCore\GameObject">
       <UniqueIdentifier>{ec3895a5-13ed-4d12-8ee7-b7f857a15292}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\Engine\GraphicsCore\UI">
+      <UniqueIdentifier>{5bff478a-9f00-4ce3-bd60-a46da6541f29}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SampleView.cpp">
@@ -104,9 +107,6 @@
     </ClCompile>
     <ClCompile Include="Vector.cpp">
       <Filter>ソース ファイル\Engine\Util\MathCulc</Filter>
-    </ClCompile>
-    <ClCompile Include="WindowBase.cpp">
-      <Filter>ソース ファイル\Engine\GraphicsCore\Base</Filter>
     </ClCompile>
     <ClCompile Include="TestView.cpp">
       <Filter>ソース ファイル\Engine\Views</Filter>
@@ -147,9 +147,6 @@
     <ClCompile Include="glShader.cpp">
       <Filter>ソース ファイル\Engine\GraphicsCore</Filter>
     </ClCompile>
-    <ClCompile Include="Object.cpp">
-      <Filter>ソース ファイル\Engine\GraphicsCore\Object</Filter>
-    </ClCompile>
     <ClCompile Include="ShaderBase.cpp">
       <Filter>ソース ファイル\Engine\GraphicsCore\Object\Material</Filter>
     </ClCompile>
@@ -162,11 +159,17 @@
     <ClCompile Include="Transform.cpp">
       <Filter>ソース ファイル\Engine\NoonEngineCore\GameObject</Filter>
     </ClCompile>
-    <ClCompile Include="ADefineView.cpp">
-      <Filter>ソース ファイル\Engine\NoonEngineCore</Filter>
-    </ClCompile>
     <ClCompile Include="NoonEnginStateManager.cpp">
       <Filter>ソース ファイル\Engine\NoonEngineCore</Filter>
+    </ClCompile>
+    <ClCompile Include="Mesh.cpp">
+      <Filter>ソース ファイル\Engine\GraphicsCore\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="AViewBase.cpp">
+      <Filter>ソース ファイル\Engine\NoonEngineCore</Filter>
+    </ClCompile>
+    <ClCompile Include="AWindowBase.cpp">
+      <Filter>ソース ファイル\Engine\GraphicsCore\Base</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -254,9 +257,6 @@
     <ClInclude Include="StringReplacer.h">
       <Filter>ヘッダー ファイル\Engine\Util</Filter>
     </ClInclude>
-    <ClInclude Include="Object.h">
-      <Filter>ヘッダー ファイル\Engine\GraphicsCore\Object</Filter>
-    </ClInclude>
     <ClInclude Include="Shape.h">
       <Filter>ヘッダー ファイル\Engine\GraphicsCore\Object</Filter>
     </ClInclude>
@@ -296,7 +296,10 @@
     <ClInclude Include="NoonEnginStateManager.h">
       <Filter>ヘッダー ファイル\Engine\NoonEngineCore</Filter>
     </ClInclude>
-    <ClInclude Include="ADefineView.h">
+    <ClInclude Include="Mesh.h">
+      <Filter>ヘッダー ファイル\Engine\GraphicsCore\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="AViewBase.h">
       <Filter>ヘッダー ファイル\Engine\NoonEngineCore</Filter>
     </ClInclude>
   </ItemGroup>

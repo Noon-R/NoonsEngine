@@ -4,8 +4,11 @@
 
 #include <iostream>
 
+#include "glShader.h"
+#include "ShapeCreator.h"
+
 TestView::TestView(AWindowBase* const window)
-	:ADefineView(window)
+	:AViewBase(window)
 	, m_program(loadProgram("testuv.vert", "testuv.frag"))
 	, m_modelviewLoc(glGetUniformLocation(m_program, "modelview"))
 	, m_projectionLoc(glGetUniformLocation(m_program, "projection"))
@@ -32,7 +35,7 @@ TestView::TestView(AWindowBase* const window)
 		0,0,0,0,			125,125,200,255,	125,200,125,255,	0,0,0,255
 	};
 
-	m_tex = new Noon::GraphicsCore::Texture( GL_RGBA, 4,4,cols,m_window);
+	m_tex = new Noon::GraphicsCore::Texture( GL_RGBA, 4,4,cols, window);
 
 	//stbi_image_free(data);
 	glUniformBlockBinding(m_program, m_materialLoc, 0);
@@ -54,12 +57,12 @@ TestView::TestView(AWindowBase* const window)
 	};
 
 	GLuint index[] = { 0,1,2, 2,3,0 };
-	shape.reset(new SolidShapeIndex(m_window, 3, 6, quad, 6, index));
+	shape.reset(new SolidShapeIndex(window, 3, 6, quad, 6, index));
 	
 
 }
 
-int TestView::Init()
+int TestView::Init(AWindowBase* const window)
 {
 
 
@@ -67,7 +70,7 @@ int TestView::Init()
 	return 0;
 }
 
-int TestView::Update()
+int TestView::Update(AWindowBase* const window)
 {
 
 
@@ -75,19 +78,19 @@ int TestView::Update()
 	return 0;
 }
 
-int TestView::Draw()
+int TestView::Draw(AWindowBase* const window)
 {
 
-	m_window->SetWindowContext(); {
+	window->SetWindowContext(); {
 
 		glClearColor(0.2f, 0.3f, 0.2f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		glUseProgram(m_program);
 
-		const GLfloat* const size(m_window->GetSize());
-		const GLfloat scale(m_window->GetScale() * 2.0f);
-		const GLfloat fovy(m_window->GetScale() * 0.01f);
+		const GLfloat* const size(window->GetSize());
+		const GLfloat scale(window->GetScale() * 2.0f);
+		const GLfloat fovy(window->GetScale() * 0.01f);
 		const GLfloat aspect(size[0] / size[1]);
 
 		const Matrix projection(Matrix::Orthographic(-1.5f * aspect, 1.5f * aspect, -1.5f, 1.5f, 0, 10));
@@ -126,7 +129,17 @@ int TestView::Draw()
 		shape->Draw();
 		m_tex->ReleaseTexture();
 	}
-	m_window->SwapBuffers();
+	window->SwapBuffers();
 
+	return 0;
+}
+
+int TestView::PreDraw(AWindowBase* const window)
+{
+	return 0;
+}
+
+int TestView::PostDraw(AWindowBase* const window)
+{
 	return 0;
 }

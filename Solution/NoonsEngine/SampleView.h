@@ -1,18 +1,25 @@
 #pragma once
 
-#include "ADefineView.h"
+#include "AViewBase.h"
 
+#include "Vector.h"
+#include "Uniform.h"
+#include "Material.h"
+#include "Shape.h"
+#include "Texture.h"
 
 class SampleView
-	:public Noon::NoonEngineCore::ADefineView
+	:public Noon::NoonEngineCore::AViewBase
 {	
 public:
 
 	SampleView(AWindowBase* const window);
 
-	virtual int Init();
-	virtual int Update();
-	virtual int Draw();
+	virtual int Init(AWindowBase* const window) override;
+	virtual int Update(AWindowBase* const window) override;
+	virtual int Draw(AWindowBase* const window) override;
+	virtual int PreDraw(AWindowBase* const window) override;
+	virtual int PostDraw(AWindowBase* const window) override;
 
 private:
 
@@ -38,5 +45,6 @@ private:
 	std::unique_ptr<Shape> shapeSphere;
 
 	Noon::GraphicsCore::Texture* m_tex;
+
 
 };

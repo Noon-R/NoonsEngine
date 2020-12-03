@@ -6,6 +6,7 @@
 
 #include "NoonEnginStateManager.h"
 
+#include <GLFW/glfw3.h>
 
 int main() {
 
