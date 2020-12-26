@@ -10,6 +10,10 @@
 std::vector<AWindowBase*> wins;
 AWindowBase* window02;
 
+AWindowBase* window_a;
+AWindowBase* window_b;
+SampleGame* view;
+
 Noon::NoonEngineCore::NoonEngineStateManager::NoonEngineStateManager()
 	:m_engineViews()
 	,m_gameViews()
@@ -54,36 +58,51 @@ bool Noon::NoonEngineCore::NoonEngineStateManager::Init()
 	glfwSetTime(0.0);
 	//------------------------------------------------------------------------------
 
-	
-	for (int i = 0; i < 3; i++) {
+	//
+	//for (int i = 0; i < 3; i++) {
 
-		AWindowBase* window = new AWindowBase(500, 500, "Noon's Engine", NULL, NULL);
-		if (window->GetWindow()) {
-			UITestView* view01 = new UITestView(window);
+	//	AWindowBase* window = new AWindowBase(500, 500, "Noon's Engine", NULL, NULL);
+	//	if (window->GetWindow()) {
+	//		UITestView* view01 = new UITestView(window);
 
-			m_engineViews.push_back(view01);
-			std::cout << "Add" << std::endl;
-			wins.push_back(window);
+	//		m_engineViews.push_back(view01);
+	//		std::cout << "Add" << std::endl;
+	//		wins.push_back(window);
 
-			isComplete = true;
-		}
-		else {
-			isComplete = false;
-		}
-	}
-	
+	//		isComplete = true;
+	//	}
+	//	else {
+	//		isComplete = false;
+	//	}
+	//}
+	//
 
-	window02 = new AWindowBase(1920, 1080, "Noon's Engine", NULL, NULL);
-	if (window02->GetWindow()) {
-		SampleGame* view01 = new SampleGame(window02);
+	//window02 = new AWindowBase(1920, 1080, "Noon's Engine", NULL, NULL);
+	//if (window02->GetWindow()) {
+	//	SampleGame* view01 = new SampleGame(window02);
 
-		m_gameViews.push_back(view01);
+	//	m_gameViews.push_back(view01);
 
-		isComplete = true;
-	}
-	else {
-		isComplete = false;
-	}
+	//	isComplete = true;
+	//}
+	//else {
+	//	isComplete = false;
+	//}
+
+	window_a = new AWindowBase(1000, 1080, "01", NULL, NULL);
+	//window_b = new AWindowBase(1000, 1080, "02", NULL, NULL);
+	view = new SampleGame(window_a);
+	isComplete = true;
+	//if (window02->GetWindow()) {
+	//	SampleGame* view01 = new SampleGame(window02);
+
+	//	m_gameViews.push_back(view01);
+
+	//	isComplete = true;
+	//}
+	//else {
+	//	isComplete = false;
+	//}
 
 	//BackCulling
 	glFrontFace(GL_CCW);
@@ -104,7 +123,7 @@ bool Noon::NoonEngineCore::NoonEngineStateManager::Init()
 
 void Noon::NoonEngineCore::NoonEngineStateManager::Update()
 {
-	int i = 0;
+	/*int i = 0;
 	for(AViewBase* view : m_engineViews)
 	{
 
@@ -115,13 +134,13 @@ void Noon::NoonEngineCore::NoonEngineStateManager::Update()
 	for (AViewBase* view : m_gameViews)
 	{
 		view->Update(window02);
-	}
+	}*/
 
 }
 
 void Noon::NoonEngineCore::NoonEngineStateManager::Draw()
 {
-	int i = 0;
+	/*int i = 0;
 	for (AViewBase* view : m_engineViews)
 	{
 		view->Draw(wins[i]);
@@ -131,47 +150,51 @@ void Noon::NoonEngineCore::NoonEngineStateManager::Draw()
 	for (AViewBase* view : m_gameViews)
 	{
 		view->Draw(window02);
-	}
-
+	}*/
+	//view->Draw(window_b);
+	view->Draw(window_a);
+	
 }
 
 void Noon::NoonEngineCore::NoonEngineStateManager::CheckWindowState()
 {
-	for (int i = 0; i < m_engineViews.size();)
-	{
-		std::cout << m_engineViews.size() << std::endl;
-		//std::cout << wins[i] << std::endl;
-		
-		if (!(*wins[i])) {
-			delete wins[i];
-			delete m_engineViews[i];
-			m_engineViews.erase(m_engineViews.begin() + i);
-			wins.erase(wins.begin() + i);
-		}
-		else
-		{
-			++i;
-		}
-	}
+	//for (int i = 0; i < m_engineViews.size();)
+	//{
+	//	std::cout << m_engineViews.size() << std::endl;
+	//	//std::cout << wins[i] << std::endl;
+	//	
+	//	if (!(*wins[i])) {
+	//		delete wins[i];
+	//		delete m_engineViews[i];
+	//		m_engineViews.erase(m_engineViews.begin() + i);
+	//		wins.erase(wins.begin() + i);
+	//	}
+	//	else
+	//	{
+	//		++i;
+	//	}
+	//}
 
-	for (int i = 0; i < m_gameViews.size();)
-	{
-		std::cout << m_gameViews.size() << std::endl;
-		if (!*window02) {
-			delete m_gameViews[i];
-			m_gameViews.erase(m_gameViews.begin() + i);
-		}
-		else
-		{
-			++i;
-		}
-	}
+	//for (int i = 0; i < m_gameViews.size();)
+	//{
+	//	std::cout << m_gameViews.size() << std::endl;
+	//	if (!*window02) {
+	//		delete m_gameViews[i];
+	//		m_gameViews.erase(m_gameViews.begin() + i);
+	//	}
+	//	else
+	//	{
+	//		++i;
+	//	}
+	//}
 }
 
 
 bool Noon::NoonEngineCore::NoonEngineStateManager::IsExistWindow() const
 {
-	return !m_engineViews.empty() || !m_gameViews.empty();
+	//return !m_engineViews.empty() || !m_gameViews.empty();
+
+	return true;
 }
 
 bool Noon::NoonEngineCore::NoonEngineStateManager::IsLoop() const

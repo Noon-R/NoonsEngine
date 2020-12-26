@@ -53,17 +53,17 @@ SampleView::SampleView(AWindowBase* const window)
 
 }
 
-int SampleView::PreDraw(AWindowBase* const window)
+int SampleView::PreDraw()
 {
 	return 0;
 }
 
-int SampleView::PostDraw(AWindowBase* const window)
+int SampleView::PostDraw()
 {
 	return 0;
 }
 
-int SampleView::Init(AWindowBase* const window)
+int SampleView::Init( )
 {
 
 	
@@ -71,7 +71,7 @@ int SampleView::Init(AWindowBase* const window)
 	return 0;
 }
 
-int SampleView::Update(AWindowBase* const window)
+int SampleView::Update()
 {
 
 	
@@ -79,19 +79,19 @@ int SampleView::Update(AWindowBase* const window)
 	return 0;
 }
 
-int SampleView::Draw(AWindowBase* const window)
+int SampleView::Draw()
 {
 
-	window->SetWindowContext(); {
+	m_window->SetWindowContext(); {
 
 		glClearColor(0.2f, 0.3f, 0.2f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		glUseProgram(m_program);
 
-		const GLfloat* const size(window->GetSize());
-		const GLfloat scale(window->GetScale() * 2.0f);
-		const GLfloat fovy(window->GetScale() * 0.01f);
+		const GLfloat* const size(m_window->GetSize());
+		const GLfloat scale(m_window->GetScale() * 2.0f);
+		const GLfloat fovy(m_window->GetScale() * 0.01f);
 		const GLfloat aspect(size[0] / size[1]);
 
 		const Matrix projection(Matrix::Perspective(fovy, aspect, 1.0f, 10.0f));
@@ -142,7 +142,7 @@ int SampleView::Draw(AWindowBase* const window)
 		material->Select(0, 1);
 		//shape->Draw();
 	}
-	window->SwapBuffers();
+	m_window->SwapBuffers();
 
 	return 0;
 }

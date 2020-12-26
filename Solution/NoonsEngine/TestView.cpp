@@ -62,7 +62,7 @@ TestView::TestView(AWindowBase* const window)
 
 }
 
-int TestView::Init(AWindowBase* const window)
+int TestView::Init()
 {
 
 
@@ -70,7 +70,7 @@ int TestView::Init(AWindowBase* const window)
 	return 0;
 }
 
-int TestView::Update(AWindowBase* const window)
+int TestView::Update()
 {
 
 
@@ -78,19 +78,19 @@ int TestView::Update(AWindowBase* const window)
 	return 0;
 }
 
-int TestView::Draw(AWindowBase* const window)
+int TestView::Draw()
 {
 
-	window->SetWindowContext(); {
+	m_window->SetWindowContext(); {
 
 		glClearColor(0.2f, 0.3f, 0.2f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		glUseProgram(m_program);
 
-		const GLfloat* const size(window->GetSize());
-		const GLfloat scale(window->GetScale() * 2.0f);
-		const GLfloat fovy(window->GetScale() * 0.01f);
+		const GLfloat* const size(m_window->GetSize());
+		const GLfloat scale(m_window->GetScale() * 2.0f);
+		const GLfloat fovy(m_window->GetScale() * 0.01f);
 		const GLfloat aspect(size[0] / size[1]);
 
 		const Matrix projection(Matrix::Orthographic(-1.5f * aspect, 1.5f * aspect, -1.5f, 1.5f, 0, 10));
@@ -129,17 +129,17 @@ int TestView::Draw(AWindowBase* const window)
 		shape->Draw();
 		m_tex->ReleaseTexture();
 	}
-	window->SwapBuffers();
+	m_window->SwapBuffers();
 
 	return 0;
 }
 
-int TestView::PreDraw(AWindowBase* const window)
+int TestView::PreDraw()
 {
 	return 0;
 }
 
-int TestView::PostDraw(AWindowBase* const window)
+int TestView::PostDraw()
 {
 	return 0;
 }

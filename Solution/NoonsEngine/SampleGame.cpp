@@ -34,43 +34,43 @@ SampleGame::SampleGame(AWindowBase* const window)
 	shape.reset(CreateSolidCube(window));
 }
 
-int SampleGame::Init(AWindowBase* const window)
+int SampleGame::Init()
 {
 	return 0;
 }
 
-int SampleGame::Update(AWindowBase* const window)
+int SampleGame::Update()
 {
 
-	if (glfwGetKey(window->GetWindow(), GLFW_KEY_W)) {
+	if (glfwGetKey(m_window->GetWindow(), GLFW_KEY_W)) {
 		cubePos.z += 0.1;
-	} else if (glfwGetKey(window->GetWindow(), GLFW_KEY_S)) {
+	} else if (glfwGetKey(m_window->GetWindow(), GLFW_KEY_S)) {
 		cubePos.z -= 0.1;
 	}
 
-	if (glfwGetKey(window->GetWindow(), GLFW_KEY_A)) {
+	if (glfwGetKey(m_window->GetWindow(), GLFW_KEY_A)) {
 		cubePos.x += 0.1;
 	}
-	else if (glfwGetKey(window->GetWindow(), GLFW_KEY_D)) {
+	else if (glfwGetKey(m_window->GetWindow(), GLFW_KEY_D)) {
 		cubePos.x -= 0.1;
 	}
 
 	return 0;
 }
 
-int SampleGame::Draw(AWindowBase* const window)
+int SampleGame::Draw()
 {
 
-	window->SetWindowContext(); {
+	m_window->SetWindowContext(); {
 
 		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		glUseProgram(m_program);
 
-		const GLfloat* const size(window->GetSize());
-		const GLfloat scale(window->GetScale() * 2.0f);
-		const GLfloat fovy(window->GetScale() * 0.01f);
+		const GLfloat* const size(m_window->GetSize());
+		const GLfloat scale(m_window->GetScale() * 2.0f);
+		const GLfloat fovy(m_window->GetScale() * 0.01f);
 		const GLfloat aspect(size[0] / size[1]);
 
 		const Matrix projection(Matrix::Perspective(fovy, aspect, 1.0f, 10.0f));
@@ -118,18 +118,18 @@ int SampleGame::Draw(AWindowBase* const window)
 		shape->Draw();
 
 	}
-	window->SwapBuffers();
+	m_window->SwapBuffers();
 
 	return 0;
 }
 
-int SampleGame::PreDraw(AWindowBase* const window)
+int SampleGame::PreDraw()
 {
 	return 0;
 }
 
 
-int SampleGame::PostDraw(AWindowBase* const window)
+int SampleGame::PostDraw()
 {
 	return 0;
 }

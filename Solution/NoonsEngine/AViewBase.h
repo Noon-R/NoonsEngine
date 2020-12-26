@@ -14,13 +14,15 @@ namespace Noon {
 			AViewBase(AWindowBase* const window);
 			~AViewBase();
 
-			virtual int Init(AWindowBase* const window) = 0;
-			virtual int Update(AWindowBase* const window) = 0;
-			virtual int PreDraw(AWindowBase* const window) = 0;
-			virtual int Draw(AWindowBase* const window) = 0;
-			virtual int PostDraw(AWindowBase* const window) = 0;
+			virtual int Init() = 0;
+			virtual int Update() = 0;
+			virtual int PreDraw() = 0;
+			virtual int Draw() = 0;
+			virtual int PostDraw() = 0;
 
 		protected:
+			
+			AWindowBase* const m_window;
 
 		};
 	}

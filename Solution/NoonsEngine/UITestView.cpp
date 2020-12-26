@@ -36,30 +36,30 @@ UITestView::~UITestView()
 
 
 
-int UITestView::Init(AWindowBase* const window)
+int UITestView::Init()
 {
     return 0;
 }
 
-int UITestView::Update(AWindowBase* const window)
+int UITestView::Update()
 {
     return 0;
 }
 
-int UITestView::PreDraw(AWindowBase* const window)
+int UITestView::PreDraw()
 {
     return 0;
 }
 
-int UITestView::Draw(AWindowBase* const window)
+int UITestView::Draw()
 {
-    window->SetWindowContext(); {
+    m_window->SetWindowContext(); {
 
         glClearColor(0.2f, 0.3f, 0.2f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         ImGui::SetCurrentContext(m_uiContext);
-        ImGui_ImplGlfw_SetCurrentWindow(window->GetWindow());
+        ImGui_ImplGlfw_SetCurrentWindow(m_window->GetWindow());
 
         ImGui_ImplOpenGL3_NewFrame();
         ImGui_ImplGlfw_NewFrame();
@@ -91,11 +91,11 @@ int UITestView::Draw(AWindowBase* const window)
         ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
     }
-    window->SwapBuffers();
+    m_window->SwapBuffers();
     return 0;
 }
 
-int UITestView::PostDraw(AWindowBase* const window)
+int UITestView::PostDraw()
 {
     return 0;
 }
