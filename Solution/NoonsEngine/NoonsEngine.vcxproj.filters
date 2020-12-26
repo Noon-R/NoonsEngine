@@ -94,6 +94,9 @@
     <Filter Include="ヘッダー ファイル\Engine\GraphicsCore\UI">
       <UniqueIdentifier>{5bff478a-9f00-4ce3-bd60-a46da6541f29}</UniqueIdentifier>
     </Filter>
+    <Filter Include="リソース ファイル\Shader">
+      <UniqueIdentifier>{0fb78c5d-ccb6-4710-a0ea-77a6c0df4592}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SampleView.cpp">
@@ -174,23 +177,23 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="point.vert">
-      <Filter>リソース ファイル</Filter>
-    </None>
     <None Include="point.frag">
-      <Filter>リソース ファイル</Filter>
+      <Filter>リソース ファイル\Shader</Filter>
     </None>
-    <None Include="pointWithNormal.vert">
-      <Filter>リソース ファイル</Filter>
+    <None Include="point.vert">
+      <Filter>リソース ファイル\Shader</Filter>
     </None>
     <None Include="pointWithNormal.frag">
-      <Filter>リソース ファイル</Filter>
+      <Filter>リソース ファイル\Shader</Filter>
+    </None>
+    <None Include="pointWithNormal.vert">
+      <Filter>リソース ファイル\Shader</Filter>
     </None>
     <None Include="testuv.frag">
-      <Filter>リソース ファイル</Filter>
+      <Filter>リソース ファイル\Shader</Filter>
     </None>
     <None Include="testuv.vert">
-      <Filter>リソース ファイル</Filter>
+      <Filter>リソース ファイル\Shader</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -302,5 +305,10 @@
     <ClInclude Include="AViewBase.h">
       <Filter>ヘッダー ファイル\Engine\NoonEngineCore</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt">
+      <Filter>リソース ファイル</Filter>
+    </Text>
   </ItemGroup>
 </Project>

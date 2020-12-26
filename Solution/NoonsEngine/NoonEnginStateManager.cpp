@@ -127,9 +127,7 @@ void Noon::NoonEngineCore::NoonEngineStateManager::Draw()
 void Noon::NoonEngineCore::NoonEngineStateManager::CheckWindowState()
 {
 	for (int i = 0; i < m_engineViews.size();)
-	{
-		std::cout << m_engineViews.size() << std::endl;
-		
+	{		
 		if (m_engineViews[i]->IsCloseWindow()) {
 			delete m_engineViews[i];
 			m_engineViews.erase(m_engineViews.begin() + i);
@@ -142,7 +140,6 @@ void Noon::NoonEngineCore::NoonEngineStateManager::CheckWindowState()
 
 	for (int i = 0; i < m_gameViews.size();)
 	{
-		std::cout << m_gameViews.size() << std::endl;
 		if (m_gameViews[i]->IsCloseWindow()) {
 			delete m_gameViews[i];
 			m_gameViews.erase(m_gameViews.begin() + i);
@@ -158,8 +155,6 @@ void Noon::NoonEngineCore::NoonEngineStateManager::CheckWindowState()
 bool Noon::NoonEngineCore::NoonEngineStateManager::IsExistWindow() const
 {
 	return !m_engineViews.empty() || !m_gameViews.empty();
-
-	return true;
 }
 
 bool Noon::NoonEngineCore::NoonEngineStateManager::IsLoop() const
