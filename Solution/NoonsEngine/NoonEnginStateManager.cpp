@@ -7,13 +7,6 @@
 #include "UITestView.h"
 #include "SampleGame.h"
 
-std::vector<AWindowBase*> wins;
-AWindowBase* window02;
-
-AWindowBase* window_a;
-AWindowBase* window_b;
-SampleGame* view;
-
 Noon::NoonEngineCore::NoonEngineStateManager::NoonEngineStateManager()
 	:m_engineViews()
 	,m_gameViews()
@@ -66,8 +59,6 @@ bool Noon::NoonEngineCore::NoonEngineStateManager::Init()
 			UITestView* view01 = new UITestView(window);
 
 			m_engineViews.push_back(view01);
-			std::cout << "Add" << std::endl;
-			wins.push_back(window);
 
 			isComplete = true;
 		}
@@ -77,7 +68,7 @@ bool Noon::NoonEngineCore::NoonEngineStateManager::Init()
 	}
 	
 
-	window02 = new AWindowBase(1920, 1080, "Noon's Engine", NULL, NULL);
+	AWindowBase* window02 = new AWindowBase(1920, 1080, "Noon's Engine", NULL, NULL);
 	if (window02->GetWindow()) {
 		SampleGame* view01 = new SampleGame(window02);
 
@@ -121,11 +112,9 @@ void Noon::NoonEngineCore::NoonEngineStateManager::Update()
 
 void Noon::NoonEngineCore::NoonEngineStateManager::Draw()
 {
-	int i = 0;
 	for (AViewBase* view : m_engineViews)
 	{
 		view->Draw();
-		++i;
 	}
 
 	for (AViewBase* view : m_gameViews)
@@ -141,11 +130,9 @@ void Noon::NoonEngineCore::NoonEngineStateManager::CheckWindowState()
 	{
 		std::cout << m_engineViews.size() << std::endl;
 		
-		if (!(*wins[i])) {
-			delete wins[i];
+		if (m_engineViews[i]->IsCloseWindow()) {
 			delete m_engineViews[i];
 			m_engineViews.erase(m_engineViews.begin() + i);
-			wins.erase(wins.begin() + i);
 		}
 		else
 		{
@@ -156,8 +143,7 @@ void Noon::NoonEngineCore::NoonEngineStateManager::CheckWindowState()
 	for (int i = 0; i < m_gameViews.size();)
 	{
 		std::cout << m_gameViews.size() << std::endl;
-		if (!(*window02)) {
-			delete window02;
+		if (m_gameViews[i]->IsCloseWindow()) {
 			delete m_gameViews[i];
 			m_gameViews.erase(m_gameViews.begin() + i);
 		}

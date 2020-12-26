@@ -14,6 +14,8 @@ namespace Noon {
 			AViewBase(AWindowBase* const window);
 			~AViewBase();
 
+			bool IsCloseWindow();
+
 			virtual int Init() = 0;
 			virtual int Update() = 0;
 			virtual int PreDraw() = 0;
