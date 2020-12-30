@@ -42,7 +42,7 @@ SampleView::SampleView(AWindowBase* const window)
 	};
 
 	material = new Uniform<Material>(color, 2);
-	std::pair<std::vector<Noon::GraphicsCore::Vertex>, int> vertexInfo = LoadObjFile("sord.obj");
+	std::pair<std::vector<Noon::GraphicsCore::Vertex>, int> vertexInfo = LoadObjFile("sword.obj");
 
 	std::cout << vertexInfo.first[0].position[0] << std::endl;
 	std::cout << vertexInfo.first[0].position[1] << std::endl;
@@ -87,8 +87,7 @@ int SampleView::Draw()
 		glClearColor(0.2f, 0.3f, 0.2f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-		glUseProgram(m_program);
-
+		
 		const GLfloat* const size(m_window->GetSize());
 		const GLfloat scale(m_window->GetScale() * 2.0f);
 		const GLfloat fovy(m_window->GetScale() * 0.01f);
@@ -96,24 +95,28 @@ int SampleView::Draw()
 
 		const Matrix projection(Matrix::Perspective(fovy, aspect, 1.0f, 10.0f));
 		const Matrix scaling(Matrix::Scale(scale / size[0], scale / size[1], 1.0f));
-		const Matrix translation(Matrix::Translate(0, 0, 0));
-
-		const Matrix r(Matrix::Rotate(static_cast<GLfloat>(glfwGetTime()), 0.0f, 1.0f, 0.0f));
-		//const Matrix model(translation * scaling);
-		const Matrix model(r);
+		
 
 		const Matrix view(Matrix::LookAt(
-			3.0f, 1.0f, 5.0f,
+			0.0f, 2.0f, 0.0f,
 			0.0f, 0.0f, 0.0f,
 			0.0f, 1.0f, 0.0f
 		));
 
-		GLfloat normalMatrix[9];
 
+
+		
+
+		const Matrix translation(Matrix::Translate(0, 0, -5));
+		const Matrix r(Matrix::Rotate(static_cast<GLfloat>(glfwGetTime()), 0.0f, 1.0f, 0.0f));
+		const Matrix model(translation * scaling);
+		//const Matrix model(r);
 		const Matrix modelView(view * model);
 
+		GLfloat normalMatrix[9];
 		modelView.GetNormalMatrix(normalMatrix);
 
+		glUseProgram(m_program);
 		glUniformMatrix4fv(m_projectionLoc, 1, GL_FALSE, projection.data());
 		glUniformMatrix4fv(m_modelviewLoc, 1, GL_FALSE, modelView.data());
 		glUniformMatrix3fv(m_normalMatrixLoc, 1, GL_FALSE, normalMatrix);
@@ -130,17 +133,7 @@ int SampleView::Draw()
 		m_tex->BindTexture();
 		shape->Draw();
 		m_tex->ReleaseTexture();
-		//shapeSphere->Draw();
 
-		const Matrix modelview1(modelView * Matrix::Translate(0.0f, 0.0f, 3.0f));
-
-		modelview1.GetNormalMatrix(normalMatrix);
-
-		glUniformMatrix4fv(m_modelviewLoc, 1, GL_FALSE, modelview1.data());
-		glUniformMatrix3fv(m_normalMatrixLoc, 1, GL_FALSE, normalMatrix);
-
-		material->Select(0, 1);
-		//shape->Draw();
 	}
 	m_window->SwapBuffers();
 

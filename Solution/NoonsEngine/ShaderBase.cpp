@@ -16,8 +16,6 @@ int ShaderBase::UseShader()
 	return 0;
 }
 
-
-
 int ShaderBase::SetUniformMatrix3(const char* name, int count, GLfloat const* data)
 {
 	const GLuint uniformLoc = glGetUniformLocation(m_program, name);
@@ -46,7 +44,3 @@ int ShaderBase::SetUniform4f(const char* name, int count, GLfloat const* data)
 	glUniform4fv( uniformLoc, count, data);
 	return 0;
 }
-
-
-
-

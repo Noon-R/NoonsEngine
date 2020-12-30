@@ -96,8 +96,6 @@ std::pair<std::vector<Noon::GraphicsCore::Vertex>, int> LoadObjFile(char const* 
 			continue;
 		}
 		
-
-		std::cout << line << std::endl;
 	}
 
 	return std::make_pair(vertecies, vertecies.size()); ;

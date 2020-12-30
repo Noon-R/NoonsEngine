@@ -78,7 +78,6 @@ int SampleGame::Draw()
 		
 
 		const Matrix r(Matrix::Rotate(static_cast<GLfloat>(glfwGetTime()), 0.0f, 1.0f, 0.0f));
-		//const Matrix model(translation * scaling);
 		const Matrix model(Matrix::Translate(cubePos.x, cubePos.y, cubePos.z));
 
 		const Matrix view(Matrix::LookAt(

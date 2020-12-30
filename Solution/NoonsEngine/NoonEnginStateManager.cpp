@@ -6,6 +6,7 @@
 
 #include "UITestView.h"
 #include "SampleGame.h"
+#include "SampleView.h"
 
 Noon::NoonEngineCore::NoonEngineStateManager::NoonEngineStateManager()
 	:m_engineViews()
@@ -56,7 +57,7 @@ bool Noon::NoonEngineCore::NoonEngineStateManager::Init()
 
 		AWindowBase* window = new AWindowBase(500, 500, "Noon's Engine", NULL, NULL);
 		if (window->GetWindow()) {
-			UITestView* view01 = new UITestView(window);
+			SampleView* view01 = new SampleView(window);
 
 			m_engineViews.push_back(view01);
 
@@ -67,6 +68,17 @@ bool Noon::NoonEngineCore::NoonEngineStateManager::Init()
 		}
 	}
 	
+	AWindowBase* window = new AWindowBase(500, 500, "Noon's Engine", NULL, NULL);
+	if (window->GetWindow()) {
+		UITestView* view01 = new UITestView(window);
+
+		m_engineViews.push_back(view01);
+
+		isComplete = true;
+	}
+	else {
+		isComplete = false;
+	}
 
 	AWindowBase* window02 = new AWindowBase(1920, 1080, "Noon's Engine", NULL, NULL);
 	if (window02->GetWindow()) {
@@ -100,12 +112,12 @@ void Noon::NoonEngineCore::NoonEngineStateManager::Update()
 
 	for(AViewBase* view : m_engineViews)
 	{
-		view->Update();	
+		view->Update(0);	
 	}
 
 	for (AViewBase* view : m_gameViews)
 	{
-		view->Update();
+		view->Update(0);
 	}
 
 }

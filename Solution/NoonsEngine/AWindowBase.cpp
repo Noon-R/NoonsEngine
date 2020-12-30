@@ -67,7 +67,6 @@ GLfloat AWindowBase::GetScale() const
 
 AWindowBase::operator bool() const
 {
-	std::cout << "Bool" << std::endl;
 	return !(glfwWindowShouldClose(m_window));
 
 }
