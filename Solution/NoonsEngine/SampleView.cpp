@@ -98,28 +98,29 @@ int SampleView::Draw()
 		
 
 		const Matrix view(Matrix::LookAt(
-			0.0f, 2.0f, 0.0f,
 			0.0f, 0.0f, 0.0f,
+			0.0f, 0.0f, -5.0f,
 			0.0f, 1.0f, 0.0f
 		));
 
-
-
 		
-
-		const Matrix translation(Matrix::Translate(0, 0, -5));
+		//â∫ÇSçsÇÃä÷êîâª
+		const Matrix translation(Matrix::Translate(0, 0, -5)); 
 		const Matrix r(Matrix::Rotate(static_cast<GLfloat>(glfwGetTime()), 0.0f, 1.0f, 0.0f));
-		const Matrix model(translation * scaling);
-		//const Matrix model(r);
+		const Matrix obj_scale(Matrix::Scale(1,1,1));
+		const Matrix model(translation * scaling * obj_scale * r);
+
 		const Matrix modelView(view * model);
 
 		GLfloat normalMatrix[9];
 		modelView.GetNormalMatrix(normalMatrix);
 
 		glUseProgram(m_program);
+
 		glUniformMatrix4fv(m_projectionLoc, 1, GL_FALSE, projection.data());
 		glUniformMatrix4fv(m_modelviewLoc, 1, GL_FALSE, modelView.data());
 		glUniformMatrix3fv(m_normalMatrixLoc, 1, GL_FALSE, normalMatrix);
+
 		for (int i = 0; i < Lcount; ++i) {
 			glUniform4fv(m_LposLoc + i, 1, (view * Lpos[i]).data());
 		}
@@ -129,7 +130,7 @@ int SampleView::Draw()
 
 
 		material->Select(0, 0);
-		glActiveTexture(GL_TEXTURE0);
+		glActiveTexture(GL_TEXTURE0);  //Ç±ÇÍÇÃïKóvÇ©Ç«Ç§Ç©
 		m_tex->BindTexture();
 		shape->Draw();
 		m_tex->ReleaseTexture();

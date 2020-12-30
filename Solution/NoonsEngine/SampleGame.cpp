@@ -1,5 +1,6 @@
 #include "SampleGame.h"
 
+#include "ModelLoader.h"
 #include "glShader.h"
 #include "ShapeCreator.h"
 
@@ -31,7 +32,14 @@ SampleGame::SampleGame(AWindowBase* const window)
 
 	material = new Uniform<Material>(color, 2);
 
-	shape.reset(CreateSolidCube(window));
+	material = new Uniform<Material>(color, 2);
+	std::pair<std::vector<Noon::GraphicsCore::Vertex>, int> vertexInfo = LoadObjFile("sword.obj");
+
+	std::cout << vertexInfo.first[0].position[0] << std::endl;
+	std::cout << vertexInfo.first[0].position[1] << std::endl;
+	std::cout << vertexInfo.first[0].position[2] << std::endl;
+
+	shape.reset(new SolidShape(window, 3, vertexInfo.second, &vertexInfo.first[0]));
 }
 
 int SampleGame::Init()
@@ -66,7 +74,7 @@ int SampleGame::Draw()
 		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-		glUseProgram(m_program);
+		
 
 		const GLfloat* const size(m_window->GetSize());
 		const GLfloat scale(m_window->GetScale() * 2.0f);
@@ -77,8 +85,7 @@ int SampleGame::Draw()
 		const Matrix scaling(Matrix::Scale(scale / size[0], scale / size[1], 1.0f));
 		
 
-		const Matrix r(Matrix::Rotate(static_cast<GLfloat>(glfwGetTime()), 0.0f, 1.0f, 0.0f));
-		const Matrix model(Matrix::Translate(cubePos.x, cubePos.y, cubePos.z));
+
 
 		const Matrix view(Matrix::LookAt(
 			0.0f + cubePos.x, 2.0f + cubePos.y, -5.0f + cubePos.z,
@@ -86,11 +93,15 @@ int SampleGame::Draw()
 			0.0f, 1.0f, 0.0f
 		));
 
+		const Matrix r(Matrix::Rotate(static_cast<GLfloat>(glfwGetTime()), 0.0f, 1.0f, 0.0f));
+		const Matrix model(Matrix::Translate(cubePos.x, cubePos.y, cubePos.z));
 		GLfloat normalMatrix[9];
 
 		const Matrix modelView(view * model);
 
 		modelView.GetNormalMatrix(normalMatrix);
+		
+		glUseProgram(m_program);
 
 		glUniformMatrix4fv(m_projectionLoc, 1, GL_FALSE, projection.data());
 		glUniformMatrix4fv(m_modelviewLoc, 1, GL_FALSE, modelView.data());

@@ -53,9 +53,9 @@ bool Noon::NoonEngineCore::NoonEngineStateManager::Init()
 	//------------------------------------------------------------------------------
 
 	
-	for (int i = 0; i < 3; i++) {
+	for (int i = 0; i < 1; i++) {
 
-		AWindowBase* window = new AWindowBase(500, 500, "Noon's Engine", NULL, NULL);
+		AWindowBase* window = new AWindowBase(800, 450, "Noon's Engine", NULL, NULL);
 		if (window->GetWindow()) {
 			SampleView* view01 = new SampleView(window);
 

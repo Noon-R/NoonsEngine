@@ -35,9 +35,9 @@ private:
 	const GLuint m_materialLoc;
 
 	static constexpr int Lcount = 2;
-	static constexpr Vector Lpos[2] = { {0.0f, 0.0f, 5.0f, 1.0f},{ 8.0f, 0.0f, 0.0f, 1.0f } };
-	static constexpr GLfloat Lamb[] = { 0.2f, 0.1f, 0.1f, 0.1f, 0.1f, 0.1f };
-	static constexpr GLfloat Ldiff[] = { 0.2f, 0.1f, 0.1f, 0.9f, 0.9f, 0.9f };
+	static constexpr Vector Lpos[2] = { {0.0f, 0.0f, -5.0f, 1.0f},{ 8.0f, 0.0f, 0.0f, 1.0f } };
+	static constexpr GLfloat Lamb[] = { 0.5f, 0.5f, 0.5f, 0.5f, 0.5f, 0.5f };
+	static constexpr GLfloat Ldiff[] = { 0.8f, 0.8f, 0.8f, 0.9f, 0.9f, 0.9f };
 	static constexpr GLfloat Lspec[] = { 1.0f, 0.5f, 0.5f, 0.9f, 0.9f, 0.9f };
 
 	Uniform<Material>* material;
