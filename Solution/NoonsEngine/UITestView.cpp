@@ -41,7 +41,7 @@ int UITestView::Init()
     return 0;
 }
 
-int UITestView::Update()
+int UITestView::Update(int time_ms)
 {
     return 0;
 }

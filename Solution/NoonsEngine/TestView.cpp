@@ -70,7 +70,7 @@ int TestView::Init()
 	return 0;
 }
 
-int TestView::Update()
+int TestView::Update(int time_ms)
 {
 
 

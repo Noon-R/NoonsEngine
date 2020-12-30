@@ -17,7 +17,7 @@ namespace Noon {
 			bool IsCloseWindow();
 
 			virtual int Init() = 0;
-			virtual int Update() = 0;
+			virtual int Update(int time_ms) = 0;
 			virtual int PreDraw() = 0;
 			virtual int Draw() = 0;
 			virtual int PostDraw() = 0;

@@ -71,7 +71,7 @@ int SampleView::Init( )
 	return 0;
 }
 
-int SampleView::Update()
+int SampleView::Update(int time_ms)
 {
 
 	

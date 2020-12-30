@@ -16,7 +16,7 @@ public:
 	SampleView(AWindowBase* const window);
 
 	virtual int Init() override;
-	virtual int Update() override;
+	virtual int Update(int time_ms) override;
 	virtual int Draw() override;
 	virtual int PreDraw() override;
 	virtual int PostDraw() override;

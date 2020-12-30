@@ -39,7 +39,7 @@ int SampleGame::Init()
 	return 0;
 }
 
-int SampleGame::Update()
+int SampleGame::Update(int time_ms)
 {
 
 	if (glfwGetKey(m_window->GetWindow(), GLFW_KEY_W)) {

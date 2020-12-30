@@ -19,7 +19,7 @@ public:
 	virtual int PostDraw() override;
 
 	virtual int Init() override;
-	virtual int Update() override;
+	virtual int Update(int time_ms) override;
 
 private:
 

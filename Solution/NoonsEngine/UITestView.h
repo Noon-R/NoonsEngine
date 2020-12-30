@@ -14,7 +14,7 @@ public:
 
 	virtual int Init() override;
 
-	virtual int Update() override;
+	virtual int Update(int time_ms) override;
 
 	virtual int PreDraw() override;
 
