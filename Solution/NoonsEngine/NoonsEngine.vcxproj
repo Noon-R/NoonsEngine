@@ -172,7 +172,6 @@
     <ClCompile Include="ShaderBase.cpp" />
     <ClCompile Include="ShapeCreator.cpp" />
     <ClCompile Include="StringReplacer.cpp" />
-    <ClCompile Include="TestView.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="Transform.cpp" />
     <ClCompile Include="UITestView.cpp" />
@@ -223,7 +222,6 @@
     <ClInclude Include="SolidShapeIndex.h" />
     <ClInclude Include="stb_image.h" />
     <ClInclude Include="StringReplacer.h" />
-    <ClInclude Include="TestView.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="Transform.h" />
     <ClInclude Include="UITestView.h" />

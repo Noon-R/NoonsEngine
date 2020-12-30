@@ -111,9 +111,6 @@
     <ClCompile Include="Vector.cpp">
       <Filter>ソース ファイル\Engine\Util\MathCulc</Filter>
     </ClCompile>
-    <ClCompile Include="TestView.cpp">
-      <Filter>ソース ファイル\Engine\Views</Filter>
-    </ClCompile>
     <ClCompile Include="imgui.cpp">
       <Filter>ソース ファイル\Ex\imgui</Filter>
     </ClCompile>
@@ -217,9 +214,6 @@
     </ClInclude>
     <ClInclude Include="ShapeCreator.h">
       <Filter>ヘッダー ファイル\Engine\Shape</Filter>
-    </ClInclude>
-    <ClInclude Include="TestView.h">
-      <Filter>ヘッダー ファイル\Engine\Views</Filter>
     </ClInclude>
     <ClInclude Include="imconfig.h">
       <Filter>ヘッダー ファイル\Ex\imgui</Filter>
